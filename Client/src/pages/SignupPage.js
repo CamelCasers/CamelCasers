@@ -17,10 +17,10 @@ function SignupPage(props) {
   const handleEmail = (e) => setEmail(e.target.value);
   const handlePassword = (e) => setPassword(e.target.value);
   const handleName = (e) => setName(e.target.value);
-  const handleHost = (e) =>console.log(e.target.value)
+  const handleHost = (e) =>setHost(e.target.value)
   
   const handleSignupSubmit = (e) => {
-    if(host===true)console.log("Host Account created")
+    
     e.preventDefault();
     // Create an object representing the request body
     const requestBody = { email, password, name, isHost };
