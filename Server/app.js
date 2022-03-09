@@ -21,11 +21,14 @@ require("./config")(app);
 const allRoutes = require("./routes/index.routes");
 app.use("/api", allRoutes);
 
-const projectRouter = require('./routes/project.routes');    
-app.use('/api', isAuthenticated, projectRouter);
+const eventRouter = require('./routes/events.routes');    
+app.use('/api/events', isAuthenticated, eventRouter);
 
-const taskRouter = require("./routes/task.routes");
-app.use('/api',  isAuthenticated, taskRouter)
+const artistsRouter = require("./routes/artists.routes");
+app.use('/api/artists', artistsRouter)
+
+const hostsRouter = require("./routes/hosts.routes");
+app.use('/api/hosts',   hostsRouter)
 
 const authRouter = require("./routes/auth.routes");         
 app.use("/auth", authRouter);                        

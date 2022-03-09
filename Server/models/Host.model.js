@@ -7,6 +7,7 @@ const hostSchema = new Schema({
   password: String, 
   profilePic: String,
   location: String, 
+  isHost: Boolean,
   events: [{ type: Schema.Types.ObjectId, ref: 'Event', default: []}],  
 });
 
