@@ -1,6 +1,6 @@
 # CamelCasers
 
-| Route            |    Views       |          Description                |
+| Route    hi        |    Views       |          Description                |
 | -----------------| ---------------|-------------------------------------|
 |GET "/"	   | index.hbs      | renders the homepage/login          |
 | -----------------| ---------------|-------------------------------------|
