@@ -19,3 +19,4 @@ function IsAnon( { children } ) {
 }
  
 export default IsAnon;
+

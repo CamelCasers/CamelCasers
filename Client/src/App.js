@@ -14,7 +14,7 @@ import IsAnon from "./components/IsAnon";
 
 function App() {
   return (
-    <div className="App">
+    <div>
       {/*  ADD <Navbar>, <Routes> & <Route>  */}
       <Navbar />
 

@@ -10,24 +10,28 @@ function SignupPage(props) {
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
   const [errorMessage, setErrorMessage] = useState(undefined);
+  const [isHost, setHost] = useState(false)
  
   const navigate = useNavigate();
   
   const handleEmail = (e) => setEmail(e.target.value);
   const handlePassword = (e) => setPassword(e.target.value);
   const handleName = (e) => setName(e.target.value);
- 
+  const handleHost = (e) =>console.log(e.target.value)
   
   const handleSignupSubmit = (e) => {
+    if(host===true)console.log("Host Account created")
     e.preventDefault();
     // Create an object representing the request body
-    const requestBody = { email, password, name };
+    const requestBody = { email, password, name, isHost };
+    
  
     // Make an axios request to the API
     // If POST request is successful redirect to login page
     // If the request resolves with an error, set the error message in the state
-    axios.post(`${API_URL}/auth/signup`, requestBody)
+    axios.post(`${API_URL}/auth/signup`, requestBody )
       .then((response) => {
+        
         navigate('/login');
       })
       .catch((error) => {
@@ -65,7 +69,13 @@ function SignupPage(props) {
           value={name}
           onChange={handleName}
         />
- 
+
+        <select onChange={handleHost} name = "Account Type" required>
+          <option value="" disabled selected hidden>Select Account type</option>
+          <option value={true}>Host Account</option>
+          <option value={false}>Artist Account</option>
+        </select>
+
         <button type="submit">Sign Up</button>
       </form>
  
