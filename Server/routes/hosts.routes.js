@@ -4,9 +4,12 @@ const mongoose = require('mongoose');
 const Host = require('../models/Host.model');
 const Event = require('../models/Event.model')
 
-router.get("/", (req, res, next)=> {
-    res.json("testing Get on server")
-})
+router.get("/", (req, res, next) => {
+  Host.find()
+    .populate("events")
+    .then((allHosts) => res.json(allHosts))
+    .catch((err) => res.json(err));
+});
 
 router.post('/', (req, res, next) => {
   const { name, email, password, profilePic, location } = req.body; 
