@@ -20,7 +20,7 @@ function EditEventPage(props) {
   const { eventId } = useParams();      
   const navigate = useNavigate();  
   
-  const { storedToken} = useContext(AuthContext);
+  const storedToken = localStorage.getItem("authToken");
     
 
  // This effect will run after the initial render and each time
@@ -28,7 +28,9 @@ function EditEventPage(props) {
   
   useEffect(() => {                                  // <== ADD
     axios
-      .get(`${API_URL}/api/event/${eventId}`,  { headers: { Authorization: `Bearer ${storedToken}` } })
+      .get(`${API_URL}/api/event/${eventId}`,  
+      { headers: { Authorization: `Bearer ${storedToken}` } }
+      )
       .then((response) => {
         /* 
           We update the state with the project data coming from the response.
@@ -40,7 +42,7 @@ function EditEventPage(props) {
       })
       .catch((error) => console.log(error));
     
-  }, [eventId]);
+  }, []);
 
   const handleFormSubmit = (e) => {                     // <== ADD
     e.preventDefault();
@@ -49,7 +51,7 @@ function EditEventPage(props) {
  
     // Make a PUT request to update the project
     axios
-      .put(`${API_URL}/api/events/${eventId}`, requestBody)
+      .put(`${API_URL}/api/events/${eventId}`, requestBody, { headers: { Authorization: `Bearer ${storedToken}` } })
       .then((response) => {
         // Once the request is resolved successfully and the project
         // is updated we navigate back to the details page

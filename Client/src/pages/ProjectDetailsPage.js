@@ -46,19 +46,13 @@ function ProjectDetailsPage (props) {
         </>
       )}
 
-      <Link to="/projects">
-        <button>Back to projects</button>
+      <Link to="/events">
+        <button>Back to events</button>
       </Link>
 
-      <Link to={`/projects/edit/${projectId}`}>
-        <button>Edit Project</button>
+      <Link to={`/events/edit/${props._id}`}>
+        <button>Edit Event</button>
       </Link>
-
-      <AddTask refreshProject={getProject} projectId={projectId} />
-
-      {project && project.tasks.map((task) => (
-          <TaskCard key={task._id} {...task} />
-      ))}
 
       
     </div>
