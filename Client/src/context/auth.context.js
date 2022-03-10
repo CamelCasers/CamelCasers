@@ -8,6 +8,11 @@ function AuthProviderWrapper(props) {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [user, setUser] = useState(null);
+  const [loggedHost, setLoggedHost] = useState(false)
+  const [loggedArtist, setLoggedArtist] = useState(false)
+
+
+  //console.log("user from token ==============>" , user )
   
   const storeToken = (token) => {       //  <==  store in my local storage! console - dev tools
     localStorage.setItem('authToken', token);
@@ -30,7 +35,21 @@ function AuthProviderWrapper(props) {
        // Update state variables        
         setIsLoggedIn(true);
         setIsLoading(false);
-        setUser(user);        
+        setUser(user)
+
+        if(user.isHost){
+          setLoggedHost(true)    
+          setLoggedArtist(false)     
+        }
+         else{
+          setLoggedArtist(true)
+          setLoggedHost(false) 
+        }
+        
+        
+        // console.log(loggedHost, "<====== loggedHost")
+        // console.log(loggedArtist, "<====== loggedArtist")
+      ;        
       })
       .catch((error) => {
         // If the server sends an error response (invalid token) 
@@ -59,22 +78,25 @@ function AuthProviderWrapper(props) {
     // and update the state variables    
     authenticateUser();
   }
+
+
+  // function handleTypeOfUser (){
+  //  if(user.isHost){
+  //     setLoggedHost(true)
+  //   }
+  //    else{
+  //     setLoggedArtist(true)
+  //  }
+  //  }
   
   useEffect(() => {                                                    
     authenticateUser();
+    // handleTypeOfUser ()
   }, []);
  
   return (
     <AuthContext.Provider 
-    value={{ isLoggedIn, 
-    isLoading, 
-    user,
-    storeToken,
-    authenticateUser,
-    logOutUser
-    }}>
-      {props.children}
-    </AuthContext.Provider>
+    value={{ isLoggedIn, isLoading, user, loggedHost, loggedArtist,storeToken, authenticateUser, logOutUser}}> {props.children}  </AuthContext.Provider>
   )
 }
  
