@@ -25,10 +25,10 @@ const eventRouter = require('./routes/events.routes');
 app.use('/api/events', isAuthenticated, eventRouter);
 
 const artistsRouter = require("./routes/artists.routes");
-app.use('/api/artists', artistsRouter)
+app.use('/api/artists',isAuthenticated, artistsRouter)
 
 const hostsRouter = require("./routes/hosts.routes");
-app.use('/api/hosts',   hostsRouter)
+app.use('/api/hosts', isAuthenticated,  hostsRouter)
 
 const authRouter = require("./routes/auth.routes");         
 app.use("/auth", authRouter);                        
