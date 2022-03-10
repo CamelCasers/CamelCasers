@@ -12,6 +12,8 @@ import LoginPage from "./pages/LoginPage";
 import IsPrivate from "./components/IsPrivate";  
 import IsAnon from "./components/IsAnon";  
 import { AuthContext } from "./context/auth.context";
+import ArtistProfilePage from "./pages/ArtistProfilePage"
+import HostProfilePage from "./pages/HostProfilePage"
 
 
 
@@ -29,11 +31,11 @@ function App() {
         <Route path="/projects/edit/:projectId" element={ <IsPrivate> <EditProjectPage /> </IsPrivate> } />
 
       {loggedHost && 
-        <Route path="/projects/:projectId" element={<IsPrivate> <ProjectDetailsPage /> </IsPrivate>}/>
+        <Route path="/profile" element={<IsPrivate> <HostProfilePage /> </IsPrivate>}/>
       }
 
-      {!loggedArtist && 
-        <Route path="/projects/:projectId" element={<IsPrivate> <ProjectDetailsPage/> </IsPrivate>}/>
+      {loggedArtist && 
+        <Route path="/profile" element={<IsPrivate> <ArtistProfilePage/> </IsPrivate>}/>
       }
 
         <Route path="/signup" element={ <IsAnon> <SignupPage /> </IsAnon> } />
