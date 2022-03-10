@@ -8,9 +8,9 @@ const eventSchema = new Schema({
   images: [],
   videos: [],
   musicStyle: [], 
-  descripcion: String,
+  description: String,
   timeRange: String,
-  equiptment: [],
+  equipment: [],
   artists: [{ type: Schema.Types.ObjectId, ref: 'Artist', default: []}],  
   host: { type: Schema.Types.ObjectId, ref: 'Host', default: {}},  
 });

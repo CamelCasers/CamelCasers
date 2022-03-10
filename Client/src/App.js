@@ -5,7 +5,6 @@ import { Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import HomePage from "./pages/HomePage";
 import ProjectListPage from "./pages/ProjectListPage";
-import ProjectDetailsPage from "./pages/ProjectDetailsPage";
 import EditProjectPage from "./pages/EditProjectPage";
 import SignupPage from "./pages/SignupPage";
 import LoginPage from "./pages/LoginPage";
@@ -14,6 +13,9 @@ import IsAnon from "./components/IsAnon";
 import { AuthContext } from "./context/auth.context";
 import ArtistProfilePage from "./pages/ArtistProfilePage"
 import HostProfilePage from "./pages/HostProfilePage"
+import CreateEventPage from "./pages/CreateEventPage";
+import HostFormPage from "./pages/HomeFormPage";
+
 
 
 
@@ -30,9 +32,18 @@ function App() {
         element={<IsPrivate> <ProjectListPage /> </IsPrivate>}/>
         <Route path="/projects/edit/:projectId" element={ <IsPrivate> <EditProjectPage /> </IsPrivate> } />
 
-      {loggedHost && 
+      {loggedHost && (
         <Route path="/profile/:profileId" element={ <HostProfilePage /> }/>
+      )}
+
+      {loggedHost && (
+        <Route path="/createEvent/" element={ <CreateEventPage /> }/>
+      )}
+
+      {loggedHost &&
+        <Route path="/profile/:profileId/edit" element={ <HostFormPage /> }/>
       }
+      
 
       {loggedArtist && 
         <Route path="/profile/:profileId" element={<IsPrivate> <ArtistProfilePage/> </IsPrivate>}/>
