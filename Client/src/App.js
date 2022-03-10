@@ -16,6 +16,7 @@ import HostProfilePage from "./pages/HostProfilePage"
 import CreateEventPage from "./pages/CreateEventPage";
 import HostFormPage from "./pages/HostFormPage"
 import ArtistFormPage from "./pages/ArtistFormPage"
+import EventDetailsPage from "./pages/EventDetailsPage";
 
 
 
@@ -30,7 +31,9 @@ function App() {
       <Routes>
         <Route path="/" element={ <HomePage /> } />
         <Route path="/events" element={<EventListPage />}/>
+        <Route path="/events/:eventId" element={ <EventDetailsPage /> } />
         <Route path="/events/edit/:eventId" element={ <EditEventPage /> } />
+        
 
       {loggedHost && (
         <Route path="/profile/:profileId" element={ <HostProfilePage /> }/>
@@ -40,9 +43,7 @@ function App() {
         <Route path="/profile/:profileId/edit" element={ <HostFormPage /> }/>
       }
 
-      {loggedHost && (
-        <Route path="/createEvent/" element={ <CreateEventPage /> }/>
-      )}
+
 
       {loggedArtist &&
         <Route path="/profile/:profileId/edit" element={<ArtistFormPage/> }/>

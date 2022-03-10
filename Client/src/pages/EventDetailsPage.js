@@ -8,11 +8,11 @@ import TaskCard from "../components/TaskCard";
 
 const API_URL = "http://localhost:5005"; 
 
-function ProjectDetailsPage (props) {
-  const [project, setProject] = useState(null);
+function EventDetailsPage (props) {
+  const [event, setEvent] = useState(null);
 
   //Get the URL paramenter `:projectId`
-  const { projectId } = useParams();
+  const { eventId } = useParams();
 
   //helper function
   const getProject = () => {
@@ -22,12 +22,12 @@ function ProjectDetailsPage (props) {
     // Send the token through the request "Authorization" Headers
     axios
       .get(
-        `${API_URL}/api/projects/${projectId}`,
+        `${API_URL}/api/events/${eventId}`,
         { headers: { Authorization: `Bearer ${storedToken}` } }
       )
       .then((response) => {
-        const oneProject = response.data;
-        setProject(oneProject);
+        const oneEvent = response.data;
+        setEvent(oneEvent);
       })
       .catch((error) => console.log(error));
   };
@@ -38,13 +38,13 @@ function ProjectDetailsPage (props) {
 
   
   return (
-    <div className="ProjectDetails">
-      {project && (
+    <div className="EventDetails">
+      
         <>
-          <h1>Project: {project.title}</h1>
-          <p>Description: {project.description}</p>
+          <h1>Project: {props.title}</h1>
+          <p>Description: {props.description}</p>
         </>
-      )}
+      
 
       <Link to="/events">
         <button>Back to events</button>
@@ -59,4 +59,4 @@ function ProjectDetailsPage (props) {
   );
 }
 
-export default ProjectDetailsPage;
+export default EventDetailsPage;
