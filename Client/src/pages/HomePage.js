@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 
 
 function HomePage() {
-  const {loggedHost, loggedArtist} = useContext(AuthContext)
+  const {loggedHost, loggedArtist,logOutUser} = useContext(AuthContext)
 
 
     return (

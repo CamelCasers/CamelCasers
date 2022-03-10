@@ -1,10 +1,16 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { AuthContext } from "./../context/auth.context";
+
 
 const API_URL = "http://localhost:5005";
 
 export default function HostProfilePage(props) {
+
+  const { user } = useContext(AuthContext);
   const [host, setHost] = useState({
     name: "",
     email: "",
@@ -31,8 +37,13 @@ export default function HostProfilePage(props) {
 
   return (
     <div>
-      I'm a host asdasdasd
-     <p>{host.name}</p>
+
+      <h1>Welcome, {host.name}</h1>
+      <Link to={`/profile/${user._id}/edit`}>
+            <button>Edit Profile</button>
+          </Link>
+
+     
     </div>
   );
 }

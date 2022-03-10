@@ -1,6 +1,6 @@
 
-import { useState, useEffect } from "react";
 import axios from "axios";
+import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 
 const API_URL = "http://localhost:5005";
@@ -13,16 +13,16 @@ export default function HostForm() {
 
   // Get the URL parameter `:projectId` 
   const { projectId } = useParams();      
-  const navigate = useNavigate();            // <== ADD 
+  const navigate = useNavigate();      
+  const { profileId } = useParams();      // <== ADD 
     
-
  // This effect will run after the initial render and each time
  // the project id coming from URL parameter `projectId` changes
   
   useEffect(() => {      
     const storedToken = localStorage.getItem("authToken");                            // <== ADD
     axios
-      .get(`${API_URL}/api/projects/${projectId}`,{
+      .get(`${API_URL}/api/hosts/${profileId}`,{
         headers: { Authorization: `Bearer ${storedToken}` }
       })
       .then((response) => {
@@ -37,7 +37,7 @@ export default function HostForm() {
       })
       .catch((error) => console.log(error));
     
-  }, [projectId]);
+  }, [profileId]);
 
   const handleFormSubmit = (e) => {                     // <== ADD
     e.preventDefault();
@@ -46,25 +46,13 @@ export default function HostForm() {
  
     // Make a PUT request to update the project
     axios
-      .put(`${API_URL}/api/hosts/${projectId}`, requestBody)
+      .put(`${API_URL}/api/hosts/${profileId}`, requestBody)
       .then((response) => {
         // Once the request is resolved successfully and the project
         // is updated we navigate back to the details page
-        navigate(`/host/${projectId}`)
+        navigate(`/profile/${profileId}`)
       });
   };
-
-  const deleteProject = () => {
-    axios
-    .delete(`${API_URL}/api/projects/${projectId}`)
-    .then(()=>{
-      //Once the delete request is resvolved succesfully 
-      // navigate back to the list of projects
-      navigate("/projects");
-    })
-    .catch((err)=> console.log(err));
-
-  }
 
   return (
     
@@ -89,9 +77,6 @@ export default function HostForm() {
 
         <button type="submit">Update Profile</button>
       </form>
-         
-         <button onClick={deleteProject}>Delete</button>
-
 
     </div>
   );
