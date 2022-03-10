@@ -1,41 +1,44 @@
 import { useState, useEffect } from "react";
+import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 import AddProject from "../components/AddProject";
 import ProjectCard from "../components/ProjectCard";
+import CreateEventPage from "./CreateEventPage";
  
 const API_URL = "http://localhost:5005";
  
  
-function ProjectListPage() {
-  const [projects, setProjects] = useState([]);
+function EventListPage() {
+  const [event, setEvents] = useState([]);
+  const { eventId } = useParams();
  
-  const getAllProjects = () => {
+  const getAllEvents = () => {
 
     const storedToken = localStorage.getItem("authToken");
 
     axios
     .get(
-    `${API_URL}/api/projects`,
+    `${API_URL}/api/events`,
     { headers: { Authorization: `Bearer ${storedToken}` } }
   )
-    .then((response) => setProjects(response.data))
+    .then((response) => setEvents(response.data))
     .catch((error) => console.log(error));
 };
  
   // We set this effect will run only once, after the initial render
   // by setting the empty dependency array - []
   useEffect(() => {
-    getAllProjects();
+    getAllEvents();
   }, [] );
  
   
   return (
-    <div className="ProjectListPage">
+    <div className="EventListPage">
+
+
       
-      <AddProject refreshProjects={getAllProjects} />
-      
-      { projects.map((project) => (
-        <ProjectCard key={project._id} {...project} />
+      { event.map((event) => (
+        <ProjectCard key={event._id} {...event} />
       ))}     
        
     </div>
@@ -43,4 +46,4 @@ function ProjectListPage() {
 }
  
  
-export default ProjectListPage;
+export default EventListPage;
