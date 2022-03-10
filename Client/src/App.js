@@ -25,17 +25,17 @@ function App() {
       <Navbar />
 
       <Routes>
-        <Route path="/" element={<HomePage />} />
+        <Route path="/" element={ <HomePage /> } />
         <Route path="/projects" 
         element={<IsPrivate> <ProjectListPage /> </IsPrivate>}/>
         <Route path="/projects/edit/:projectId" element={ <IsPrivate> <EditProjectPage /> </IsPrivate> } />
 
       {loggedHost && 
-        <Route path="/profile" element={<IsPrivate> <HostProfilePage /> </IsPrivate>}/>
+        <Route path="/profile/:profileId" element={ <HostProfilePage /> }/>
       }
 
       {loggedArtist && 
-        <Route path="/profile" element={<IsPrivate> <ArtistProfilePage/> </IsPrivate>}/>
+        <Route path="/profile/:profileId" element={<IsPrivate> <ArtistProfilePage/> </IsPrivate>}/>
       }
 
         <Route path="/signup" element={ <IsAnon> <SignupPage /> </IsAnon> } />

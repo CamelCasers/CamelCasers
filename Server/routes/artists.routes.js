@@ -4,6 +4,24 @@ const mongoose = require('mongoose');
 const Artist = require('../models/Artist.model');
 const Event = require('../models/Event.model')
 
+
+
+
+router.get("/:artistId", (req, res, next) => {
+  const { artistId } = req.params;
+
+  if (!mongoose.Types.ObjectId.isValid(artistId)) {
+    res.status(400).json({ message: "Specified id is not valid" });
+    return;
+  }
+
+  Artist.findById(artistId)
+  .populate('events')
+  .then(artist => res.status(200).json(artist))
+  .catch(error => res.json(error));
+});
+
+
 router.get("/", (req, res, next) => {
   Artist.find()
     .populate("events")

@@ -77,7 +77,8 @@ function AuthProviderWrapper(props) {
     // To log out the user, remove the token
     removeToken();
     setLoggedArtist(false)
-    setLoggedHost(false)  
+    setLoggedHost(false)
+    setIsLoggedIn(false)  
     // and update the state variables    
     authenticateUser();
   }
