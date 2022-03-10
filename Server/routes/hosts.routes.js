@@ -4,6 +4,25 @@ const mongoose = require('mongoose');
 const Host = require('../models/Host.model');
 const Event = require('../models/Event.model')
 
+
+
+
+router.get("/:hostId", (req, res, next) => {
+  const { hostId } = req.params;
+
+  if (!mongoose.Types.ObjectId.isValid(hostId)) {
+    res.status(400).json({ message: "Specified id is not valid" });
+    return;
+  }
+
+  Host.findById(hostId)
+  .populate('events')
+  .then(host => res.status(200).json(host))
+  .catch(error => res.json(error));
+});
+
+
+
 router.get("/", (req, res, next) => {
   Host.find()
     .populate("events")

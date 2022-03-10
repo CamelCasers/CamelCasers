@@ -6,8 +6,8 @@
 
       {isLoggedIn && (
         <>
-          <Link to="/projects">
-            <button>Projects</button>
+          <Link to="/profile">
+            <button>profile</button>
           </Link>
           <button onClick={logOutUser}>Logout</button>
         </>

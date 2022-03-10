@@ -1,15 +1,40 @@
+import { useEffect, useState } from "react";
+import HostForm from "../components/HostForm";
+import { Link } from "react-router-dom";
+import axios from "axios";
+import { useParams } from "react-router-dom";
 
-import HostForm from "../components/HostForm"
+const API_URL = "http://localhost:5005";
 
-export default function HostProfilePage(){
+export default function HostProfilePage(props) {
+  const [host, setHost] = useState({
+    name: "",
+    email: "",
+  });
 
+  const { profileId } = useParams();
 
+  function getHost() {
+    const storedToken = localStorage.getItem("authToken");
+    axios
+      .get(`http://localhost:5005/api/hosts/${profileId}`, {
+        headers: { Authorization: `Bearer ${storedToken}` }
+      })
+      .then((response) => {
+        const oneHost = response.data;
+        setHost(oneHost);
+      })
+      .catch((error) => console.log(error));
+  }
 
-    return(
+  useEffect(() => {
+    getHost();
+  }, []);
 
-        <div>
-            I'm a host
-        </div>
-    )
+  return (
+    <div>
+      I'm a host asdasdasd
+     <p>{host.name}</p>
+    </div>
+  );
 }
-
