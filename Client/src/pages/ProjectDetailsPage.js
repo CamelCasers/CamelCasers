@@ -3,7 +3,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { Link, useParams } from "react-router-dom";
-import ProjectCard from "../components/ProjectCard";
 import AddTask from "../components/AddTask";
 import TaskCard from "../components/TaskCard";
 

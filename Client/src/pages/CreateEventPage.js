@@ -50,22 +50,40 @@ function CreateEventPage(props) {
       <form onSubmit={handleSubmit}>
         <label>Title:</label>
         <input type="text" name="title" value={title} onChange={(e) => setTitle(e.target.value)}/>
+        <br/>
         <label>Date:</label>
-        <input type="text" name="date" value={date} onChange={(e) => setDate(e.target.value)}/>
-        <label>location:</label>
+        <input type="date" name="date" value={date} onChange={(e) => setDate(e.target.value)}/>
+        <br/>
+        <label>Location:</label>
         <input type="text" name="location" value={location} onChange={(e) => setLocation(e.target.value)}/>
-        <label>images:</label>
-        <input type="text" name="images" value={images} onChange={(e) => setImages(e.target.value)}/>
-        <label>videos:</label>
-        <input type="text" name="videos" value={videos} onChange={(e) => setVideos(e.target.value)}/>
-        <label>musicStyle:</label>
-        <input type="text" name="musicStyle" value={musicStyle} onChange={(e) => setMusicStyle(e.target.value)}/>
-        <label>description:</label>
+        <br/>
+        <label>Images:</label>
+        <input type="file" name="images" value={images} onChange={(e) => setImages(e.target.value)}/>
+        <br/>
+        <label>Videos:</label>
+        <input type="file" name="videos" value={videos} onChange={(e) => setVideos(e.target.value)}/>
+        <br/>
+        <label>Music Style:</label>
+        <select type="text" name="musicStyle" value={musicStyle} onChange={(e) => setMusicStyle(e.target.value)}>
+                  <option value="rock">Rock</option>
+                  <option value="reggae">Reggae</option>
+                  <option value="Pop">Pop</option>
+                  <option value="romantic">Romantic</option>
+                  <option value="party">Party</option>
+                  <option value="swing">Swing</option>
+                  <option value="heavy">Heavy</option>
+                  <option value="others">Others</option>
+        </select>
+        <br/>
+        <label>Description:</label>
         <input type="text" name="description" value={description} onChange={(e) => setDescription(e.target.value)}/>
-        <label>timeRange:</label>
-        <input type="text" name="timeRange" value={timeRange} onChange={(e) => setTimeRange(e.target.value)}/>
-        <label>equipment:</label>
+        <br/>
+        <label>Time Range:</label>
+        <input type="time" min="" max name="timeRange" value={timeRange} onChange={(e) => setTimeRange(e.target.value)}/>
+        <br/>
+        <label>Equipment:</label>
         <input type="text" name="equipment" value={equipment} onChange={(e) => setEquipment(e.target.value)}/>
+        <br/>
 
         <button type="submit"> Create Event</button>
       </form>
