@@ -10,7 +10,7 @@ const artistSchema = new Schema({
   images: [],
   videos: [],
   musicStyle: [], 
-  descripcion: String,
+  description: String,
   playlist: String,
   isHost: Boolean,
   events: [{ type: Schema.Types.ObjectId, ref: 'Event', default: []}],  
