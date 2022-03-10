@@ -19,9 +19,9 @@ function Navbar() {
           <Bootstrap.Nav className="me-auto">
             {isLoggedIn && (
               <>
-                <Link to="/projects">
+                <Link to="/profile">
                 {" "}
-                  <Bootstrap.Nav.Link href=".">MyEvents</Bootstrap.Nav.Link>
+                  <Bootstrap.Nav.Link href=".">MyProfile</Bootstrap.Nav.Link>
                 </Link>
                 <Link to="/projects">
                 {" "}
