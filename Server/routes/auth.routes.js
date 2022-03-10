@@ -129,9 +129,9 @@ router.post('/signup', (req, res, next) => {
                 const passwordCorrect = bcrypt.compareSync(password, foundArtist.password);
    
                 if (passwordCorrect) {
-                  const { _id, email, name } = foundArtist;
+                  const { _id, email, name , isHost} = foundArtist;
         
-                  const payload = { _id, email, name };
+                  const payload = { _id, email, name , isHost};
         
                   const authToken = jwt.sign( 
                     payload,
@@ -153,9 +153,9 @@ router.post('/signup', (req, res, next) => {
                 const passwordCorrect = bcrypt.compareSync(password, foundHost.password);
    
                 if (passwordCorrect) {
-                  const { _id, email, name } = foundHost;
+                  const { _id, email, name , isHost} = foundHost;
         
-                  const payload = { _id, email, name };
+                  const payload = { _id, email, name , isHost};
         
                   const authToken = jwt.sign( 
                     payload,
