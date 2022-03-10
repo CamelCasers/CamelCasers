@@ -13,11 +13,16 @@ function SignupPage(props) {
   const [isHost, setHost] = useState(false)
  
   const navigate = useNavigate();
+
   
   const handleEmail = (e) => setEmail(e.target.value);
   const handlePassword = (e) => setPassword(e.target.value);
   const handleName = (e) => setName(e.target.value);
-  const handleHost = (e) =>setHost(e.target.value)
+  let trueOrFalse = false
+  function handleHost (e) {
+    if(e.target.value === "true") trueOrFalse = true      
+    setHost(trueOrFalse)}
+
   
   const handleSignupSubmit = (e) => {
     
