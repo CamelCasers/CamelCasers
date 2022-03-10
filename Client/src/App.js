@@ -5,7 +5,7 @@ import { Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import HomePage from "./pages/HomePage";
 import EventListPage from "./pages/EventListPage";
-import EditProjectPage from "./pages/EditProjectPage";
+import EditEventPage from "./pages/EditEventPage";
 import SignupPage from "./pages/SignupPage";
 import LoginPage from "./pages/LoginPage";
 import IsPrivate from "./components/IsPrivate";  
@@ -15,6 +15,7 @@ import ArtistProfilePage from "./pages/ArtistProfilePage"
 import HostProfilePage from "./pages/HostProfilePage"
 import CreateEventPage from "./pages/CreateEventPage";
 import HostFormPage from "./pages/HostFormPage"
+import ArtistFormPage from "./pages/ArtistFormPage"
 
 
 
@@ -29,18 +30,22 @@ function App() {
       <Routes>
         <Route path="/" element={ <HomePage /> } />
         <Route path="/events" element={<EventListPage />}/>
-        <Route path="/events/edit/:eventId" element={ <EditProjectPage /> } />
+        <Route path="/events/edit/:eventId" element={ <EditEventPage /> } />
 
       {loggedHost && (
         <Route path="/profile/:profileId" element={ <HostProfilePage /> }/>
       )}
 
+      {loggedHost &&
+        <Route path="/profile/:profileId/edit" element={ <HostFormPage /> }/>
+      }
+
       {loggedHost && (
         <Route path="/createEvent/" element={ <CreateEventPage /> }/>
       )}
 
-      {loggedHost &&
-        <Route path="/profile/:profileId/edit" element={ <HostFormPage /> }/>
+      {loggedArtist &&
+        <Route path="/profile/:profileId/edit" element={<ArtistFormPage/> }/>
       }
       
 

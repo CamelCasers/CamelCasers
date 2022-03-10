@@ -1,4 +1,5 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+import { AuthContext } from "../context/auth.context";
 import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";  //  <== IMPORT 
 
@@ -17,7 +18,9 @@ function EditEventPage(props) {
 
   // Get the URL parameter `:projectId` 
   const { eventId } = useParams();      
-  const navigate = useNavigate();            // <== ADD 
+  const navigate = useNavigate();  
+  
+  const { storedToken} = useContext(AuthContext);
     
 
  // This effect will run after the initial render and each time
@@ -25,7 +28,7 @@ function EditEventPage(props) {
   
   useEffect(() => {                                  // <== ADD
     axios
-      .get(`${API_URL}/api/event/${eventId}`)
+      .get(`${API_URL}/api/event/${eventId}`,  { headers: { Authorization: `Bearer ${storedToken}` } })
       .then((response) => {
         /* 
           We update the state with the project data coming from the response.

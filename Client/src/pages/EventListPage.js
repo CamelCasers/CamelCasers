@@ -35,9 +35,6 @@ function EventListPage() {
   return (
     <div className="EventListPage">
 
-      <Link to={`/events/edit/${eventId}`}>
-        <button>Edit Event</button>
-      </Link>
 
       
       { event.map((event) => (
