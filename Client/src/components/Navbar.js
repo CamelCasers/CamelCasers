@@ -2,7 +2,7 @@ import HomePage from "../pages/HomePage";
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "./../context/auth.context";
-import * as Bootstrap from "react-bootstrap";
+
 
 
 function Navbar() {
