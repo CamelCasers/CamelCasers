@@ -1,6 +1,4 @@
 import { useEffect, useState } from "react";
-import HostForm from "../components/HostForm";
-import { Link } from "react-router-dom";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 
@@ -17,7 +15,7 @@ export default function HostProfilePage(props) {
   function getHost() {
     const storedToken = localStorage.getItem("authToken");
     axios
-      .get(`http://localhost:5005/api/hosts/${profileId}`, {
+      .get(`${API_URL}/api/hosts/${profileId}`, {
         headers: { Authorization: `Bearer ${storedToken}` }
       })
       .then((response) => {
