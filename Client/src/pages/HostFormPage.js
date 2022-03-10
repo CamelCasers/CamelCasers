@@ -6,7 +6,7 @@ import { useParams, useNavigate } from "react-router-dom";
 const API_URL = "http://localhost:5005";
 
 
-export default function HostForm() {
+export default function HostFormPage() {
 
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");

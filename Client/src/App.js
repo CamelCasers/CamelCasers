@@ -14,7 +14,7 @@ import { AuthContext } from "./context/auth.context";
 import ArtistProfilePage from "./pages/ArtistProfilePage"
 import HostProfilePage from "./pages/HostProfilePage"
 import CreateEventPage from "./pages/CreateEventPage";
-import HostFormPage from "./pages/HomeFormPage";
+import HostFormPage from "./pages/HostFormPage"
 
 
 
