@@ -4,7 +4,7 @@ import { AuthContext } from "../context/auth.context";
 
 
 function HomePage() {
-  const {loggedHost, loggedArtist} = useContext(AuthContext)
+  const {loggedHost, loggedArtist,logOutUser} = useContext(AuthContext)
 
 
     return (
@@ -15,6 +15,7 @@ function HomePage() {
 
       
       {loggedArtist && <h1> Artist IN DA HAUSE</h1>}
+      
 
         <h1>Home Page</h1>
       </div>
