@@ -18,7 +18,8 @@ function AuthProviderWrapper(props) {
     localStorage.setItem('authToken', token);
   }
 
-  const authenticateUser = () => {           //  <==  ADD  
+  const authenticateUser = () => { 
+             //  <==  ADD  
     // Get the stored token from the localStorage
     const storedToken = localStorage.getItem('authToken');
     
@@ -75,6 +76,8 @@ function AuthProviderWrapper(props) {
   const logOutUser = () => {                   // <== ADD    
     // To log out the user, remove the token
     removeToken();
+    setLoggedArtist(false)
+    setLoggedHost(false)  
     // and update the state variables    
     authenticateUser();
   }
