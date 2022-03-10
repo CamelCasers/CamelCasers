@@ -1,9 +1,11 @@
-import { useState } from "react";
+import { useState, useEffect, useContext } from "react";
+import { AuthContext } from "../context/auth.context";
 import axios from "axios";
+import { useParams, useNavigate } from "react-router-dom";  //  <== IMPORT 
 
 const API_URL = "http://localhost:5005";
 
-function CreateEventPage(props) {
+function EditEventPage(props) {
   const [title, setTitle] = useState("");
   const [date, setDate] = useState("");
   const [location, setLocation] = useState("");
@@ -14,41 +16,65 @@ function CreateEventPage(props) {
   const [timeRange, setTimeRange] = useState("");
   const [equipment, setEquipment] = useState("");
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const requestBody = { title, date, location, images, videos, musicStyle, description, timeRange, equipment };
-   
-    // Get the token from the localStorage
-    const storedToken = localStorage.getItem('authToken');
-   
-    // Send the token through the request "Authorization" Headers
+  // Get the URL parameter `:projectId` 
+  const { eventId } = useParams();      
+  const navigate = useNavigate();  
+  
+  const { storedToken} = useContext(AuthContext);
+    
+
+ // This effect will run after the initial render and each time
+ // the project id coming from URL parameter `projectId` changes
+  
+  useEffect(() => {                                  // <== ADD
     axios
-      .post(
-      `${API_URL}/api/events`,
-      requestBody,
-      { headers: { Authorization: `Bearer ${storedToken}` } }
-    )
+      .get(`${API_URL}/api/event/${eventId}`,  { headers: { Authorization: `Bearer ${storedToken}` } })
       .then((response) => {
-      // Reset the state
-      setTitle("");
-      setDate("");
-      setLocation("");
-      setImages("");
-      setVideos("");
-      setMusicStyle("");
-      setDescription("");
-      setTimeRange("");
-      setEquipment("");
-      //props.refreshProjects();
-    })
+        /* 
+          We update the state with the project data coming from the response.
+          This way we set inputs to show the actual title and description of the project
+        */
+        const oneEvent = response.data;
+        setTitle(oneEvent.title);
+        setDescription(oneEvent.description);
+      })
       .catch((error) => console.log(error));
+    
+  }, [eventId]);
+
+  const handleFormSubmit = (e) => {                     // <== ADD
+    e.preventDefault();
+    // Create an object representing the body of the PUT request
+    const requestBody = { title, date, location, images, videos, musicStyle, description, timeRange, equipment };
+ 
+    // Make a PUT request to update the project
+    axios
+      .put(`${API_URL}/api/events/${eventId}`, requestBody)
+      .then((response) => {
+        // Once the request is resolved successfully and the project
+        // is updated we navigate back to the details page
+        navigate(`/events/${eventId}`)
+      });
   };
 
-  return (
-    <div className="CreateEvent">
+  const deleteEvent = () => {
+    axios
+    .delete(`${API_URL}/api/events/${eventId}`)
+    .then(()=>{
+      //Once the delete request is resvolved succesfully 
+      // navigate back to the list of projects
+      navigate("/events");
+    })
+    .catch((err)=> console.log(err));
+  };
 
-      <form onSubmit={handleSubmit}>
-        <label>Title:</label>
+  
+  return (
+    <div className="EditEventPage">
+      <h3>Edit the Event</h3>
+
+      <form onSubmit={handleFormSubmit}>
+      <label>Title:</label>
         <input type="text" name="title" value={title} onChange={(e) => setTitle(e.target.value)}/>
         <br/>
         <label>Date:</label>
@@ -85,10 +111,15 @@ function CreateEventPage(props) {
         <input type="text" name="equipment" value={equipment} onChange={(e) => setEquipment(e.target.value)}/>
         <br/>
 
-        <button type="submit"> Create Event</button>
+        <button type="submit">Update Event</button>
       </form>
+         
+         <button onClick={deleteEvent}>Delete Event</button>
+       
     </div>
+
+    
   );
 }
 
-export default CreateEventPage
+export default EditEventPage;

@@ -16,7 +16,11 @@ function HomePage() {
       {loggedHost && <h1> HOST IN DA HAUSE</h1>}
 
       {loggedHost && 
-          <Link to={`/createEvent/`}>
+        <Link to={`/events/`}>
+            <button>Events</button>
+          </Link> }
+      {loggedHost &&
+         <Link to={`/createEvent/`}>
             <button>Create Event</button>
           </Link>}
 
