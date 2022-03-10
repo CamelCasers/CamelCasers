@@ -4,9 +4,12 @@ const mongoose = require('mongoose');
 const Artist = require('../models/Artist.model');
 const Event = require('../models/Event.model')
 
-router.get("/", (req, res, next)=> {
-    res.json("testing Get on server")
-})
+router.get("/", (req, res, next) => {
+  Artist.find()
+    .populate("events")
+    .then((allArtist) => res.json(allArtist))
+    .catch((err) => res.json(err));
+});
 
 router.post('/', (req, res, next) => {
   const { name, email, password, profilePic, location, images, videos, musicStyle, descripcion, playlist } = req.body; 
