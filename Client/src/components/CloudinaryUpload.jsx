@@ -11,7 +11,7 @@ const CLOUDINARY_UPLOAD_PRESET = 'lapqtpcloudinary';
 
 
 const [image , setImage] = useState()
-const [url , setUrl] = useState()
+const [url , setUrl] = useState("")
 
 
 function uploadImage(e){
@@ -34,11 +34,14 @@ function uploadImage(e){
         const uploadedFileUrl = data.secure_url;
         setUrl(uploadedFileUrl);
       }return
-    }).then(()=> props.imgUpload(url))
+    }).then(()=> console.log("image uploaded"))
     .catch(err => console.error(err));
 };
+useEffect(()=>{
+  props.imgUpload(url)
 
-console.log(url)
+},[url])
+// console.log(url)
 
 return (
 <div>

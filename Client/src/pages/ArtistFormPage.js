@@ -59,7 +59,10 @@ export default function ArtistFormPage() {
       });
   };
   function imgUpload(url){
-    setImages(images.concat(url))
+    if(url){
+      setImages(images.concat(url))
+    }
+
   }
   return (
     
