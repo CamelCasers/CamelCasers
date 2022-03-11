@@ -21,11 +21,11 @@ function HomePage() {
         </Link>
       )}
 
-      <Link to={"/hostList"}> 
+      <Link exact to={"/hostList"}> 
       <button>Host</button>
       </Link>
 
-      <Link to={"/artistList"}> 
+      <Link exact to={"/artistList"}> 
       <button>Artist</button>
       </Link>
 
