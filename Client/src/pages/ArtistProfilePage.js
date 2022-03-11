@@ -13,6 +13,7 @@ export default function ArtistProfilePage(props) {
     name: "",
     email: "",
     musicStyle: [],
+    profilePic: ""
   });
 
   const { profileId } = useParams();
@@ -35,12 +36,18 @@ export default function ArtistProfilePage(props) {
   }, []);
 
   let isArtistOwner = false;
-  if (profileId === user._id) isArtistOwner = true;
+  if(user){
+
+    if (profileId === user._id) isArtistOwner = true;
+
+  }
 
   return (
     <div>
       <h1>Welcome, {artist.name}</h1>
-      <p>{artist.description}</p>
+      <p>Image: {artist.profilePic}</p>
+      <p>Description: {artist.description}</p>
+      <p>Music Style: {artist.musicStyle}</p>
 
       {artist.musicStyle.map((styles) => (
         <li>{styles}</li>

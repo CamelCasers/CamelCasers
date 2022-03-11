@@ -11,17 +11,17 @@ function HomePage() {
       {loggedHost && <h1> HOST IN DA HAUSE</h1>}
 
       <Link to={`/events/`}>
-      <button>Events</button>
+      <button>Search Events</button>
       </Link>
       <hr/>
 
       <Link exact to={"/hostList"}> 
-      <button>Host</button>
+      <button>Search Hosts</button>
       </Link>
       <hr/>
 
       <Link exact to={"/artistList"}> 
-      <button>Artist</button>
+      <button>Search Artists</button>
       </Link>
       <hr/>
 
