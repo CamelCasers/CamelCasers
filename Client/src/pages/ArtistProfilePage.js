@@ -35,12 +35,16 @@ export default function ArtistProfilePage(props) {
   }, []);
 
   let isArtistOwner = false;
-  if (profileId === user._id) isArtistOwner = true;
+  if(user){
+
+    if (profileId === user._id) isArtistOwner = true;
+
+  }
 
   return (
     <div>
       <h1>Welcome, {artist.name}</h1>
-      <p>{artist.description}</p>
+      <p>Description: {artist.description}</p>
 
       {artist.musicStyle.map((styles) => (
         <li>{styles}</li>
