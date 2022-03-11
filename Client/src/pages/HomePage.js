@@ -25,6 +25,7 @@ function HomePage() {
       </Link>
       <hr/>
 
+    
 
 
       {loggedArtist && <h1> Artist IN DA HAUSE</h1>}

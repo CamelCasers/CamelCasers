@@ -79,11 +79,6 @@ function EditEventPage(props) {
   return (
     <div className="EditEventPage">
       <h3>Edit the Event</h3>
-       
-        <Link to={`/events/create`}>
-          <button>Create Event</button>
-        </Link>
-      
 
       <form onSubmit={handleFormSubmit}>
       <label>Title:</label>

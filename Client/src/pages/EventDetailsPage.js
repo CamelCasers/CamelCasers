@@ -50,16 +50,31 @@ function EventDetailsPage (props) {
   return (
     <div className="EventDetails">
       
-        <>
-          <h1>Project: {event.title}</h1>
-          <p>Description: {event.description}</p>
-          <p>Host: {event.host.name}</p>
-        </>
+      <Link to={`/events/${event._id}`} eventDetails = {event.title}>
+            <h3>Event Name: {event.title}</h3>
+          </Link>
+
+          <Link to={`/host/${event._id}`} eventDetails = {event.title}>
+            <h4>Host: {event.host.name}</h4>
+          </Link>
+
+          <p style={{ maxWidth: "400px" }}>Date: {event.date} </p>
+          <p style={{ maxWidth: "400px" }}>Location: {event.location} </p>
+          <p style={{ maxWidth: "400px" }}>Images: {event.images} </p>
+          <p style={{ maxWidth: "400px" }}>Videos: {event.videos} </p>
+          <p style={{ maxWidth: "400px" }}>Music Style: {event.musicStyle} </p>
+          <p style={{ maxWidth: "400px" }}>Description: {event.timeRange} </p>
+          <p style={{ maxWidth: "400px" }}>Time Range: {event.equipment} </p>
+          <p style={{ maxWidth: "400px" }}>Equipment: {event.description} </p>
+          <p style={{ maxWidth: "400px" }}>Artists: {event.description} </p>
       
+      <hr/>
 
       <Link to="/events">
         <button>Back to events</button>
       </Link>
+
+      
 
       <Link to={`/events/edit/${eventId}`}>
         <button>Edit Event</button>
