@@ -11,8 +11,9 @@ const API_URL = "http://localhost:5005";
 function EventDetailsPage (props) {
   const [event, setEvent] = useState(null);
 
-  //Get the URL paramenter `:projectId`
+  //Get the URL paramenter `:eventId`
   const { eventId } = useParams();
+  console.log(eventId);
 
   //helper function
   const getProject = () => {

@@ -1,7 +1,7 @@
 import { useState, useEffect, useContext } from "react";
 import { AuthContext } from "../context/auth.context";
 import axios from "axios";
-import { useParams, useNavigate } from "react-router-dom";  //  <== IMPORT 
+import { useParams, useNavigate } from "react-router-dom";   
 
 const API_URL = "http://localhost:5005";
 
@@ -16,7 +16,7 @@ function EditEventPage(props) {
   const [timeRange, setTimeRange] = useState("");
   const [equipment, setEquipment] = useState("");
 
-  // Get the URL parameter `:projectId` 
+  // Get the URL parameter `:eventId` 
   const { eventId } = useParams();      
   const navigate = useNavigate();  
   
@@ -24,9 +24,9 @@ function EditEventPage(props) {
     
 
  // This effect will run after the initial render and each time
- // the project id coming from URL parameter `projectId` changes
+ // the event id coming from URL parameter `eventtId` changes
   
-  useEffect(() => {                                  // <== ADD
+  useEffect(() => {                                
     axios
       .get(`${API_URL}/api/event/${eventId}`,  
       { headers: { Authorization: `Bearer ${storedToken}` } }
@@ -42,17 +42,19 @@ function EditEventPage(props) {
       })
       .catch((error) => console.log(error));
     
-  }, []);
+  }, [eventId, storedToken]);
 
-  const handleFormSubmit = (e) => {                     // <== ADD
+  const handleFormSubmit = (e) => {                    
     e.preventDefault();
     // Create an object representing the body of the PUT request
     const requestBody = { title, date, location, images, videos, musicStyle, description, timeRange, equipment };
+    console.log("requestBody =>", requestBody);
  
     // Make a PUT request to update the project
     axios
       .put(`${API_URL}/api/events/${eventId}`, requestBody, { headers: { Authorization: `Bearer ${storedToken}` } })
       .then((response) => {
+        console.log("2=>", requestBody);
         // Once the request is resolved successfully and the project
         // is updated we navigate back to the details page
         navigate(`/events/${eventId}`)
@@ -61,7 +63,9 @@ function EditEventPage(props) {
 
   const deleteEvent = () => {
     axios
-    .delete(`${API_URL}/api/events/${eventId}`)
+    .delete(`${API_URL}/api/events/${eventId}`, 
+    { headers: { Authorization: `Bearer ${storedToken}` }}
+    )
     .then(()=>{
       //Once the delete request is resvolved succesfully 
       // navigate back to the list of projects

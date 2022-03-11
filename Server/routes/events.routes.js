@@ -41,12 +41,12 @@ router.get("/:eventId", (req, res, next) => {
 router.put('/:eventId', (req, res, next) => {
   const { eventId } = req.params;
  
-  if (!mongoose.Types.ObjectId.isValid(projectId)) {
+ /* if (!mongoose.Types.ObjectId.isValid(eventId)) {
     res.status(400).json({ message: 'Specified id is not valid' });
     return;
-  }
+  }*/
  
-  Project.findByIdAndUpdate(eventId, req.body, { new: true })
+  Event.findByIdAndUpdate(eventId, req.body, { new: true })
     .then((updatedEvent) => res.json(updatedEvent))
     .catch(error => res.json(error));
 });
@@ -55,10 +55,10 @@ router.put('/:eventId', (req, res, next) => {
 router.delete('/:eventId', (req, res, next) => {
   const { eventId } = req.params;
   
-  if (!mongoose.Types.ObjectId.isValid(eventId)) {
+ /* if (!mongoose.Types.ObjectId.isValid(eventId)) {
     res.status(400).json({ message: 'Specified id is not valid' });
     return;
-  }
+  }*/
  
   Event.findByIdAndRemove(eventId)
     .then(() => res.json({ message: `Project with ${eventId} is removed successfully.` }))
