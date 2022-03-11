@@ -18,6 +18,7 @@ function EventDetailsPage (props) {
         description:"", 
         timeRange:"",
          equiptment:"",
+          artists:"",
           host:""});
 
   //Get the URL paramenter `:eventId`
@@ -63,10 +64,10 @@ function EventDetailsPage (props) {
           <p style={{ maxWidth: "400px" }}>Images: {event.images} </p>
           <p style={{ maxWidth: "400px" }}>Videos: {event.videos} </p>
           <p style={{ maxWidth: "400px" }}>Music Style: {event.musicStyle} </p>
-          <p style={{ maxWidth: "400px" }}>Description: {event.timeRange} </p>
-          <p style={{ maxWidth: "400px" }}>Time Range: {event.equipment} </p>
-          <p style={{ maxWidth: "400px" }}>Equipment: {event.description} </p>
-          <p style={{ maxWidth: "400px" }}>Artists: {event.description} </p>
+          <p style={{ maxWidth: "400px" }}>Description: {event.description} </p>
+          <p style={{ maxWidth: "400px" }}>Time Range: {event.timeRange} </p>
+          <p style={{ maxWidth: "400px" }}>Equipment: {event.equiptment} </p>
+          <p style={{ maxWidth: "400px" }}>Artists: {event.artists} </p>
       
       <hr/>
 
