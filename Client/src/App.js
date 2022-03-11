@@ -19,6 +19,8 @@ import ArtistFormPage from "./pages/ArtistFormPage";
 import EventDetailsPage from "./pages/EventDetailsPage";
 import HostListPage from "./pages/HostListPage";
 import ArtistListPage from "./pages/ArtistListPage";
+import MyEventsListPage from "./pages/MyEventsListPage";
+
 
 function App() {
   const { loggedHost, loggedArtist } = useContext(AuthContext);
@@ -30,6 +32,7 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/events" element={<EventListPage />} />
+        <Route path="/myEvents" element={<MyEventsListPage />} />
         <Route path="/events/create" element={<CreateEventPage />} />
         <Route path="/events/:eventId" element={<EventDetailsPage />} />
         <Route path="/events/edit/:eventId" element={<EditEventPage />} />

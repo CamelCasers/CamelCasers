@@ -1,27 +1,23 @@
 import { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import axios from "axios";
-import AddProject from "../components/AddProject";
-import ProjectCard from "../components/ProjectCard";
-import CreateEventPage from "./CreateEventPage";
 import EventCard from "../components/EventCard";
 import { AuthContext } from "../context/auth.context";
+import { useContext } from "react";
 
  
 const API_URL = "http://localhost:5005";
  
  
-function EventListPage() {
-  const [event, setEvents] = useState([]);
-  const { eventId } = useParams();
+function MyEventsListPage() {
+  const [events, setEvents] = useState([]);
+  const { user } = useContext(AuthContext);
  
   const getAllEvents = () => {
-
     const storedToken = localStorage.getItem("authToken");
-
     axios
     .get(
-    `${API_URL}/api/events`,
+    `${API_URL}/api/hosts/${user._id}`,
     { headers: { Authorization: `Bearer ${storedToken}` } }
   )
     .then((response) => setEvents(response.data))
@@ -45,7 +41,7 @@ function EventListPage() {
       </Link>  
       <hr/>
       
-      { event.map((event) => (
+      { events.map((event) => (
 
         <EventCard key={event._id} {...event} />
       ))}     
@@ -55,4 +51,4 @@ function EventListPage() {
 }
  
  
-export default EventListPage;
+export default MyEventsListPage;
