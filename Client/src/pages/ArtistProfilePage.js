@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "./../context/auth.context";
 
-
 const API_URL = "http://localhost:5005";
 
 export default function ArtistProfilePage(props) {

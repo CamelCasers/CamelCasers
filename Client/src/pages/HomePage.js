@@ -20,7 +20,7 @@ function HomePage() {
             <button>Events</button>
           </Link> }
       {loggedHost &&
-         <Link to={`/createEvent/`}>
+         <Link to={`/events/create`}>
             <button>Create Event</button>
           </Link>}
 

@@ -31,8 +31,10 @@ function App() {
       <Routes>
         <Route path="/" element={ <HomePage /> } />
         <Route path="/events" element={<EventListPage />}/>
+        <Route path="/events/create" element={ <CreateEventPage /> } />
         <Route path="/events/:eventId" element={ <EventDetailsPage /> } />
         <Route path="/events/edit/:eventId" element={ <EditEventPage /> } />
+       
         
 
       {loggedHost && (

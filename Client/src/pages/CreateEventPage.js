@@ -1,9 +1,17 @@
 import { useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { AuthContext } from "./../context/auth.context";
 
 const API_URL = "http://localhost:5005";
 
 function CreateEventPage(props) {
+  const { host } = useContext(AuthContext);
+  console.log("host 0=>", host)
+  console.log("hostid 1=>", host._id)
+  console.log("hostid 2 =>", host.id)
+
   const [title, setTitle] = useState("");
   const [date, setDate] = useState("");
   const [location, setLocation] = useState("");
@@ -13,6 +21,8 @@ function CreateEventPage(props) {
   const [description, setDescription] = useState("");
   const [timeRange, setTimeRange] = useState("");
   const [equipment, setEquipment] = useState("");
+
+  const navigate = useNavigate()
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -24,7 +34,7 @@ function CreateEventPage(props) {
     // Send the token through the request "Authorization" Headers
     axios
       .post(
-      `${API_URL}/api/events`,
+      `${API_URL}/api/events/${host._id}`,
       requestBody,
       { headers: { Authorization: `Bearer ${storedToken}` } }
     )
@@ -39,7 +49,9 @@ function CreateEventPage(props) {
       setDescription("");
       setTimeRange("");
       setEquipment("");
-      //props.refreshProjects();
+      //props.refreshEvents();
+
+      navigate(`/events/`)
     })
       .catch((error) => console.log(error));
   };
