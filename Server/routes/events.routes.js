@@ -12,10 +12,13 @@ router.get("/", (req, res, next) => {
     .catch((err) => res.json(err));
 });
 
-router.post("/", (req, res, next) => {
-  const { title, date, location, images, videos, musicStyle, descripcion, timeRange, equiptment, host } = req.body;
+router.post("/:hostId", (req, res, next) => {
 
-  Event.create({ title, date, location, images, videos, musicStyle, descripcion, timeRange, equiptment, host })
+ const {hostId}= req.params
+  const { title, date, location, images, videos, musicStyle, description, timeRange, equiptment } = req.body;
+  
+
+  Event.create({ title, date, location, images, videos, musicStyle, description, timeRange, equiptment, host: hostId })
     .then((newEvent) => {
       Host.findByIdAndUpdate(host,  {$push: {events: newEvent}})
     .then((__) => res.json(newEvent))
@@ -60,7 +63,7 @@ router.delete('/:eventId', (req, res, next) => {
     return;
   }*/
  
-  Event.findByIdAndRemove(eventId)
+  Event.findByIdAndDelete(eventId)
     .then(() => res.json({ message: `Project with ${eventId} is removed successfully.` }))
     .catch(error => res.json(error));
 });
