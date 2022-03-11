@@ -11,6 +11,10 @@ function Navbar() {
   const { isLoggedIn, user, logOutUser } = useContext(AuthContext);
   // console.log("user =>",user, "isloggin >>>",isLoggedIn);
 
+  let host = false
+  let artist = false
+if(user){ host = user.isHost
+artist = !user.isHost}
   
   return (
     
@@ -19,9 +23,18 @@ function Navbar() {
         <h3>Go Home</h3>
       </Link>
 
-      {user && (
+      {host && (
         <>
-          <Link to={`/profile/${user._id}`}>
+          <Link to={`/profileHost/${user._id}`}>
+            <button>profile</button>
+          </Link>
+          <button onClick={logOutUser}>Logout</button>
+        </>
+      )}
+
+      {artist && (
+        <>
+          <Link to={`/profileArtist/${user._id}`}>
             <button>profile</button>
           </Link>
           <button onClick={logOutUser}>Logout</button>

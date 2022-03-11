@@ -35,8 +35,7 @@ export default function HostProfilePage(props) {
 
   let isHostOwner = false;
   if (profileId === user._id) isHostOwner = true;
-  console.log(profileId, user._id);
-
+  
   return (
     <div>
       <h1>Welcome, {host.name}</h1>

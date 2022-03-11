@@ -17,8 +17,8 @@ import CreateEventPage from "./pages/CreateEventPage";
 import HostFormPage from "./pages/HostFormPage";
 import ArtistFormPage from "./pages/ArtistFormPage";
 import EventDetailsPage from "./pages/EventDetailsPage";
-import HostListPage from "./pages/HostListPage"
-import ArtistListPage from "./pages/ArtistListPage"
+import HostListPage from "./pages/HostListPage";
+import ArtistListPage from "./pages/ArtistListPage";
 
 function App() {
   const { loggedHost, loggedArtist } = useContext(AuthContext);
@@ -36,30 +36,22 @@ function App() {
 
         <Route path="/hostList" element={<HostListPage />} />
         <Route path="/artistList" element={<ArtistListPage />} />
-        
-        {loggedHost && (
-          <Route path="/profile/:profileId" element={<HostProfilePage />} />
-        )}
 
-        {loggedHost && (
-          <Route path="/profile/:profileId/edit" element={<HostFormPage />} />
-        )}
+        <Route path="/profileHost/:profileId" element={<HostProfilePage />} />
 
-        {loggedArtist && (
-          <Route path="/profile/:profileId/edit" element={<ArtistFormPage />} />
-        )}
+        <Route path="/profileHost/:profileId/edit" element={<HostFormPage />} />
 
-        {loggedArtist && (
-          <Route
-            path="/profile/:profileId"
-            element={
-              <IsPrivate>
-                {" "}
-                <ArtistProfilePage />{" "}
-              </IsPrivate>
-            }
-          />
-        )}
+        <Route path="/profileArtist/:profileId/edit" element={<ArtistFormPage />} />
+
+        <Route
+          path="/profileArtist/:profileId"
+          element={
+            <IsPrivate>
+              {" "}
+              <ArtistProfilePage />{" "}
+            </IsPrivate>
+          }
+        />
 
         <Route
           path="/signup"
