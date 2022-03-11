@@ -5,6 +5,8 @@ import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "./../context/auth.context";
 
+
+
 const API_URL = "http://localhost:5005";
 
 export default function ArtistProfilePage(props) {
@@ -13,6 +15,7 @@ export default function ArtistProfilePage(props) {
   const [artist, setArtist] = useState({
     name: "",
     email: "",
+    musicStyle: []
   });
 
   const { profileId } = useParams();
@@ -34,10 +37,19 @@ export default function ArtistProfilePage(props) {
     getArtist();
   }, []);
 
+console.log(artist.musicStyle);
+  
+
   return (
     <div>
 
       <h1>Welcome, {artist.name}</h1>
+      <p>{artist.description}</p>
+      
+      {artist.musicStyle.map((styles)=>(
+        <li>{styles}</li>
+      ))}
+
       <Link to={`/profile/${user._id}/edit`}>
             <button>Edit Profile</button>
           </Link>
