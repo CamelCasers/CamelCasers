@@ -25,7 +25,7 @@ const eventRouter = require('./routes/events.routes');
 app.use('/api/events', isAuthenticated, eventRouter);
 
 const artistsRouter = require("./routes/artists.routes");
-app.use('/api/artists',isAuthenticated, artistsRouter)
+app.use('/api/artists', artistsRouter)
 
 const hostsRouter = require("./routes/hosts.routes");
 app.use('/api/hosts', hostsRouter)
