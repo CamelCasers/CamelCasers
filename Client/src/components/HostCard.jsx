@@ -11,9 +11,10 @@ function HostCard(props) {
          
           <Link to={`/profileHost/${_id}`} hostDetails = {name}>
             <h3>{name}</h3>
-            <p>{description}</p>
           </Link>
           <p style={{ maxWidth: "400px" }}>Description: {description} </p>
+          <p style={{ maxWidth: "400px" }}>Image: {profilePic} </p>
+
 
         </div>
       );

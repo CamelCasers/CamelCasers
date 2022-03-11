@@ -14,7 +14,7 @@ function EventCard(props) {
           <p style={{ maxWidth: "400px" }}>Host: {host.name} </p>
           <p style={{ maxWidth: "400px" }}>Date: {date} </p>
           <p style={{ maxWidth: "400px" }}>Location: {location} </p>
-          <p style={{ maxWidth: "400px" }}>Images: {images} </p>
+          <p style={{ maxWidth: "400px" }}>Image: {images} </p>
           
         </div>
       );
