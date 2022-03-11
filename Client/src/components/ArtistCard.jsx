@@ -14,7 +14,6 @@ const {name, profilePic, images, videos, musicStyle, description, playlist, even
         
           <Link to={`/profileArtist/${_id}`} artistDetails = {name}>
             <h3>{name}</h3>
-            <p>{description}</p>
           </Link>
           <p style={{ maxWidth: "400px" }}>Description: {description} </p>
         </div>
