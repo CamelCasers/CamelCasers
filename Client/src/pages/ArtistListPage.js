@@ -31,6 +31,7 @@ export default function ArtistListPage(){
     return(
 
         <div>
+            <h1>Miki relajate</h1>
             {artists.map((artist)=>(
                 <ProjectCard key={artist._id} {...artist} />
             ))}
