@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import ProjectCard from "../components/ProjectCard";
+import HostCard from "../components/HostCard";
 
 
 const API_URL = "http://localhost:5005";
@@ -33,7 +33,7 @@ export default function HoststListPage(){
         <div>
             <h1>Host List</h1>
             {hosts.map((host)=>(
-                <ProjectCard key={host._id} {...host} />
+                <HostCard key={host._id} {...host} />
             ))}
 
         </div>
