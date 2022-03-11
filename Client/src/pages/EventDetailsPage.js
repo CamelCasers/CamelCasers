@@ -55,7 +55,7 @@ function EventDetailsPage (props) {
             <h3>Event Name: {event.title}</h3>
           </Link>
 
-          <Link to={`/host/${event._id}`} eventDetails = {event.title}>
+          <Link to={`/profileHost/${event.host._id}`} eventDetails = {event.title}>
             <h4>Host: {event.host.name}</h4>
           </Link>
 
