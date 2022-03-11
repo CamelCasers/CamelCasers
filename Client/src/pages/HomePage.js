@@ -10,30 +10,24 @@ function HomePage() {
     <div>
       {loggedHost && <h1> HOST IN DA HAUSE</h1>}
 
-      {loggedHost && (
-        <Link to={`/events/`}>
-          <button>Events</button>
-        </Link>
-      )}
-      {loggedHost && (
-        <Link to={`/events/create`}>
-          <button>Create Event</button>
-        </Link>
-      )}
+      <Link to={`/events/`}>
+      <button>Events</button>
+      </Link>
+      <hr/>
 
       <Link exact to={"/hostList"}> 
       <button>Host</button>
       </Link>
+      <hr/>
 
       <Link exact to={"/artistList"}> 
       <button>Artist</button>
       </Link>
+      <hr/>
 
 
 
       {loggedArtist && <h1> Artist IN DA HAUSE</h1>}
-
-      <h1>Home Page</h1>
     </div>
   );
 }
