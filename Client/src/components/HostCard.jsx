@@ -2,14 +2,16 @@ import { Link } from "react-router-dom";
 
 
 
-function ArtistCard({ name, description, _id, profilePic  }) {
+function HostCard(props) {
 
+    const {name, profilePic, description, location, events, _id, title} = props
   
     return (
         <div className={"ProjectCard card"}>
          
-          <Link to={`/hosts/${_id}`} eventDetails = {title}>
-            <h3>{title}</h3>
+          <Link to={`/profileHost/${_id}`} hostDetails = {name}>
+            <h3>{name}</h3>
+            <p>{description}</p>
           </Link>
           <p style={{ maxWidth: "400px" }}>Description: {description} </p>
 
@@ -17,4 +19,4 @@ function ArtistCard({ name, description, _id, profilePic  }) {
       );
     }
 
-    export default ArtistCard;
+    export default HostCard;
