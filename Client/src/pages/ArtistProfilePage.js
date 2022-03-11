@@ -13,7 +13,7 @@ export default function ArtistProfilePage(props) {
     name: "",
     email: "",
     musicStyle: [],
-    profilePic: ""
+    images: ""
   });
 
   const { profileId } = useParams();
@@ -45,7 +45,8 @@ export default function ArtistProfilePage(props) {
   return (
     <div>
       <h1>Welcome, {artist.name}</h1>
-      <p>Image: {artist.profilePic}</p>
+      <p>Artist Images</p>
+      <img src={artist.images[1]} alt="pic" width={300}/>
       <p>Description: {artist.description}</p>
       <p>Music Style: {artist.musicStyle}</p>
 
