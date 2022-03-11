@@ -2,6 +2,7 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
+import CloudinaryUpload from "../components/CloudinaryUpload";
 
 const API_URL = "http://localhost:5005";
 
@@ -10,9 +11,10 @@ export default function ArtistFormPage() {
 
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
-  const [images, setImages] = useState("");
+ 
   const [videos, setVideos] = useState("");
   const [musicStyle, setMusicStyle] = useState("");
+  const [images, setImages] = useState([]);
 
   // Get the URL parameter `:projectId` 
       
@@ -45,7 +47,7 @@ export default function ArtistFormPage() {
   const handleFormSubmit = (e) => {                     // <== ADD
     e.preventDefault();
     // Create an object representing the body of the PUT request
-    const requestBody = { name, description, images, videos, musicStyle };
+    const requestBody = { name, description, videos, musicStyle, images };
  
     // Make a PUT request to update the project
     axios
@@ -56,7 +58,9 @@ export default function ArtistFormPage() {
         navigate(`/profileArtist/${profileId}`)
       });
   };
-
+  function imgUpload(url){
+    setImages(images.concat(url))
+  }
   return (
     
     <div className="EditProjectPage">
@@ -77,9 +81,7 @@ export default function ArtistFormPage() {
           value={description}
           onChange={(e) => setDescription(e.target.value)}
         />
-             <label>Images:</label>
-        <input type="file" name="images" value={images} onChange={(e) => setImages(e.target.value)}/>
-        <br/>
+
         <label>Videos:</label>
         <input type="file" name="videos" value={videos} onChange={(e) => setVideos(e.target.value)}/>
         <br/>
@@ -95,6 +97,9 @@ export default function ArtistFormPage() {
                   <option value="others">Others</option>
         </select>
         <br/>
+        <h1>..................................................................................</h1>
+        <CloudinaryUpload imgUpload={imgUpload} images={images}/>
+        <h1>..................................................................................</h1>
 
         <button type="submit">Update Profile</button>
       </form>
