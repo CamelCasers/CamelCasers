@@ -12,13 +12,14 @@ router.get("/", (req, res, next) => {
     .catch((err) => res.json(err));
 });
 
-router.post("/:hostId", (req, res, next) => {
+router.post("/", (req, res, next) => {
 
- const {hostId}= req.params
-  const { title, date, location, images, videos, musicStyle, description, timeRange, equiptment } = req.body;
+
+  const { title, date, location, images, videos, musicStyle, description, timeRange, equiptment, user } = req.body;
+  const host = user._id
   
 
-  Event.create({ title, date, location, images, videos, musicStyle, description, timeRange, equiptment, host: hostId })
+  Event.create({ title, date, location, images, videos, musicStyle, description, timeRange, equiptment, host})
     .then((newEvent) => {
       Host.findByIdAndUpdate(host,  {$push: {events: newEvent}})
     .then((__) => res.json(newEvent))
