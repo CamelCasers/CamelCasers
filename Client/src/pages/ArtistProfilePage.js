@@ -37,6 +37,9 @@ export default function ArtistProfilePage(props) {
     getArtist();
   }, []);
 
+
+  
+
 console.log(artist.musicStyle);
   
 
