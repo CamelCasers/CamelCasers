@@ -1,40 +1,41 @@
 // src/pages/HomePage.js
 import { useContext } from "react";
-import { AuthContext } from "../context/auth.context"; 
+import { AuthContext } from "../context/auth.context";
 import { Link } from "react-router-dom";
 
-
-
 function HomePage() {
-  const {loggedHost, loggedArtist,logOutUser} = useContext(AuthContext)
+  const { loggedHost, loggedArtist, logOutUser } = useContext(AuthContext);
 
-
-    return (
-
-      
-      <div>
+  return (
+    <div>
       {loggedHost && <h1> HOST IN DA HAUSE</h1>}
 
-      {loggedHost && 
+      {loggedHost && (
         <Link to={`/events/`}>
-            <button>Events</button>
-          </Link> }
-      {loggedHost &&
-         <Link to={`/events/create`}>
-            <button>Create Event</button>
-          </Link>}
+          <button>Events</button>
+        </Link>
+      )}
+      {loggedHost && (
+        <Link to={`/events/create`}>
+          <button>Create Event</button>
+        </Link>
+      )}
 
-          
+      <Link to={"/hostList"}> 
+      <button>Host</button>
+      </Link>
+
+      <Link to={"/artistList"}> 
+      <button>Artist</button>
+      </Link>
 
 
-      
-      {loggedArtist && <h1> Artist IN DA HAUSE</h1>
-      }
 
-        <h1>Home Page</h1>
-      </div>
-    );
-  }
-  
-  export default HomePage;
-  
+      {loggedArtist && <h1> Artist IN DA HAUSE</h1>}
+
+      <h1>Home Page</h1>
+    </div>
+  );
+}
+
+export default HomePage;

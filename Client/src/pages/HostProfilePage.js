@@ -38,10 +38,12 @@ export default function HostProfilePage(props) {
   return (
     <div>
 
-      <h1>Welcome, {host.name}</h1>
+    <h1>Welcome, {host.name}</h1>
+      <p>{host.description}</p>
+      <span>{host.location}</span>
       <Link to={`/profile/${user._id}/edit`}>
-            <button>Edit Profile</button>
-          </Link>
+        <button>Edit Profile</button>
+      </Link>
 
      
     </div>

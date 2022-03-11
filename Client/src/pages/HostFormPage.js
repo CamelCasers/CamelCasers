@@ -10,17 +10,19 @@ export default function HostFormPage() {
 
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
+  const [profilePic,setProfilePic] = useState("")
+  const [location, setLocation] = useState("");
 
   // Get the URL parameter `:projectId` 
      
   const navigate = useNavigate();      
   const { profileId } = useParams();      // <== ADD 
+  const storedToken = localStorage.getItem("authToken");                              // <== ADD
     
  // This effect will run after the initial render and each time
  // the project id coming from URL parameter `projectId` changes
   
   useEffect(() => {      
-    const storedToken = localStorage.getItem("authToken");                            // <== ADD
     axios
       .get(`${API_URL}/api/hosts/${profileId}`,{
         headers: { Authorization: `Bearer ${storedToken}` }
@@ -42,7 +44,7 @@ export default function HostFormPage() {
   const handleFormSubmit = (e) => {                     // <== ADD
     e.preventDefault();
     // Create an object representing the body of the PUT request
-    const requestBody = { name, description };
+    const requestBody = { name, description, profilePic, location };
  
     // Make a PUT request to update the project
     axios
@@ -67,6 +69,9 @@ export default function HostFormPage() {
           value={name}
           onChange={(e) => setName(e.target.value)}
         />
+        <label>Profile Picture:</label>
+        <input type="file" name="profilePic" value={profilePic} onChange={(e) => setProfilePic(e.target.value)}/>
+        <br/>
         
         <label>Description:</label>
         <textarea
@@ -74,6 +79,9 @@ export default function HostFormPage() {
           value={description}
           onChange={(e) => setDescription(e.target.value)}
         />
+            <label>Location:</label>
+        <input type="text" name="location" value={location} onChange={(e) => setLocation(e.target.value)}/>
+        <br/>
 
         <button type="submit">Update Profile</button>
       </form>
