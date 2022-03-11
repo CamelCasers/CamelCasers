@@ -10,17 +10,20 @@ export default function ArtistFormPage() {
 
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
+  const [images, setImages] = useState("");
+  const [videos, setVideos] = useState("");
+  const [musicStyle, setMusicStyle] = useState("");
 
   // Get the URL parameter `:projectId` 
       
   const navigate = useNavigate();      
   const { profileId } = useParams();      // <== ADD 
+  const storedToken = localStorage.getItem("authToken");                            // <== ADD
     
  // This effect will run after the initial render and each time
  // the project id coming from URL parameter `projectId` changes
   
   useEffect(() => {      
-    const storedToken = localStorage.getItem("authToken");                            // <== ADD
     axios
       .get(`${API_URL}/api/artists/${profileId}`,{
         headers: { Authorization: `Bearer ${storedToken}` }
@@ -42,11 +45,11 @@ export default function ArtistFormPage() {
   const handleFormSubmit = (e) => {                     // <== ADD
     e.preventDefault();
     // Create an object representing the body of the PUT request
-    const requestBody = { name, description };
+    const requestBody = { name, description, images, videos, musicStyle };
  
     // Make a PUT request to update the project
     axios
-      .put(`${API_URL}/api/artists/${profileId}`, requestBody)
+      .put(`${API_URL}/api/artists/${profileId}`, requestBody, { headers: { Authorization: `Bearer ${storedToken}` } })
       .then((response) => {
         // Once the request is resolved successfully and the project
         // is updated we navigate back to the details page
@@ -74,6 +77,24 @@ export default function ArtistFormPage() {
           value={description}
           onChange={(e) => setDescription(e.target.value)}
         />
+          <label>Images:</label>
+        <input type="file" name="images" value={images} onChange={(e) => setImages(e.target.value)}/>
+        <br/>
+        <label>Videos:</label>
+        <input type="file" name="videos" value={videos} onChange={(e) => setVideos(e.target.value)}/>
+        <br/>
+        <label>Music Style:</label>
+        <select type="text" name="musicStyle" value={musicStyle} onChange={(e) => setMusicStyle(e.target.value)} >
+                  <option value="rock">Rock</option>
+                  <option value="reggae">Reggae</option>
+                  <option value="Pop">Pop</option>
+                  <option value="romantic">Romantic</option>
+                  <option value="party">Party</option>
+                  <option value="swing">Swing</option>
+                  <option value="heavy">Heavy</option>
+                  <option value="others">Others</option>
+        </select>
+        <br/>
 
         <button type="submit">Update Profile</button>
       </form>

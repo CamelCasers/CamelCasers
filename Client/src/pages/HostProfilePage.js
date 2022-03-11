@@ -5,11 +5,9 @@ import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "./../context/auth.context";
 
-
 const API_URL = "http://localhost:5005";
 
 export default function HostProfilePage(props) {
-
   const { user } = useContext(AuthContext);
   const [host, setHost] = useState({
     name: "",
@@ -22,7 +20,7 @@ export default function HostProfilePage(props) {
     const storedToken = localStorage.getItem("authToken");
     axios
       .get(`${API_URL}/api/hosts/${profileId}`, {
-        headers: { Authorization: `Bearer ${storedToken}` }
+        headers: { Authorization: `Bearer ${storedToken}` },
       })
       .then((response) => {
         const oneHost = response.data;
@@ -37,13 +35,12 @@ export default function HostProfilePage(props) {
 
   return (
     <div>
-
       <h1>Welcome, {host.name}</h1>
+      <p>{host.description}</p>
+      <span>{host.location}</span>
       <Link to={`/profile/${user._id}/edit`}>
-            <button>Edit Profile</button>
-          </Link>
-
-     
+        <button>Edit Profile</button>
+      </Link>
     </div>
   );
 }
