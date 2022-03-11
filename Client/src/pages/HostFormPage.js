@@ -52,7 +52,7 @@ export default function HostFormPage() {
       .then((response) => {
         // Once the request is resolved successfully and the project
         // is updated we navigate back to the details page
-        navigate(`/profile/${profileId}`)
+        navigate(`/profileHost/${profileId}`)
       });
   };
 
