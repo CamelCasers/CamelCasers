@@ -11,7 +11,7 @@ import { AuthContext } from "../context/auth.context";
 const API_URL = "http://localhost:5005";
  
  
-function EventListPage() {
+function MyEventsListPage() {
   const [event, setEvents] = useState([]);
   const { eventId } = useParams();
  
@@ -55,4 +55,4 @@ function EventListPage() {
 }
  
  
-export default EventListPage;
+export default MyEventsListPage;
