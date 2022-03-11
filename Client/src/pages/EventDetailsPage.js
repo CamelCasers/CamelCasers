@@ -9,11 +9,20 @@ import TaskCard from "../components/TaskCard";
 const API_URL = "http://localhost:5005"; 
 
 function EventDetailsPage (props) {
-  const [event, setEvent] = useState(null);
+  const [event, setEvent] = useState({ title: "",
+   date:"",
+    location:"",
+     images:"",
+      videos:"",
+       musicStyle:"",
+        description:"", 
+        timeRange:"",
+         equiptment:"",
+          host:""});
 
   //Get the URL paramenter `:eventId`
   const { eventId } = useParams();
-  console.log(eventId);
+  console.log(eventId, event);
 
   //helper function
   const getProject = () => {
@@ -42,8 +51,9 @@ function EventDetailsPage (props) {
     <div className="EventDetails">
       
         <>
-          <h1>Project: {props.title}</h1>
-          <p>Description: {props.description}</p>
+          <h1>Project: {event.title}</h1>
+          <p>Description: {event.description}</p>
+          <p>Host: {event.host.name}</p>
         </>
       
 
@@ -51,7 +61,7 @@ function EventDetailsPage (props) {
         <button>Back to events</button>
       </Link>
 
-      <Link to={`/events/edit/${props._id}`}>
+      <Link to={`/events/edit/${eventId}`}>
         <button>Edit Event</button>
       </Link>
 

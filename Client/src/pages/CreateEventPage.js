@@ -7,10 +7,8 @@ import { AuthContext } from "./../context/auth.context";
 const API_URL = "http://localhost:5005";
 
 function CreateEventPage(props) {
-  const { host } = useContext(AuthContext);
-  console.log("host 0=>", host)
-  console.log("hostid 1=>", host._id)
-  console.log("hostid 2 =>", host.id)
+  const { user } = useContext(AuthContext);
+  console.log("user 0=>", user)
 
   const [title, setTitle] = useState("");
   const [date, setDate] = useState("");
@@ -26,7 +24,7 @@ function CreateEventPage(props) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const requestBody = { title, date, location, images, videos, musicStyle, description, timeRange, equipment };
+    const requestBody = { title, date, location, images, videos, musicStyle, description, timeRange, equipment, user };
    
     // Get the token from the localStorage
     const storedToken = localStorage.getItem('authToken');
@@ -34,7 +32,7 @@ function CreateEventPage(props) {
     // Send the token through the request "Authorization" Headers
     axios
       .post(
-      `${API_URL}/api/events/${host._id}`,
+      `${API_URL}/api/events`,
       requestBody,
       { headers: { Authorization: `Bearer ${storedToken}` } }
     )
