@@ -1,7 +1,8 @@
 import { useState, useEffect, useContext } from "react";
 import { AuthContext } from "../context/auth.context";
 import axios from "axios";
-import { useParams, useNavigate } from "react-router-dom";   
+import { useParams, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const API_URL = "http://localhost:5005";
 
@@ -78,6 +79,11 @@ function EditEventPage(props) {
   return (
     <div className="EditEventPage">
       <h3>Edit the Event</h3>
+       
+        <Link to={`/events/create`}>
+          <button>Create Event</button>
+        </Link>
+      
 
       <form onSubmit={handleFormSubmit}>
       <label>Title:</label>

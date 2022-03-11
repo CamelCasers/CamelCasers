@@ -25,7 +25,7 @@ function EventDetailsPage (props) {
   console.log(eventId, event);
 
   //helper function
-  const getProject = () => {
+  const getEvents = () => {
     // Get the token from the localStorage
     const storedToken = localStorage.getItem("authToken");
    
@@ -43,7 +43,7 @@ function EventDetailsPage (props) {
   };
 
   useEffect(() => {
-    getProject()
+    getEvents()
   }, []);
 
   
