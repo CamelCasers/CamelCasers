@@ -43,10 +43,16 @@ export default function HostProfilePage(props) {
       <span>{host.location}</span>
 
       {isHostOwner && ( 
-        <Link to={`/profile/${user._id}/edit`}>
+        <Link to={`/profileHost/${user._id}/edit`}>
           <button>Edit Profile</button>
         </Link>
       )}
+
+       {isHostOwner && ( 
+       <Link to={`/myEvents`}>
+          <button>My Events</button>
+        </Link>
+        )}
     </div>
   );
 }
