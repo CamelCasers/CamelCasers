@@ -4,6 +4,7 @@ import axios from "axios";
 import AddProject from "../components/AddProject";
 import ProjectCard from "../components/ProjectCard";
 import CreateEventPage from "./CreateEventPage";
+import EventCard from "../components/EventCard";
  
 const API_URL = "http://localhost:5005";
  
@@ -35,10 +36,15 @@ function EventListPage() {
   return (
     <div className="EventListPage">
 
+      <hr/>
 
+      <Link to={`/events/create`}>
+        <button>Create Event</button>
+      </Link>  
+      <hr/>
       
       { event.map((event) => (
-        <ProjectCard key={event._id} {...event} />
+        <EventCard key={event._id} {...event} />
       ))}     
        
     </div>
