@@ -17,7 +17,7 @@ import CreateEventPage from "./pages/CreateEventPage";
 import HostFormPage from "./pages/HostFormPage";
 import ArtistFormPage from "./pages/ArtistFormPage";
 import EventDetailsPage from "./pages/EventDetailsPage";
-import HostListPage from "./pages/HostFormPage"
+import HostListPage from "./pages/HostListPage"
 import ArtistListPage from "./pages/ArtistListPage"
 
 function App() {
