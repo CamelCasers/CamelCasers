@@ -36,8 +36,10 @@ export default function ArtistFormPage() {
           This way we set inputs to show the actual title and description of the project
         */
         const artist = response.data;
-        setName(artist.title);
+        setName(artist.name);
         setDescription(artist.description);
+        setMusicStyle(artist.musicStyle)
+        setImages(artist.images)
 
       })
       .catch((error) => console.log(error));
@@ -86,7 +88,7 @@ export default function ArtistFormPage() {
         />
 
         <label>Videos:</label>
-        <input type="file" name="videos" value={videos} onChange={(e) => setVideos(e.target.value)}/>
+        <input type="text" name="videos" value={videos} onChange={(e) => setVideos(e.target.value)}/>
         <br/>
         <label>Music Style:</label>
         <select type="text" name="musicStyle" value={musicStyle} onChange={(e) => setMusicStyle(e.target.value)} >

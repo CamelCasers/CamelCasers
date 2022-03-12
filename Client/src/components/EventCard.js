@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 function EventCard(props) {
 
   const {_id, title, date, location, images, videos, musicStyle, description, timeRange, equipment, host } = props
-console.log(host)
+//console.log(host)
     return (
         <div className={"EventCard card"}>      
 
@@ -17,7 +17,11 @@ console.log(host)
           )}
           <p style={{ maxWidth: "400px" }}>Date: {date} </p>
           <p style={{ maxWidth: "400px" }}>Location: {location} </p>
-          <p style={{ maxWidth: "400px" }}>Image: {images} </p>
+
+          {images.map((img)=>(
+            <img src={img} alt="Pic" width={300} />))}
+
+     
           
         </div>
       );

@@ -53,9 +53,14 @@ setImage(e.target.files[0])
  <button onClick={uploadImage}>Upload profile Pic</button> 
 </div>
 <div>
-{props.images.map((img)=>(
-<img src={img} alt="Profile Pic"/>
-))}
+{typeof props.images == "object" && props.images.map((img)=>(
+<img src={img} alt="Profile Pic" width={300}/>)
+)}
+{typeof props.images != "object" && (
+<img src={props.images} alt="Profile Pic" width={300}/>)
+}
+
+
 
 </div>
 </div>
