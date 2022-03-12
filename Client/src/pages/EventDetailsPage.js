@@ -5,14 +5,19 @@ import axios from "axios";
 import { Link, useParams } from "react-router-dom";
 import AddTask from "../components/AddTask";
 import TaskCard from "../components/TaskCard";
+import { useContext } from "react";
+import { AuthContext } from "../context/auth.context";
 
 const API_URL = "http://localhost:5005"; 
 
 function EventDetailsPage (props) {
+  const { user } = useContext(AuthContext);
+
+
   const [event, setEvent] = useState({ title: "",
    date:"",
     location:"",
-     images:"",
+     images:[],
       videos:"",
        musicStyle:"",
         description:"", 
@@ -23,7 +28,7 @@ function EventDetailsPage (props) {
 
   //Get the URL paramenter `:eventId`
   const { eventId } = useParams();
-  console.log(eventId, event);
+  //console.log(eventId, event);
 
   //helper function
   const getEvents = () => {
@@ -47,6 +52,7 @@ function EventDetailsPage (props) {
     getEvents()
   }, []);
 
+  console.log(user._id,"<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<")
   
   return (
     <div className="EventDetails">
@@ -61,7 +67,12 @@ function EventDetailsPage (props) {
 
           <p style={{ maxWidth: "400px" }}>Date: {event.date} </p>
           <p style={{ maxWidth: "400px" }}>Location: {event.location} </p>
-          <p style={{ maxWidth: "400px" }}>Images: {event.images} </p>
+
+          {event.images.map((img)=>(
+            <img src={img} alt="pic" width={300}/>
+          ))}
+
+
           <p style={{ maxWidth: "400px" }}>Videos: {event.videos} </p>
           <p style={{ maxWidth: "400px" }}>Music Style: {event.musicStyle} </p>
           <p style={{ maxWidth: "400px" }}>Description: {event.description} </p>
@@ -76,10 +87,12 @@ function EventDetailsPage (props) {
       </Link>
 
       
-
+          {user._id === event.host._id && (
       <Link to={`/events/edit/${eventId}`}>
         <button>Edit Event</button>
       </Link>
+
+          )}      
 
       
     </div>

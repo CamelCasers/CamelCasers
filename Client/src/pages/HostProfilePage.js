@@ -39,7 +39,12 @@ export default function HostProfilePage(props) {
   return (
     <div>
       <h1>Welcome {host.name}</h1>
-      <p>Image: {host.profilePic}</p>
+
+    <p>Profile Pic</p>
+      <img src={host.profilePic} alt="Pic" width={300}/>
+
+
+    
       <p>Descripcion: {host.description}</p>
       <span>Location: {host.location}</span>
 
