@@ -11,7 +11,7 @@ export default function ArtistFormPage() {
 
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
- 
+  const [profilePic,setProfilePic] = useState("")
   const [videos, setVideos] = useState("");
   const [musicStyle, setMusicStyle] = useState("");
   const [images, setImages] = useState([]);
@@ -40,6 +40,7 @@ export default function ArtistFormPage() {
         setDescription(artist.description);
         setMusicStyle(artist.musicStyle)
         setImages(artist.images)
+        setProfilePic(artist.profilePic);
 
       })
       .catch((error) => console.log(error));
@@ -49,7 +50,7 @@ export default function ArtistFormPage() {
   const handleFormSubmit = (e) => {                     // <== ADD
     e.preventDefault();
     // Create an object representing the body of the PUT request
-    const requestBody = { name, description, videos, musicStyle, images };
+    const requestBody = { name, description, videos, musicStyle, profilePic, images };
  
     // Make a PUT request to update the project
     axios
@@ -63,6 +64,7 @@ export default function ArtistFormPage() {
   function imgUpload(url){
     if(url){
       setImages(images.concat(url))
+      setProfilePic(url)
     }
 
   }
@@ -102,6 +104,7 @@ export default function ArtistFormPage() {
                   <option value="others">Others</option>
         </select>
         <br/>
+        <CloudinaryUpload imgUpload={imgUpload} images={profilePic}/>
         <h1>..................................................................................</h1>
         <CloudinaryUpload imgUpload={imgUpload} images={images}/>
         <h1>..................................................................................</h1>

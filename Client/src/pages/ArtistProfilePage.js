@@ -44,17 +44,20 @@ export default function ArtistProfilePage(props) {
 
   return (
     <div>
-      <h1>Welcome, {artist.name}</h1>
+      <h2>Welcome, {artist.name}</h2>
+  
+      <img src={artist.profilePic} className="profile-img" alt="Pic" width={150}/>
       <p>Artist Images</p>
-      {artist.images.map((img)=>(
-      <img src={img} alt="pic" width={300} />
-      ))}
 
       <p>Description: {artist.description}</p>
       <p>Music Style: {artist.musicStyle}</p>
 
-      {artist.musicStyle.map((styles) => (
+      {/*{artist.musicStyle.map((styles) => (
         <li>{styles}</li>
+      ))}*/}
+
+      {artist.images.map((img)=>(
+      <img src={img} alt="pic" width={300} />
       ))}
 
       {isArtistOwner && (
