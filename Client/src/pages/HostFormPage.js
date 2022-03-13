@@ -2,6 +2,7 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
+import CloudinaryUpload from "../components/CloudinaryUpload";
 
 const API_URL = "http://localhost:5005";
 
@@ -12,6 +13,7 @@ export default function HostFormPage() {
   const [description, setDescription] = useState("");
   const [profilePic,setProfilePic] = useState("")
   const [location, setLocation] = useState("");
+  
 
   // Get the URL parameter `:projectId` 
      
@@ -33,8 +35,10 @@ export default function HostFormPage() {
           This way we set inputs to show the actual title and description of the project
         */
         const host = response.data;
-        setName(host.title);
+        setName(host.name);
         setDescription(host.description);
+        setLocation(host.location);
+        setProfilePic(host.profilePic);
 
       })
       .catch((error) => console.log(error));
@@ -56,6 +60,14 @@ export default function HostFormPage() {
       });
   };
 
+
+  function imgUpload(url){
+    if(url){
+      setProfilePic(url)
+    }
+
+  }
+
   return (
     
     <div className="EditProjectPage">
@@ -69,9 +81,7 @@ export default function HostFormPage() {
           value={name}
           onChange={(e) => setName(e.target.value)}
         />
-        <label>Profile Picture:</label>
-        <input type="file" name="profilePic" value={profilePic} onChange={(e) => setProfilePic(e.target.value)}/>
-        <br/>
+      
         
         <label>Description:</label>
         <textarea
@@ -82,6 +92,8 @@ export default function HostFormPage() {
             <label>Location:</label>
         <input type="text" name="location" value={location} onChange={(e) => setLocation(e.target.value)}/>
         <br/>
+
+        <CloudinaryUpload imgUpload={imgUpload} images={profilePic}/>
 
         <button type="submit">Update Profile</button>
       </form>

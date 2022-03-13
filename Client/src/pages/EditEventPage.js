@@ -3,6 +3,7 @@ import { AuthContext } from "../context/auth.context";
 import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
+import CloudinaryUpload from "../components/CloudinaryUpload";
 
 const API_URL = "http://localhost:5005";
 
@@ -10,7 +11,7 @@ function EditEventPage(props) {
   const [title, setTitle] = useState("");
   const [date, setDate] = useState("");
   const [location, setLocation] = useState("");
-  const [images, setImages] = useState("");
+  const [images, setImages] = useState([]);
   const [videos, setVideos] = useState("");
   const [musicStyle, setMusicStyle] = useState("");
   const [description, setDescription] = useState("");
@@ -75,6 +76,13 @@ function EditEventPage(props) {
     .catch((err)=> console.log(err));
   };
 
+  function imgUpload(url){
+    if(url){
+      setImages(images.concat(url))
+    }
+
+  }
+
   
   return (
     <div className="EditEventPage">
@@ -90,9 +98,9 @@ function EditEventPage(props) {
         <label>Location:</label>
         <input type="text" name="location" value={location} onChange={(e) => setLocation(e.target.value)}/>
         <br/>
-        <label>Images:</label>
-        <input type="file" name="images" value={images} onChange={(e) => setImages(e.target.value)}/>
-        <br/>
+    
+    <CloudinaryUpload imgUpload={imgUpload} images={images}/>
+
         <label>Videos:</label>
         <input type="file" name="videos" value={videos} onChange={(e) => setVideos(e.target.value)}/>
         <br/>

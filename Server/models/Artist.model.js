@@ -5,7 +5,10 @@ const artistSchema = new Schema({
   name: String,
   email: String,
   password: String, 
-  profilePic: String, 
+  profilePic: {
+    type: String,
+    default:"https://cdn-icons-png.flaticon.com/512/456/456212.png"
+  }, 
   location: String, 
   images: [],
   videos: [],

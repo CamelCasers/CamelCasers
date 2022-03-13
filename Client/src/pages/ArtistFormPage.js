@@ -11,7 +11,7 @@ export default function ArtistFormPage() {
 
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
- 
+  const [profilePic,setProfilePic] = useState("")
   const [videos, setVideos] = useState("");
   const [musicStyle, setMusicStyle] = useState("");
   const [images, setImages] = useState([]);
@@ -36,8 +36,11 @@ export default function ArtistFormPage() {
           This way we set inputs to show the actual title and description of the project
         */
         const artist = response.data;
-        setName(artist.title);
+        setName(artist.name);
         setDescription(artist.description);
+        setMusicStyle(artist.musicStyle)
+        setImages(artist.images)
+        setProfilePic(artist.profilePic);
 
       })
       .catch((error) => console.log(error));
@@ -47,7 +50,7 @@ export default function ArtistFormPage() {
   const handleFormSubmit = (e) => {                     // <== ADD
     e.preventDefault();
     // Create an object representing the body of the PUT request
-    const requestBody = { name, description, videos, musicStyle, images };
+    const requestBody = { name, description, videos, musicStyle, profilePic, images };
  
     // Make a PUT request to update the project
     axios
@@ -59,7 +62,11 @@ export default function ArtistFormPage() {
       });
   };
   function imgUpload(url){
-    setImages(images.concat(url))
+    if(url){
+      setImages(images.concat(url))
+      setProfilePic(url)
+    }
+
   }
   return (
     
@@ -83,7 +90,7 @@ export default function ArtistFormPage() {
         />
 
         <label>Videos:</label>
-        <input type="file" name="videos" value={videos} onChange={(e) => setVideos(e.target.value)}/>
+        <input type="text" name="videos" value={videos} onChange={(e) => setVideos(e.target.value)}/>
         <br/>
         <label>Music Style:</label>
         <select type="text" name="musicStyle" value={musicStyle} onChange={(e) => setMusicStyle(e.target.value)} >
@@ -97,6 +104,7 @@ export default function ArtistFormPage() {
                   <option value="others">Others</option>
         </select>
         <br/>
+        <CloudinaryUpload imgUpload={imgUpload} images={profilePic}/>
         <h1>..................................................................................</h1>
         <CloudinaryUpload imgUpload={imgUpload} images={images}/>
         <h1>..................................................................................</h1>
