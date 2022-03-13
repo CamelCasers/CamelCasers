@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "./../context/auth.context";
+import YoutubeUpload from "../components/YoutubeUpload";
 
 const API_URL = "http://localhost:5005";
 
@@ -13,8 +14,10 @@ export default function ArtistProfilePage(props) {
     name: "",
     email: "",
     musicStyle: [],
-    images: []
+    images: [],
+    videos: []
   });
+  const [videosFiltered , setVideosFiltered] = useState([])
 
   const { profileId } = useParams();
 
@@ -42,29 +45,41 @@ export default function ArtistProfilePage(props) {
 
   }
 
+  
+  useEffect(()=>{
+    const videos = artist.videos.filter((video)=>{
+       return (video !== "")
+     })
+ 
+     setVideosFiltered(videos)
+   },[artist.videos])
+
   return (
     <div>
-      <h2>Welcome, {artist.name}</h2>
+    <h1>Welcome, {artist.name}</h1>
+    <p>Artist Images</p>
+    {artist.images.map((img)=>(
+    <img src={img} alt="pic" width={300} />
+    ))}
+
+    <p>Youtube Embed</p>
+    {videosFiltered.map((video)=>(
+    <YoutubeUpload embedId={video} />
+    ))}
   
-      <img src={artist.profilePic} className="profile-img" alt="Pic" width={150}/>
-      <p>Artist Images</p>
 
-      <p>Description: {artist.description}</p>
-      <p>Music Style: {artist.musicStyle}</p>
+    <p>Description: {artist.description}</p>
+    <p>Music Style: {artist.musicStyle}</p>
 
-      {/*{artist.musicStyle.map((styles) => (
-        <li>{styles}</li>
-      ))}*/}
+    {artist.musicStyle.map((styles) => (
+      <li>{styles}</li>
+    ))}
 
-      {artist.images.map((img)=>(
-      <img src={img} alt="pic" width={300} />
-      ))}
-
-      {isArtistOwner && (
-        <Link to={`/profileArtist/${user._id}/edit`}>
-          <button>Edit Profile</button>
-        </Link>
-      )}
-    </div>
+    {isArtistOwner && (
+      <Link to={`/profileArtist/${user._id}/edit`}>
+        <button>Edit Profile</button>
+      </Link>
+    )}
+  </div>
   );
 }
