@@ -1,4 +1,4 @@
-.App {
+/*.App {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -6,7 +6,7 @@
   text-align: center;
   border: 1px solid black;
   width: 700px;
-}
+}*/
 
 .navBar {
   background-color: #a9ec8e;
