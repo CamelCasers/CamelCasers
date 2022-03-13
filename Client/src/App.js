@@ -20,6 +20,7 @@ import EventDetailsPage from "./pages/EventDetailsPage";
 import HostListPage from "./pages/HostListPage";
 import ArtistListPage from "./pages/ArtistListPage";
 import MyEventsListPage from "./pages/MyEventsListPage";
+import NavBarBootrstrap from "./components/NavBarBootsrap";
 
 
 function App() {
@@ -27,7 +28,8 @@ function App() {
   return (
     <div className="container-md">
   
-      <Navbar />
+      
+      <NavBarBootrstrap/>
 
       <Routes>
         <Route path="/" element={<HomePage />} />
