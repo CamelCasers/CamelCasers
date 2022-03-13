@@ -4,8 +4,7 @@ import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "./../context/auth.context";
-import ImagesCarrousel from "../components/profile/ImagesCarrousel.jsx"
-import Image from "../components/profile/Image.jsx"
+
 
 const API_URL = "http://localhost:5005";
 
@@ -42,7 +41,7 @@ export default function HostProfilePage(props) {
     <div>
       <h1>Welcome {host.name}</h1>
 
-      <Image host={host}/>
+      
       
  
       <p>Descripcion: {host.description}</p>
