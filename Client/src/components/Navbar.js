@@ -17,6 +17,9 @@ if(user){ host = user.isHost
 artist = !user.isHost}
   
   return (
+
+
+    
     
 <nav className={"navBar"}>
       <Link to={`/`}>

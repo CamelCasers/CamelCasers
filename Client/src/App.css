@@ -1,4 +1,4 @@
-.App {
+/*.App {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -6,7 +6,7 @@
   text-align: center;
   border: 1px solid black;
   width: 700px;
-}
+}*/
 
 .navBar {
   background-color: #a9ec8e;
@@ -14,43 +14,75 @@
   font-size: 15px;
 }
 
-.AddTask{
-  border: 1px solid black;
-  padding: 10px;
-}
-
-.AddProject{
-  background-color: burlywood;
-  padding: 10px;
-}
-
-.ProjectListPage{
-  background-color: rgb(229, 149, 149);
+.profile-img{
+  width:100px;
+  height:100px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid rgb(47, 49, 47);
   display: flex;
-  flex-direction: column;
   justify-content: center;
-  align-items: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.backgroundGrey{
+  background: #0f0c29;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #24243e, #302b63, #0f0c29);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #24243e, #302b63, #0f0c29); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.backgroundPink{
+  background: #701c7f;  /* fallback for old browsers */
+  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #701c7f, #701c7f); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.centerText{
   display: flex;
-  flex-direction: column;
+  text-align: center;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  margin-top: 20px;
 }
+
+.placeText{
+  margin-top: 40px;
+  width: 300px;
+}
+
+.wordHomePage{
+  color: #42f4f7;
+  font-size: 15px;
+  display: flex;
+  align-items: center; 
+}
+
+.h2HomePage{
+  font-size: 24px
+}
+
+.pHomePage{
+  font-size: 15px;
+}
+
+.centerItemsContainer{
+  display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	justify-content: space-between;
+	align-items: center;
+	align-content: space-between;
+}
+
+.artistContainer{
+  margin-top: 50px;
+  background-image: url("https://i0.wp.com/data.whicdn.com/images/332753020/original.jpg");
+  background-size: auto;
+  background-repeat: no-repeat;
+}
+
+
+
+
+
 

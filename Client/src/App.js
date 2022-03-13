@@ -20,14 +20,17 @@ import EventDetailsPage from "./pages/EventDetailsPage";
 import HostListPage from "./pages/HostListPage";
 import ArtistListPage from "./pages/ArtistListPage";
 import MyEventsListPage from "./pages/MyEventsListPage";
+import NavBarBootrstrap from "./components/NavBarBootsrap";
+import {Container} from "react-bootstrap"
 
 
 function App() {
   const { loggedHost, loggedArtist } = useContext(AuthContext);
   return (
-    <div>
-      {/*  ADD <Navbar>, <Routes> & <Route>  */}
-      <Navbar />
+    <Container>
+  
+      
+      <NavBarBootrstrap/>
 
       <Routes>
         <Route path="/" element={<HomePage />} />
@@ -75,7 +78,7 @@ function App() {
           }
         />
       </Routes>
-    </div>
+    </Container>
   );
 }
 
