@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "./../context/auth.context";
 import YoutubeUpload from "../components/YoutubeUpload";
+import ImagesCarrousel from "../components/profile/ImagesCarrousel"
 
 const API_URL = "http://localhost:5005";
 
@@ -57,10 +58,11 @@ export default function ArtistProfilePage(props) {
   return (
     <div>
     <h1>Welcome, {artist.name}</h1>
+
     <p>Artist Images</p>
-    {artist.images.map((img)=>(
-    <img src={img} alt="pic" width={300} />
-    ))}
+   
+
+    <ImagesCarrousel artist={artist}/>
 
     <p>Youtube Embed</p>
     {videosFiltered.map((video)=>(
