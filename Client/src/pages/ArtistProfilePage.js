@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "./../context/auth.context";
 import YoutubeUpload from "../components/YoutubeUpload";
-import ImagesCarrousel from "../components/profile/ImagesCarrousel"
+import ImagesCarrousel from "../components/ArtistProfile/ImagesCarrousel"
 
 const API_URL = "http://localhost:5005";
 
