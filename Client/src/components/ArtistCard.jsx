@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { Card, Button } from "react-bootstrap";
 
 
 
@@ -8,18 +9,20 @@ const {name, profilePic, images, videos, musicStyle, description, playlist, even
 } = props
   
     return (
-        <div className={"ProjectCard card"}>
-         
+        <div className="card">                 
+     
+          <Card style={{ width: "20rem" }} className="backgroundGrey text-white">
+          <Card.Img variant="card-img-top" class="card-img-top" style={{ width: "10rem" }} src={profilePic} />
+          <Card.Body>
+          <Card.Title>{name}</Card.Title>
+          <Card.Text>Bio: {description}</Card.Text>
+          <Card.Text>Music Styles: {musicStyle}</Card.Text>
 
-        
-          <Link to={`/profileArtist/${_id}`} artistDetails = {name}>
-          <h3>{name}</h3>
-          </Link>
-          <img src={profilePic} className="profile-img" alt="Pic"/>
-          <p style={{ maxWidth: "400px" }}>Description: {description} </p>
-          <p style={{ maxWidth: "400px" }}>Music Style: {musicStyle} </p>
-
+        <Button variant="primary" as={Link} to= {`/profileHost/${_id}`}>Go to Profile</Button>
+      </Card.Body>
+    </Card>
         </div>
+
       );
     }
 
