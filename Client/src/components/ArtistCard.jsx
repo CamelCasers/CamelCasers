@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { Card, Button } from "react-bootstrap";
 
 
 
@@ -8,9 +9,21 @@ const {name, profilePic, images, videos, musicStyle, description, playlist, even
 } = props
   
     return (
-        <div className="card">                 
+
+      <Card style={{ width: "18rem" }} className="backgroundGrey text-white">
+      <Card.Img variant="top" src={profilePic} />
+      <Card.Body>
+        <Card.Title>{name}</Card.Title>
+        <Card.Text>
+        {description}
+        </Card.Text>
+        <Button variant="primary" as={Link} to= {`/profileHost/${_id}`}>Details</Button>
+      </Card.Body>
+    </Card>
+
+      /*  <div className="card">                 
      
-          <img src={profilePic} className="card-img-top" alt="Pic"/>
+         <img src={profilePic} className="profile-img" alt="Pic"/>
           <div class="card-body">
           <Link to={`/profileArtist/${_id}`} artistDetails = {name}>
           <h3>{name}</h3>
@@ -18,7 +31,10 @@ const {name, profilePic, images, videos, musicStyle, description, playlist, even
           <p style={{ maxWidth: "400px" }}>Description: {description} </p>
           <p style={{ maxWidth: "400px" }}>Music Style: {musicStyle} </p>
           </div>
-        </div>
+        </div>*/
+
+
+        
       );
     }
 
