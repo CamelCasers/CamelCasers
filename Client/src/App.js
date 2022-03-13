@@ -25,8 +25,8 @@ import MyEventsListPage from "./pages/MyEventsListPage";
 function App() {
   const { loggedHost, loggedArtist } = useContext(AuthContext);
   return (
-    <div>
-      {/*  ADD <Navbar>, <Routes> & <Route>  */}
+    <div className="container-md">
+  
       <Navbar />
 
       <Routes>
