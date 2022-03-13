@@ -17,10 +17,10 @@
 
 
 .profile-img{
-  width:100px;
-  height:100px;
-  border-radius: 50%;
+  width: 150px;
   object-fit: cover;
+  height:150px;
+  border-radius: 50%;  
   border: 2px solid rgb(47, 49, 47);
   display: flex;
   justify-content: center;
