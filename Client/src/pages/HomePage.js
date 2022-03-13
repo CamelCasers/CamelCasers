@@ -9,7 +9,7 @@ function HomePage() {
   return (
     <div>
       {loggedHost && <h1> HOST IN DA HAUSE</h1>}
-
+      
       <Link to={`/events/`}>
       <button>Search Events</button>
       </Link>
