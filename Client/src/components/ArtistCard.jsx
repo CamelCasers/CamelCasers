@@ -10,16 +10,18 @@ const {name, profilePic, images, videos, musicStyle, description, playlist, even
   
     return (
 
-      <Card style={{ width: "18rem" }} className="backgroundGrey text-white">
-      <Card.Img variant="top" src={profilePic} />
+      <Card className="backgroundGrey text-white">
+      <Card.Img className="rounded mx-auto d-block" style={{ maxWidth: "300px" }} src={profilePic} />
       <Card.Body>
         <Card.Title>{name}</Card.Title>
-        <Card.Text>
-        {description}
-        </Card.Text>
-        <Button variant="primary" as={Link} to= {`/profileHost/${_id}`}>Details</Button>
+        <Card.Text>Description: {description} </Card.Text>
+        <Card.Text>Music Style: {musicStyle} </Card.Text>
+
+        <Button variant="primary" as={Link} to= {`/profileHost/${_id}`}>Go to Profile</Button>
       </Card.Body>
     </Card>
+
+    
 
       /*  <div className="card">                 
      
