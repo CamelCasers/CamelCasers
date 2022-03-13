@@ -32,20 +32,57 @@ background: linear-gradient(to right, #24243e, #302b63, #0f0c29); /* W3C, IE 10+
 }
 
 .backgroundPink{
-  background: #ad5389;  /* fallback for old browsers */
-background: -webkit-linear-gradient(to right, #3c1053, #ad5389);  /* Chrome 10-25, Safari 5.1-6 */
-background: linear-gradient(to right, #3c1053, #ad5389); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: #701c7f;  /* fallback for old browsers */
+  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #701c7f, #701c7f); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
 }
 
 .centerText{
   display: flex;
   text-align: center;
+  align-items: center;
+  margin-top: 20px;
 }
 
 .placeText{
-  margin-top: 100px;
+  margin-top: 40px;
+  width: 300px;
 }
+
+.wordHomePage{
+  color: #42f4f7;
+  font-size: 15px;
+  display: flex;
+  align-items: center; 
+}
+
+.h2HomePage{
+  font-size: 24px
+}
+
+.pHomePage{
+  font-size: 15px;
+}
+
+.centerItemsContainer{
+  display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	justify-content: space-between;
+	align-items: center;
+	align-content: space-between;
+}
+
+.artistContainer{
+  margin-top: 50px;
+  background-image: url("https://i0.wp.com/data.whicdn.com/images/332753020/original.jpg");
+  background-size: auto;
+  background-repeat: no-repeat;
+}
+
+
+
 
 
 
