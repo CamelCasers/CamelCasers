@@ -15,7 +15,7 @@ export default function NavBarBootrstrap() {
   }
 
   return (
-    <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+    <Navbar collapseOnSelect expand="lg" className="backgroundGrey" variant="dark">
       <Container>
         <Navbar.Brand as={Link} to="/">
           Camel
