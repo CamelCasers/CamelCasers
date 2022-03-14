@@ -36,9 +36,9 @@ function EventDetailsPage(props) {
   //Get the URL paramenter `:eventId`
   const { eventId } = useParams();
   
-  const storedToken = localStorage.getItem("authToken");
-
+  
   //helper function
+  const storedToken = localStorage.getItem("authToken");
   const getEvents = () => {
     // Get the token from the localStorage
 
@@ -55,13 +55,11 @@ function EventDetailsPage(props) {
   };
 
   const handleJoin = () => {
+    console.log(user._id, eventId );
     axios
     .put(
-      `${API_URL}/api/events/join`,
-      {
-        headers: { Authorization: `Bearer ${storedToken}` },
-      },
-      { artistId: user._id, eventId }
+      `${API_URL}/api/events/join`,     
+      {artistId: user._id, eventId: eventId}
     ).then((__)=>{
       navigate(`/profileArtist/${user._id}/artistMessages`)
     }).catch((error)=> console.log(error))

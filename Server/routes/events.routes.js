@@ -6,10 +6,12 @@ const Artist = require("../models/Artist.model");
 const Host = require("../models/Host.model");
 
 router.put("/join", (req, res, next) => {
+  // console.log("dani come mierda")
   const { artistId, eventId} = req.body;
-        Event.findByIdAndUpdate(eventId,  {$push: {pendingArtist: artistId}}, {new: true})
+  console.log("->>>>>",artistId, eventId );
+        Event.findByIdAndUpdate(eventId,  {$push: {pendingArtists: artistId}}, {new: true})
     .then((updatedEvent) => {Artist.findByIdAndUpdate(artistId,  {$push: {pendingEvents: eventId}}, {new: true})
-    .then((updatedArtist)=>{res.json(updatedArtist,updatedEvent)})})      
+    .then((updatedArtist)=>{res.json(updatedArtist)}).catch((err) => res.json(err))})      
     .catch((err) => res.json(err))
   })
 
@@ -36,7 +38,7 @@ router.post("/", (req, res, next) => {
 });
 
 router.get("/:eventId", (req, res, next) => {
-  const { eventId } = req.params;
+  const { eventId } = req.params; 
 
   if (!mongoose.Types.ObjectId.isValid(eventId)) {
     res.status(400).json({ message: "Specified id is not valid" });
