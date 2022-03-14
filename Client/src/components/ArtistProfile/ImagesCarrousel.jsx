@@ -3,7 +3,7 @@ import { Carousel } from "react-bootstrap";
 
 export default function ImagesCarrousel({ artist }) {
   const { images } = artist;
-  console.log(images)
+  
 
   return (
 
