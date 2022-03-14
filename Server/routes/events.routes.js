@@ -5,6 +5,26 @@ const Event = require("../models/Event.model");
 const Artist = require("../models/Artist.model");
 const Host = require("../models/Host.model");
 
+router.put("/decide", (req, res, next) => {
+  
+  const { artistId, eventId} = req.body;
+    Event.findByIdAndUpdate(eventId,  {$push: {artists: artistId}, $pull: {pendingArtists: artistId}}, {new: true})
+    .then((updatedEvent) => {Artist.findByIdAndUpdate(artistId,  {$push: {events: eventId}, $pull: {pendingEvents: eventId}}, {new: true})
+    .then((updatedArtist)=>{res.json(updatedArtist)}).catch((err) => res.json(err))})      
+    .catch((err) => res.json(err))
+  })
+
+router.delete("/decide", (req, res, next) => {
+  
+  const { artistId, eventId} = req.body;
+    Event.findByIdAndUpdate(eventId,  {$pull: {pendingArtists: artistId}}, {new: true})
+    .then((updatedEvent) => {Artist.findByIdAndUpdate(artistId, {$pull: {pendingEvents: eventId}}, {new: true})
+    .then((updatedArtist)=>{res.json(updatedArtist)}).catch((err) => res.json(err))})      
+    .catch((err) => res.json(err))
+  })
+
+
+
 router.put("/join", (req, res, next) => {
   // console.log("dani come mierda")
   const { artistId, eventId} = req.body;
