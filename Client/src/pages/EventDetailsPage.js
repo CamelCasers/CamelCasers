@@ -5,7 +5,7 @@ import axios from "axios";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../context/auth.context";
-import { Button } from "react-bootstrap";
+import { Button, Card, Container } from "react-bootstrap";
 
 const API_URL = "http://localhost:5005";
 
@@ -31,12 +31,12 @@ function EventDetailsPage(props) {
     equiptment: "",
     artists: "",
     host: "",
+    pendingArtists: [],
   });
 
   //Get the URL paramenter `:eventId`
   const { eventId } = useParams();
-  
-  
+
   //helper function
   const storedToken = localStorage.getItem("authToken");
   const getEvents = () => {
@@ -55,14 +55,15 @@ function EventDetailsPage(props) {
   };
 
   const handleJoin = () => {
-    
     axios
-    .put(
-      `${API_URL}/api/events/join`,     
-      {artistId: user._id, eventId: eventId}
-    ).then((__)=>{
-      navigate(`/profileArtist/${user._id}/artistMessages`)
-    }).catch((error)=> console.log(error))
+      .put(`${API_URL}/api/events/join`, {
+        artistId: user._id,
+        eventId: eventId,
+      })
+      .then((__) => {
+        navigate(`/profileArtist/${user._id}/artistMessages`);
+      })
+      .catch((error) => console.log(error));
   };
 
   useEffect(() => {
@@ -70,8 +71,6 @@ function EventDetailsPage(props) {
   }, []);
 
   return (
-
-    
     <div className="EventDetails">
       <Link to={`/events/${event._id}`} eventDetails={event.title}>
         <h3>Event Name: {event.title}</h3>
@@ -103,9 +102,53 @@ function EventDetailsPage(props) {
 
       <div>
         {user._id === event.host._id && (
-          <Link to={`/events/edit/${eventId}`}>
-            <Button>Edit Event</Button>
-          </Link>
+          <>
+            <Link to={`/events/edit/${eventId}`}>
+              <Button>Edit Event</Button>
+            </Link>
+          <div>
+            <h1>Applying Artists</h1>
+            {event.pendingArtists.map((artist) => (
+              <div>
+                <Container>
+      <div className="centerItemsContainer">
+        
+        <div className="backgroundArtistCard text-white" style={{ width: "20rem" }}>
+        <div>
+          <img
+            className="profile-img"
+            style={{ maxWidth: "200px" }}
+            src={artist.profilePic} alt="pic" />
+            </div>
+          <div>
+          <Card.Body>
+            <Card.Title>{artist.name}</Card.Title>
+            
+            <Card.Text>Styles: {artist.musicStyle} </Card.Text>
+            <Link to={`/profileArtist/${artist._id}`}>
+            <button className="btn btn-outline-warning">
+              Go to Profile
+            </button>
+            </Link>
+            <button className="btn btn-outline-warning">
+              Acept
+            </button>
+            <button className="btn btn-outline-warning">
+              Decline
+            </button>
+
+          </Card.Body>
+          </div>
+        </div>
+        <br/>
+      </div>
+    </Container>
+
+                
+              </div>
+            ))}
+          </div>
+          </>
         )}
 
         {artist && <Button onClick={handleJoin}>Apply to Event</Button>}
