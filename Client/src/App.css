@@ -1,23 +1,7 @@
-/*.App {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  border: 1px solid black;
-  width: 700px;
-}*/
-
-.navBar {
-  background-color: #a9ec8e;
-  width: 100%;
-  font-size: 15px;
-}
 
 .EventCard{
   background-color: #505757;
 }
-
 
 
 .profile-img{
@@ -28,7 +12,9 @@
   border: 2px solid rgb(47, 49, 47);
   display: flex;
   justify-content: center;
+  margin:10px
 }
+
 .profile-imgCard{
   width: 250px;
   object-fit: cover;
@@ -45,7 +31,7 @@ body h1, h2, h3, h4, label, p{
 
 
 .backgroundGrey{
-  background: #22223b;  /* fallback for old browsers */
+background: #22223b;  /* fallback for old browsers */
 background: -webkit-linear-gradient(to right, #22223b, #22223b, #22223b);  /* Chrome 10-25, Safari 5.1-6 */
 background: linear-gradient(to right, #22223b, #22223b, #22223b); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
@@ -54,14 +40,28 @@ background: linear-gradient(to right, #22223b, #22223b, #22223b); /* W3C, IE 10+
 .backgroundPink{
   background: #701c7f;  /* fallback for old browsers */
   /* Chrome 10-25, Safari 5.1-6 */
-background: linear-gradient(to right, #701c7f, #701c7f); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: linear-gradient(to right, #701c7f, #701c7f); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
 }
 
 .backgroundMiki{
   background: #4a4e69;  /* fallback for old browsers */
   background: -webkit-linear-gradient(to right, #4a4e69, #4a4e69, #4a4e69);  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to right, #4a4e69, #4a4e69, #4a4e69); 
+  background: linear-gradient(to right, #4a4e69, #4a4e69, #4a4e69);
+  background-image:
+  linear-gradient(rgba(59, 59, 57, 0.4), rgba(31, 83, 131, 0.973)), 
+}
+
+.backgroundEventCard{
+  background: linear-gradient(to right, #4a4e69, #4a4e69, #4a4e69);
+  border-radius: 50px;
+}
+
+.backgroundArtistCard{
+  display: flex;
+  flex-direction: row;
+  background: linear-gradient(to right, #4a4e69, #4a4e69, #4a4e69);
+  border-radius: 10px;
 }
 
 .centerText{  
@@ -98,14 +98,42 @@ background: linear-gradient(to right, #701c7f, #701c7f); /* W3C, IE 10+/ Edge, F
 	justify-content: space-between;
 	align-items: center;
 	align-content: space-between;
+  margin: 20px;
+  border-radius: 20px;
 }
 
 .artistContainer{
-  margin-top: 50px;
-  background-image: url("https://i0.wp.com/data.whicdn.com/images/332753020/original.jpg");
-  background-size: auto;
+
+  background-image:
+  linear-gradient(rgba(59, 59, 57, 0.4), rgba(31, 83, 131, 0.973)), 
+  url("/public/artista.png");
+  background-size: cover;
+  background-position: center;
   background-repeat: no-repeat;
 }
+
+.hostContainer{
+  background-image: linear-gradient(rgba(59, 59, 57, 0.4), rgba(31, 83, 131, 0.973)), 
+  url("/public/barman.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.eventContainer{
+  background-image:
+  linear-gradient(rgba(59, 59, 57, 0.4), rgba(31, 83, 131, 0.973)), 
+  url("/public/sofar-sounds2.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.findaGig{
+  color: rgb(216, 162, 13);
+}
+
+
 
 
 
