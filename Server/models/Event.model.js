@@ -12,7 +12,7 @@ const eventSchema = new Schema({
   timeRange: String,
   equipment: [],
   artists: [{ type: Schema.Types.ObjectId, ref: 'Artist', default: []}],  
-  pendingArtists: [{ type: Schema.Types.ObjectId, ref: 'Artist', default: []}],  
+  pendingArtists: [],  
   host: { type: Schema.Types.ObjectId, ref: 'Host', default: {}}
 });
 

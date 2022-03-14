@@ -17,6 +17,7 @@ router.get("/:artistId", (req, res, next) => {
 
   Artist.findById(artistId)
   .populate('events')
+  .populate("pendingEvents")
   .then(artist => res.status(200).json(artist))
   .catch(error => res.json(error));
 });

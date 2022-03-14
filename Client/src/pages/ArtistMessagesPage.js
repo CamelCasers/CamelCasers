@@ -13,7 +13,7 @@ export default function ArtistMessagesPage() {
   const [artist, setArtist] = useState({
     name: "",
     email: "",
-    profilePic: {},
+    profilePic: "",
     musicStyle: [],
     images: [],
     videos: [],
@@ -37,8 +37,10 @@ export default function ArtistMessagesPage() {
     getArtist();
   }, []);
   return (
-      <div>
-          <p>{artist.name}</p>
+    <div>
+      
+      <h1>{artist.pendingEvents.map((events)=>(<p key={events._id}>{events.title}</p>))}</h1>
       </div>
   )
 }
+
