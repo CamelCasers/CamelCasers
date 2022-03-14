@@ -12,9 +12,11 @@ function HostCard(props) {
           <Card.Body>
             <Card.Title>{name}</Card.Title>
             <Card.Text>{description}</Card.Text>
-            <Button variant="primary" as={Link} to={`/profileHost/${_id}`}>
-              Details
-            </Button>
+            <form action={`/profileHost/${_id}`}>
+            <button className="btn btn-outline-warning">
+              Go to Profile
+            </button>
+            </form>
           </Card.Body>
           
         </Card>

@@ -22,9 +22,11 @@ function EventCard(props) {
             <Card.Title>{title}</Card.Title>
             <Card.Text>Music Style: {musicStyle}</Card.Text>
             <Card.Text>Address: {location}</Card.Text>
-            <button  className="btn btn-outline-primary" as={Link} to={`/events/${_id}`}>
-          See Details
+            <form action={`/events/${_id}`}>
+            <button className="btn btn-outline-primary">
+              See Details
             </button>
+            </form>
           </Card.Body>
           
         </Card>
