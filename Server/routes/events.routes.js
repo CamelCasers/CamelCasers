@@ -48,6 +48,7 @@ router.get("/:eventId", (req, res, next) => {
   Event.findById(eventId)
   .populate('artists')
   .populate('host')
+  .populate("pendingArtists")
   .then(event => res.status(200).json(event))
   .catch(error => res.json(error));
 });
