@@ -7,8 +7,7 @@ const artistSchema = new Schema({
   password: String, 
   profilePic: {
     type: String,
-    default:"https://cdn-icons-png.flaticon.com/512/456/456212.png"
-  }, 
+    default:"https://cdn-icons-png.flaticon.com/512/456/456212.png"}, 
   location: String, 
   images: [],
   videos: [],
@@ -16,7 +15,8 @@ const artistSchema = new Schema({
   description: String,
   playlist: String,
   isHost: Boolean,
-  events: [{ type: Schema.Types.ObjectId, ref: 'Event', default: []}],  
+  events: [{ type: Schema.Types.ObjectId, ref: 'Event', default: []}],
+  pendingEvents:[{ type: Schema.Types.ObjectId, ref: 'Event', default: []}] 
 });
 
 module.exports = model('Artist', artistSchema);

@@ -18,6 +18,7 @@ import HostFormPage from "./pages/HostFormPage";
 import ArtistFormPage from "./pages/ArtistFormPage";
 import EventDetailsPage from "./pages/EventDetailsPage";
 import HostListPage from "./pages/HostListPage";
+import ArtistMessagesPage from "./pages/ArtistMessagesPage";
 import ArtistListPage from "./pages/ArtistListPage";
 import MyEventsListPage from "./pages/MyEventsListPage";
 import NavBarBootrstrap from "./components/NavBarBootsrap";
@@ -46,6 +47,8 @@ function App() {
         <Route path="/profileHost/:profileId" element={<HostProfilePage />} />
 
         <Route path="/profileHost/:profileId/edit" element={<HostFormPage />} />
+
+        <Route path="/profileArtist/:profileId/artistMessages" element={<ArtistMessagesPage />} />
 
         <Route path="/profileArtist/:profileId/edit" element={<ArtistFormPage />} />
 
