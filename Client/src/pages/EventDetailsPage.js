@@ -70,6 +70,8 @@ function EventDetailsPage(props) {
   }, []);
 
   return (
+
+    
     <div className="EventDetails">
       <Link to={`/events/${event._id}`} eventDetails={event.title}>
         <h3>Event Name: {event.title}</h3>
