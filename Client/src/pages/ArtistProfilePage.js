@@ -59,7 +59,7 @@ export default function ArtistProfilePage(props) {
     <div>
     <h1>Welcome, {artist.name}</h1>
 
-    <p>Artist Images</p>
+    <p className="center">Artist Images</p>
    
 
     <ImagesCarrousel artist={artist}/>

@@ -1,24 +1,28 @@
 import { Link } from "react-router-dom";
-import { Card, Button } from "react-bootstrap";
+import { Card, Button, Container } from "react-bootstrap";
 
 function HostCard(props) {
   const { name, profilePic, description, location, events, _id, title } = props;
 
   return (
+    <Container>
+      <div className="centerItemsContainer">
+        <Card style={{ width: "18rem" }}  className="backgroundGrey text-white centerItemsContainer">
+          <Card.Img variant="top" src={profilePic} className="rounded mx-auto d-block"/>
+          <Card.Body>
+            <Card.Title>{name}</Card.Title>
+            <Card.Text>{description}</Card.Text>
+            <Button variant="primary" as={Link} to={`/profileHost/${_id}`}>
+              Details
+            </Button>
+          </Card.Body>
+          
+        </Card>
+        <br/>
+        
+      </div>
+    </Container>
 
-
-    <Card style={{ width: "18rem" }} className="backgroundGrey text-white">
-      <Card.Img variant="top" src={profilePic} />
-      <Card.Body>
-        <Card.Title>{name}</Card.Title>
-        <Card.Text>
-        {description}
-        </Card.Text>
-        <Button variant="primary" as={Link} to= {`/profileHost/${_id}`}>Details</Button>
-      </Card.Body>
-    </Card>
-
-    
     // <div className={"ProjectCard card"}>
 
     //   <Link to={`/profileHost/${_id}`} hostDetails = {name}>

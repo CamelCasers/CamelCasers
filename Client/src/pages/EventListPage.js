@@ -1,11 +1,8 @@
 import { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import axios from "axios";
-import AddProject from "../components/AddProject";
-import ProjectCard from "../components/ProjectCard";
-import CreateEventPage from "./CreateEventPage";
 import EventCard from "../components/EventCard";
-import { AuthContext } from "../context/auth.context";
+
 
  
 const API_URL = "http://localhost:5005";
