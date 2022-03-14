@@ -10,8 +10,16 @@ const API_URL = "http://localhost:5005";
  
  
 function MyEventsListPage() {
+
+
   const [events, setEvents] = useState([]);
   const { user } = useContext(AuthContext);
+  let host = false;
+  let artist = false;
+  if (user) {
+    host = user.isHost;
+    artist = !user.isHost;
+  }
  
   const getAllEvents = () => {
     const storedToken = localStorage.getItem("authToken");
@@ -31,6 +39,7 @@ function MyEventsListPage() {
   }, [] );
  
   
+  console.log(user._id, events)
   return (
     <div className="EventListPage">
 
@@ -42,10 +51,14 @@ function MyEventsListPage() {
       <hr/>
       
       { events.map((event) => (
-
+        
         <EventCard key={event._id} {...event} />
-      ))}     
+        ))}    
+
+
+
        
+          
     </div>
   );
 }
