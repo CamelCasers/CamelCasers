@@ -190,6 +190,8 @@ console.log(video1,video2,video3)
               <option value="party">Party</option>
               <option value="swing">Swing</option>
               <option value="heavy">Heavy</option>
+              <option value="heavy">Jazz</option>
+            <option value="heavy">Blues</option>
               <option value="others">Others</option>
             </select>
           </div>

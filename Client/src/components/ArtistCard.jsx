@@ -11,30 +11,33 @@ function ArtistCard(props) {
     description,
     playlist,
     events,
+    location,
     _id,
   } = props;
 
   return (
     <Container>
       <div className="centerItemsContainer">
-        <Card className="backgroundMiki text-white" style={{ width: "18rem" }}>
-          <Card.Img
-            className=" mx-auto d-block profile-imgCard"
+        
+        <div className="backgroundArtistCard text-white" style={{ width: "20rem" }}>
+        <div>
+          <img
+            className="profile-img"
             style={{ maxWidth: "200px" }}
-            src={profilePic}
-            
-           
-          />
+            src={profilePic} alt="pic" />
+            </div>
+          <div>
           <Card.Body>
             <Card.Title>{name}</Card.Title>
-            <Card.Text>Description: {description} </Card.Text>
-            <Card.Text>Music Style: {musicStyle} </Card.Text>
+            <Card.Text>Location: {location} </Card.Text>
+            <Card.Text>Styles: {musicStyle} </Card.Text>
 
             <button className="btn btn-outline-warning" variant="primary" as={Link} to={`/profileArtist/${_id}`}>
               Go to Profile
             </button>
           </Card.Body>
-        </Card>
+          </div>
+        </div>
         <br/>
       </div>
     </Container>
