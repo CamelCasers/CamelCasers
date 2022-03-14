@@ -55,7 +55,7 @@ function EventDetailsPage(props) {
   };
 
   const handleJoin = () => {
-    console.log(user._id, eventId );
+    
     axios
     .put(
       `${API_URL}/api/events/join`,     
