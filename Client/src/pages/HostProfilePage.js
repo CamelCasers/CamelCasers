@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "./../context/auth.context";
+import ImageProfile from "../components/HostProfile/ImageProfile.jsx"
 
 
 const API_URL = "http://localhost:5005";
@@ -41,7 +42,7 @@ export default function HostProfilePage(props) {
     <div>
       <h1>Welcome {host.name}</h1>
 
-      
+      <ImageProfile host ={host}/>
       
  
       <p>Descripcion: {host.description}</p>

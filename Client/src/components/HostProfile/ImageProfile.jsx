@@ -1,9 +1,9 @@
 import Image from 'react-bootstrap/Image'
 
 
-export default function ImageProfile({artist}){
+export default function ImageProfile ({host}){
 
-const {profilePic} = artist
+const {profilePic} = host
 
 
     return(

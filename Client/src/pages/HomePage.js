@@ -5,14 +5,14 @@ import { Link } from "react-router-dom";
 import { Button, Container } from "react-bootstrap";
 
 function HomePage() {
-  const { loggedHost, loggedArtist, logOutUser } = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
 
   return (
     <div>
       <Container className="centerItemsContainer">
-      <h1 className="centerText text-white ">
-        A place for artists and venues to connect
-      </h1>
+        <h1 className="centerText text-white ">
+          A place for artists and venues to connect
+        </h1>
       </Container>
 
       <Container className="centerItemsContainer artistContainer">
@@ -23,7 +23,6 @@ function HomePage() {
         <p className="centerText pHomePage text-white">
           Scroll through our AI-generated recommendations for venues and events.
           Request a gig and use our campaign generator to leverage your fanbase.
-          
         </p>
         <Link exact to={"/artistList"} className="center">
           <Button className="backgroundPink">Search Artists</Button>
@@ -40,6 +39,7 @@ function HomePage() {
           Book artists or post events with help from our AI-generated
           recommendations.
         </p>
+
         <Link exact to={"/hostList"}>
           <Button className="backgroundPink">Search Hosts</Button>
         </Link>
@@ -52,8 +52,8 @@ function HomePage() {
           Support your favourite artist in scoring that gig.
         </h1>
         <p className="centerText text-white">
-          Make donations to your favorite artists campaigns in the app. See
-          when they re playing shows. 
+          Make donations to your favorite artists campaigns in the app. See when
+          they re playing shows.
         </p>
         <Link to={`/events/`}>
           <Button className="backgroundPink">Search Events</Button>
@@ -62,8 +62,6 @@ function HomePage() {
       </Container>
 
       {/* {loggedHost && <h1> HOST IN DA HAUSE</h1>} */}
-
-      
     </div>
   );
 }
