@@ -7,6 +7,7 @@ import { AuthContext } from "./../context/auth.context";
 import YoutubeUpload from "../components/YoutubeUpload";
 import ImagesCarrousel from "../components/ArtistProfile/ImagesCarrousel"
 import  Image  from "../components/ArtistProfile/Image.jsx";
+import {Button} from "react-bootstrap"
 
 const API_URL = "http://localhost:5005";
 
@@ -81,9 +82,15 @@ export default function ArtistProfilePage(props) {
     ))}
 
     {isArtistOwner && (
+      <>
       <Link to={`/profileArtist/${user._id}/edit`}>
-        <button>Edit Profile</button>
+        <Button>Edit Profile</Button>
       </Link>
+      <Link to={`/profileArtist/${user._id}/messages`}>
+        <Button>Messages</Button>
+      </Link>
+
+      </>
     )}
   </div>
   );
