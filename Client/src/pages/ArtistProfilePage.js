@@ -6,6 +6,7 @@ import { useContext } from "react";
 import { AuthContext } from "./../context/auth.context";
 import YoutubeUpload from "../components/YoutubeUpload";
 import ImagesCarrousel from "../components/ArtistProfile/ImagesCarrousel"
+import  Image  from "../components/ArtistProfile/Image.jsx";
 
 const API_URL = "http://localhost:5005";
 
@@ -14,6 +15,7 @@ export default function ArtistProfilePage(props) {
   const [artist, setArtist] = useState({
     name: "",
     email: "",
+    profilePic:{},
     musicStyle: [],
     images: [],
     videos: []
@@ -61,7 +63,9 @@ export default function ArtistProfilePage(props) {
 
     <p className="center">Artist Images</p>
    
-
+    <Image artist = {artist}/>
+    <br/>
+    <p>Description: {artist.description}</p>
     <ImagesCarrousel artist={artist}/>
 
     <p>Youtube Embed</p>
@@ -70,7 +74,6 @@ export default function ArtistProfilePage(props) {
     ))}
   
 
-    <p>Description: {artist.description}</p>
     <p>Music Style: {artist.musicStyle}</p>
 
     {artist.musicStyle.map((styles) => (

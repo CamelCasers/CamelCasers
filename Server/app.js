@@ -22,7 +22,7 @@ const allRoutes = require("./routes/index.routes");
 app.use("/api", allRoutes);
 
 const eventRouter = require('./routes/events.routes');    
-app.use('/api/events', isAuthenticated, eventRouter);
+app.use('/api/events', eventRouter);
 
 const artistsRouter = require("./routes/artists.routes");
 app.use('/api/artists', artistsRouter)
