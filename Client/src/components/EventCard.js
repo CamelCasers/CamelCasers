@@ -24,7 +24,7 @@ function EventCard(props) {
             <Card.Text>Address: {location}</Card.Text>
             
             <Link to={`/events/${_id}`}>
-            <button className="btn btn-outline-primary ">
+            <button className="btn btn-outline-warning ">
               See Details
             </button>
             </Link>

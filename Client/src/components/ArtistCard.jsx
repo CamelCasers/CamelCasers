@@ -31,11 +31,11 @@ function ArtistCard(props) {
             <Card.Title>{name}</Card.Title>
             <Card.Text>Location: {location} </Card.Text>
             <Card.Text>Styles: {musicStyle} </Card.Text>
-            <form action={`/profileArtist/${_id}`}>
+            <Link to={`/profileArtist/${_id}`}>
             <button className="btn btn-outline-warning">
               Go to Profile
             </button>
-            </form>
+            </Link>
 
           </Card.Body>
           </div>
