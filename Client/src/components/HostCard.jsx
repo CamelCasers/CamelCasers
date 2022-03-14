@@ -7,7 +7,7 @@ function HostCard(props) {
   return (
     <Container>
       <div className="centerItemsContainer">
-        <Card style={{ width: "18rem" }}  className="backgroundGrey text-white centerItemsContainer">
+        <Card style={{ width: "18rem" }}  className="backgroundMiki text-white centerItemsContainer">
           <Card.Img variant="top" src={profilePic} className="rounded mx-auto d-block"/>
           <Card.Body>
             <Card.Title>{name}</Card.Title>

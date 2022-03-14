@@ -33,12 +33,12 @@ function EventListPage() {
  
   
   return (
-    <div className="EventListPage">
+    <div>
 
       <hr/>
 
       <Link to={`/events/create`}>
-        <button>Create Event</button>
+        <button className="btn btn-primary">Create Event</button>
       </Link>  
       <hr/>
       
