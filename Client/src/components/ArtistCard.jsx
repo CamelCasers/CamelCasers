@@ -1,29 +1,45 @@
 import { Link } from "react-router-dom";
-import { Card, Button } from "react-bootstrap";
-
-
+import { Card, Button, Container } from "react-bootstrap";
 
 function ArtistCard(props) {
+  const {
+    name,
+    profilePic,
+    images,
+    videos,
+    musicStyle,
+    description,
+    playlist,
+    events,
+    _id,
+  } = props;
 
-const {name, profilePic, images, videos, musicStyle, description, playlist, events, _id
-} = props
-  
-    return (
+  return (
+    <Container>
+      <div className="centerItemsContainer">
+        <Card className="backgroundMiki text-white" style={{ width: "18rem" }}>
+          <Card.Img
+            className=" mx-auto d-block profile-imgCard"
+            style={{ maxWidth: "200px" }}
+            src={profilePic}
+            
+           
+          />
+          <Card.Body>
+            <Card.Title>{name}</Card.Title>
+            <Card.Text>Description: {description} </Card.Text>
+            <Card.Text>Music Style: {musicStyle} </Card.Text>
 
-      <Card className="backgroundGrey text-white">
-      <Card.Img className="rounded mx-auto d-block" style={{ maxWidth: "300px" }} src={profilePic} />
-      <Card.Body>
-        <Card.Title>{name}</Card.Title>
-        <Card.Text>Description: {description} </Card.Text>
-        <Card.Text>Music Style: {musicStyle} </Card.Text>
+            <Button className="backgroundPink" variant="primary" as={Link} to={`/profileArtist/${_id}`}>
+              Go to Profile
+            </Button>
+          </Card.Body>
+        </Card>
+        <br/>
+      </div>
+    </Container>
 
-        <Button variant="primary" as={Link} to= {`/profileHost/${_id}`}>Go to Profile</Button>
-      </Card.Body>
-    </Card>
-
-    
-
-      /*  <div className="card">                 
+    /*  <div className="card">                 
      
          <img src={profilePic} className="profile-img" alt="Pic"/>
           <div class="card-body">
@@ -34,10 +50,7 @@ const {name, profilePic, images, videos, musicStyle, description, playlist, even
           <p style={{ maxWidth: "400px" }}>Music Style: {musicStyle} </p>
           </div>
         </div>*/
+  );
+}
 
-
-        
-      );
-    }
-
-    export default ArtistCard;
+export default ArtistCard;

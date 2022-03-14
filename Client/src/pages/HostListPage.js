@@ -30,7 +30,7 @@ export default function HoststListPage(){
 
     return(
 
-        <div className="backgroundGrey">
+        <div className="backgroundGrey centerItemsContainer">
             <h1>Host List</h1>
             {hosts.map((host)=>(
                 <HostCard key={host._id} {...host} />

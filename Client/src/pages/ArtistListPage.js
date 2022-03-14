@@ -29,7 +29,7 @@ export default function ArtistListPage(){
 
     return(
 
-        <div>
+        <div className="centerItemsContainer">
             <h1>Artist List</h1>
             {artists.map((artist)=>(
                 <ArtistCard key={artist._id} {...artist} />
