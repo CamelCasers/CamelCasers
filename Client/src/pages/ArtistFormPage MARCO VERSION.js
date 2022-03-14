@@ -7,25 +7,17 @@ import YoutubeUpload from "../components/YoutubeUpload";
 const API_URL = "http://localhost:5005";
 
 export default function ArtistFormPage() {
-
-
-
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
 
-
-
-
   const [profilePic, setProfilePic] = useState("");
-  const [videos, setVideos] = useState("");
-  const [musicStyle, setMusicStyle] = useState("");
+  const [videos, setVideos] = useState([]);
+  const [musicStyle, setMusicStyle] = useState([]);
   const [images, setImages] = useState([]);
 
-
-
-  const [video1, setVideo1] = useState(videos[0]);
-  const [video2, setVideo2] = useState(videos[1]);
-  const [video3, setVideo3] = useState(videos[2]);
+  // const [video1, setVideo1] = useState("");
+  // const [video2, setVideo2] = useState("");
+  // const [video3, setVideo3] = useState("");
 
   // Get the URL parameter `:projectId`
 
@@ -52,7 +44,7 @@ export default function ArtistFormPage() {
         setMusicStyle(artist.musicStyle);
         setImages(artist.images);
         setProfilePic(artist.profilePic);
-        setVideos(artist.videos)
+        setVideos(artist.videos);
       })
       .catch((error) => console.log(error));
   }, [profileId]);
@@ -88,60 +80,33 @@ export default function ArtistFormPage() {
     }
   }
 
+  function handleVideo(e) {
+    e.preventDefault();
+    const oldVideoCode = e.target.name
+    const newVideoCode = e.target.value
 
+    console.log("<<<<<>>>>>>>>>>>>>>>>>>>> old:", oldVideoCode, ">>>> new:",newVideoCode)
+    const updatedVideos = videos.slice()
 
-  function handleVideos1(e){ 
-    let videoLong = e.target.value
-    let videoEmbed = videoLong.slice(videoLong.indexOf("watch?v=")+8,videoLong.indexOf("watch?v=")+19)
-    // let copyVideos = videos.slice().splice(2,1,videoEmbed)
-    // // copyVideos.push("")
-    // copyVideos.push("")
-    // copyVideos.push("")
-    setVideo1(videoEmbed)
-    console.log("video 1 ====>", videoEmbed, "video1 >>>>>>>>>>>>", video1)
-   
+    const videoLink1 = newVideoCode?.split("?v=")[1]?.splice(0, 12)
+    const videoLink2 = newVideoCode?.split(".be/")[1]?.splice(0, 12)
+
+    console.log(">>>>>>>>>>", videoLink1 || videoLink2)
+    const newVideo = videoLink1 || videoLink2 || oldVideoCode
+
+    updatedVideos.splice(videos.indexOf(oldVideoCode), 1, newVideo)
+
+    setVideos(updatedVideos);
   }
-  function handleVideos2(e){
-    let videoLong = e.target.value
-    let videoEmbed = videoLong.slice(videoLong.indexOf("watch?v=")+8,videoLong.indexOf("watch?v=")+19)
-  //  let copyVideos = videos.slice().splice(2,1,videoEmbed)
-    // copyVideos.push("")
-    // copyVideos.push("")
-    // copyVideos.push("")
-    setVideo2(videoEmbed)
-    console.log("video 3 ====>", videoEmbed, "video2 >>>>>>>>>>>>", video2)
-    
+
+  function deleteVideo(e) {
+    e.preventDefault();
+    const videoCode = e.target.name
+    const updatedVideos = videos.slice()
+    updatedVideos.splice(videos.indexOf(videoCode), 1)
+    setVideos(updatedVideos);
   }
-  function handleVideos3(e){
-    let videoLong = e.target.value
-    let videoEmbed = videoLong.slice(videoLong.indexOf("watch?v=")+8,videoLong.indexOf("watch?v=")+19)
-   // let copyVideos = videos.slice().splice(2,1,videoEmbed)
-    // copyVideos.push("")
-    // copyVideos.push("")
-    // copyVideos.push("")
-    setVideo3(videoEmbed)
-    console.log("video 3 ====>", videoEmbed, "video3 >>>>>>>>>>>>", video3)
-    
-  }
-function delete1(e){
-  e.preventDefault()
-  setVideo1("")
-}
-function delete2(e){
-  e.preventDefault()
-  setVideo2("")
-}
-function delete3(e){
-  e.preventDefault()
-  setVideo3("")
-}
 
-  useEffect(()=>{
-    setVideos([video1,video2,video3])
-  },[video1, video2, video3])
-
-
-console.log(video1,video2,video3)
 
   return (
     <div>
@@ -177,21 +142,22 @@ console.log(video1,video2,video3)
             <select
               className="form-select"
               multiple
-              aria-label="multiple select example"
+              aria-label="multiple select"
               type="text"
               name="musicStyles"
-              value={musicStyle}
+              value={[musicStyle]}
               onChange={(e) => setMusicStyle(e.target.value)}
             >
               <option value="rock">Rock</option>
               <option value="reggae">Reggae</option>
-              <option value="Pop">Pop</option>
+              <option value="pop">Pop</option>
               <option value="romantic">Romantic</option>
               <option value="party">Party</option>
               <option value="swing">Swing</option>
               <option value="heavy">Heavy</option>
-              <option value="heavy">Jazz</option>
-            <option value="heavy">Blues</option>
+              <option value="jazz">Jazz</option>
+              <option value="chill">Chill</option>
+              <option value="blues">Blues</option>
               <option value="others">Others</option>
             </select>
           </div>
@@ -211,59 +177,53 @@ console.log(video1,video2,video3)
         </div> */}
 
         <div className="mb-3">
-          <label for="formFile" className="form-label"> Your Profile Picture: </label>
-          <CloudinaryUpload  
-          className="form-control form-control-sm" 
-          type="file" id="formFile" 
-          imgUpload={imgUpload} 
-          images={profilePic} />
-
+          <label for="formFile" className="form-label">
+            {" "}
+            Your Profile Picture:{" "}
+          </label>
+          <CloudinaryUpload
+            className="form-control form-control-sm"
+            type="file"
+            id="formFile"
+            imgUpload={imgUpload}
+            images={profilePic}
+          />
         </div>
 
         <div className="mb-3">
-          <label for="formFile" className="form-label"> All your Images: </label>
+          <label for="formFile" className="form-label">
+            {" "}
+            All your Images:{" "}
+          </label>
           <div className="col-sm-10">
-          <CloudinaryUpload  
-          className="form-control form-control-sm"
-          type="file" id="formFile" 
-          imgUpload={imgUpload} 
-          images={images} />
+            <CloudinaryUpload
+              className="form-control form-control-sm"
+              type="file"
+              id="formFile"
+              imgUpload={imgUpload}
+              images={images}
+            />
           </div>
         </div>
-        <label>Youtube video links:</label>
-        <br/>
-        <input type="text" name="videos" value={video1} onChange={handleVideos1}/>
-        <br/>
-        {videos[0] !== "" && (
-        <YoutubeUpload embedId={videos[0]}/>
-        )}
 
-        {console.log(videos,video1,"<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< VIDOE 1111")}
-        
-        <button onClick={delete1}>Delete 1</button>
-        <br/>
-        <input type="text" name="videos" value={video2} onChange={handleVideos2}/>
-        <br/>
+        {videos.map((video) => (
+          <>
+            <label>Youtube video links:</label>
+            <br />
+            <input
+              type="text"
+              name= {video}
+              value={video}
+              onChange={handleVideo}
+            />
+            <br />
+            <YoutubeUpload embedId={video} />
+          </>
+        ))}
 
-        {videos[1] !== "" && (
-        <YoutubeUpload embedId={videos[1]}/>
-        )}
-        
-        <button onClick={delete2}>Delete 2</button>
-        <br/>
-        <input type="text" name="videos" value={videos[2]} onChange={handleVideos3}/>
-        <br/>
-        {videos[2] !== "" && (
-        <YoutubeUpload embedId={videos[2]}/>
-        )}
-        <button onClick={delete3}>Delete 3</button>
-        
-
-
-
-
-
-        <button className="btn btn-secondary" type="submit">Update Profile</button>
+        <button className="btn btn-secondary" type="submit">
+          Update Profile
+        </button>
       </form>
     </div>
   );
