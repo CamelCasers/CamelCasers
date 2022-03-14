@@ -9,54 +9,54 @@ function HomePage() {
 
   return (
     <div>
-      <Container className="centerItemsContainer">
+     {/*} <Container className="centerItemsContainer">
         <h1 className="centerText text-white ">
-          A place for artists and venues to connect
+          Spread the Art
         </h1>
+      </Container>*/}
+
+      <hr/>
+      <Container className="centerItemsContainer eventContainer">
+       {/* <h1 className="centerText wordHomePage">Events</h1> */}
+        <h1 className="centerText text-white">
+          Explore the events created by Hosts:
+        </h1>
+        {/*<p className="centerText text-white">
+          Make donations to your favorite artists campaigns in the app. See when
+          they re playing shows.
+        </p>*/}
+        <Link to={`/events/`}>
+          <button className="btn btn-outline-warning">Events</button>
+        </Link>
+        <hr />
       </Container>
 
       <Container className="centerItemsContainer artistContainer">
-        <h1 className="wordHomePage ">Artists</h1>
-        <h2 className="centerText text-white h2HomePage">
-          Leverage your fanbase to book your gigs.
+        {/*<h1 className="wordHomePage ">Artists</h1>*/}
+        <h2 className="centerText text-white">
+          Find Artists that better fit your needs!.
         </h2>
-        <p className="centerText pHomePage text-white">
+        {/*<p className="centerText pHomePage text-white">
           Scroll through our AI-generated recommendations for venues and events.
           Request a gig and use our campaign generator to leverage your fanbase.
-        </p>
+        </p>*/}
         <Link exact to={"/artistList"} className="center">
-          <Button className="backgroundPink">Search Artists</Button>
+          <button className="btn btn-outline-warning">Artists</button>
         </Link>
         <hr />
       </Container>
 
-      <Container className="centerItemsContainer ">
-        <h1 className="centerText wordHomePage">Hosts</h1>
+      <Container className="centerItemsContainer hostContainer">
         <h1 className="centerText text-white">
-          Use our data to make sound booking decisions.
+          Find the Best Host Profiles:
         </h1>
-        <p className=" centerText pHomePage text-white">
+        {/*<p className=" centerText pHomePage text-white">
           Book artists or post events with help from our AI-generated
           recommendations.
-        </p>
+        </p>*/}
 
         <Link exact to={"/hostList"}>
-          <Button className="backgroundPink">Search Hosts</Button>
-        </Link>
-        <hr />
-      </Container>
-
-      <Container className="centerItemsContainer">
-        <h1 className="centerText wordHomePage">Events</h1>
-        <h1 className="centerText text-white">
-          Support your favourite artist in scoring that gig.
-        </h1>
-        <p className="centerText text-white">
-          Make donations to your favorite artists campaigns in the app. See when
-          they re playing shows.
-        </p>
-        <Link to={`/events/`}>
-          <Button className="backgroundPink">Search Events</Button>
+          <button className="btn btn-outline-warning">Hosts</button>
         </Link>
         <hr />
       </Container>

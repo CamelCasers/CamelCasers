@@ -20,9 +20,9 @@ function EventCard(props) {
             <h3>{title}</h3>
           </Link>
           
-          <Button  variant="primary" as={Link} to={`/events/${_id}`}>
+          <button  className="btn btn-outline-secondary" as={Link} to={`/events/${_id}`}>
           See Details
-            </Button>
+            </button>
 
 
           {images.map((img)=>(

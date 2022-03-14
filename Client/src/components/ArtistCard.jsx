@@ -30,9 +30,9 @@ function ArtistCard(props) {
             <Card.Text>Description: {description} </Card.Text>
             <Card.Text>Music Style: {musicStyle} </Card.Text>
 
-            <Button className="backgroundPink" variant="primary" as={Link} to={`/profileArtist/${_id}`}>
+            <button className="btn btn-outline-warning" variant="primary" as={Link} to={`/profileArtist/${_id}`}>
               Go to Profile
-            </Button>
+            </button>
           </Card.Body>
         </Card>
         <br/>

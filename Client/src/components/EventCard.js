@@ -16,9 +16,9 @@ function EventCard(props) {
             <Card.Text>{description}</Card.Text>
             <Card.Text>Address: {location}</Card.Text>
             <Card.Text>Music Style: {musicStyle}</Card.Text>
-            <Button variant="primary" as={Link} to={`/events/${_id}`}> 
-              See Details
-            </Button>
+            <button  className="btn btn-outline-primary" as={Link} to={`/events/${_id}`}>
+          See Details
+            </button>
           </Card.Body>
           
         </Card>

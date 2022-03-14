@@ -15,10 +15,11 @@ export default function NavBarBootrstrap() {
   }
 
   return (
-    <Navbar collapseOnSelect expand="lg" className="backgroundGrey" variant="dark">
+    <div>
+    <Navbar collapseOnSelect expand="lg" className="background" variant="dark">
       <Container>
         <Navbar.Brand as={Link} to="/">
-          Camel
+          <h1 className="findaGig" >findaGig</h1> 
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
@@ -57,5 +58,6 @@ export default function NavBarBootrstrap() {
         </Navbar.Collapse>
       </Container>
     </Navbar>
+    </div>
   );
 }
