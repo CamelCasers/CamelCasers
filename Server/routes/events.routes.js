@@ -5,6 +5,14 @@ const Event = require("../models/Event.model");
 const Artist = require("../models/Artist.model");
 const Host = require("../models/Host.model");
 
+router.put("/join", (req, res, next) => {
+  const { artistId, eventId} = req.body;
+        Event.findByIdAndUpdate(eventId,  {$push: {pendingArtist: artistId}}, {new: true})
+    .then((updatedEvent) => {Artist.findByIdAndUpdate(artistId,  {$push: {pendingEvents: eventId}}, {new: true})
+    .then((updatedArtist)=>{res.json(updatedArtist,updatedEvent)})})      
+    .catch((err) => res.json(err))
+  })
+
 router.get("/", (req, res, next) => {
   Event.find()
     .populate("host")
