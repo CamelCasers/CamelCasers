@@ -66,8 +66,34 @@ function EventDetailsPage(props) {
       .catch((error) => console.log(error));
   };
 
+  const handleAccept = (artist) => {
+   
+    axios
+    .put(`${API_URL}/api/events/decide`, {
+      artistId: artist,
+      eventId: eventId,
+    })
+    .then((__)=>{
+      navigate(`/events/${event._id}`)
+    }).catch((err)=>console.log(err))
+  }
+
+  const handleDecline = (artist) => {
+    console.log(artist);
+    axios
+    .delete(`${API_URL}/api/events/decide`, {
+      artistId: artist,
+      eventId: eventId,
+    })
+    .then((__)=>{
+      navigate(`/events/${event._id}`)
+    }).catch((err)=>console.log(err))
+      
+  }
+
   useEffect(() => {
     getEvents();
+  
   }, []);
 
   return (
@@ -108,8 +134,8 @@ function EventDetailsPage(props) {
             </Link>
           <div>
             <h1>Applying Artists</h1>
-            {event.pendingArtists.map((artist) => (
-              <div>
+            {event.pendingArtists?.map((artist) => (
+              <div key={artist._id}>
                 <Container>
       <div className="centerItemsContainer">
         
@@ -125,17 +151,19 @@ function EventDetailsPage(props) {
             <Card.Title>{artist.name}</Card.Title>
             
             <Card.Text>Styles: {artist.musicStyle} </Card.Text>
+          <div>
             <Link to={`/profileArtist/${artist._id}`}>
             <button className="btn btn-outline-warning">
               Go to Profile
             </button>
             </Link>
-            <button className="btn btn-outline-warning">
-              Acept
+            <button onClick ={()=>handleAccept(artist)}className="btn btn-outline-success">
+              Accept
             </button>
-            <button className="btn btn-outline-warning">
+            <button onClick ={()=>handleDecline(artist)}className="btn btn-outline-danger">
               Decline
             </button>
+          </div>
 
           </Card.Body>
           </div>
