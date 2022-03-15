@@ -54,7 +54,6 @@ background: linear-gradient(to right, #22223b, #22223b, #22223b); /* W3C, IE 10+
 
 .backgroundEventCard{
   background: linear-gradient(to right, #4a4e69, #4a4e69, #4a4e69);
-  border-radius: 50px;
 }
 
 .backgroundArtistCard{
@@ -99,11 +98,10 @@ background: linear-gradient(to right, #22223b, #22223b, #22223b); /* W3C, IE 10+
 	align-items: center;
 	align-content: space-between;
   margin: 20px;
-  border-radius: 20px;
+  border-radius: 10px;
 }
 
 .artistContainer{
-
   background-image:
   linear-gradient(rgba(59, 59, 57, 0.4), rgba(31, 83, 131, 0.973)), 
   url("/public/artista.png");

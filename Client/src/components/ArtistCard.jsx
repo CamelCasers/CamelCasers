@@ -17,8 +17,7 @@ function ArtistCard(props) {
 
   return (
     <Container>
-      <div className="centerItemsContainer">
-        
+      <div className="centerItemsContainer">        
         <div className="backgroundArtistCard text-white" style={{ width: "20rem" }}>
         <div>
           <img
@@ -29,8 +28,11 @@ function ArtistCard(props) {
           <div>
           <Card.Body>
             <Card.Title>{name}</Card.Title>
-            <Card.Text>Location: {location} </Card.Text>
-            <Card.Text>Styles: {musicStyle} </Card.Text>
+            <Card.Text>{location} </Card.Text>
+            <Card.Text>
+            {musicStyle?.map((style) => (
+        <li>{style}</li>
+      ))} </Card.Text>
             <Link to={`/profileArtist/${_id}`}>
             <button className="btn btn-outline-warning">
               Go to Profile

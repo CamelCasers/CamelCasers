@@ -2,36 +2,26 @@ import { Link } from "react-router-dom";
 import { Card, Button, Container } from "react-bootstrap";
 
 function HostCard(props) {
-  const { name, profilePic, description, location, events, _id, email } = props;
-
-  let eventsHosted = events.length
+  const { name, profilePic, description, location, events, _id } = props;
 
   return (
     <Container>
       <div className="centerItemsContainer">
-        
-        <div className="backgroundArtistCard text-white" style={{ width: "20rem" }}>
-        <div>
-          <img
-            className="profile-img"
-            style={{ maxWidth: "200px" }}
-            src={profilePic} alt="pic" />
-            </div>
-          <div>
+        <Card style={{ width: "18rem" }}  className="backgroundMiki text-white centerItemsContainer">
+          <Card.Img variant="top" src={profilePic} className="rounded mx-auto d-block"/>
           <Card.Body>
             <Card.Title>{name}</Card.Title>
-            <Card.Text>{location} </Card.Text>
-            <Card.Text>hosted events: {eventsHosted} </Card.Text>
+            <Card.Text>{description}</Card.Text>
             <Link to={`/profileHost/${_id}`}>
             <button className="btn btn-outline-warning">
               Go to Profile
             </button>
             </Link>
-
           </Card.Body>
-          </div>
-        </div>
+          
+        </Card>
         <br/>
+        
       </div>
     </Container>
 
