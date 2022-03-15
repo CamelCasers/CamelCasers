@@ -15,6 +15,17 @@
   margin:10px
 }
 
+.profile-imgSmall{
+  width: 75px;
+  object-fit: cover;
+  height:75px;
+  border-radius: 50%;  
+  border: 2px solid rgb(47, 49, 47);
+  display: flex;
+  justify-content: center;
+  margin:10px
+}
+
 .profile-imgCard{
   width: 250px;
   object-fit: cover;
@@ -25,7 +36,7 @@
   justify-content: center;
 }
 
-body h1, h2, h3, h4,h5, label, p, li{
+body h1, h2, h3, h4, h5, h6, label, p, li{
   color:white
 }
 
@@ -37,9 +48,6 @@ background: linear-gradient(to right, #22223b, #22223b, #22223b); /* W3C, IE 10+
 }
 
 
-  .btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited {
-    background-color: #109648 !important;
-}
 
 
 .backgroundEventCard{
