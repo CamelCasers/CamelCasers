@@ -75,20 +75,24 @@ function EventDetailsPage(props) {
       eventId: eventId,
     })
     .then((resp)=>{
-      setEvent(resp.data)
+      //setEvent(resp.data)
+      getEvents();
       navigate(`/events/${event._id}`)
     }).catch((err)=>console.log(err))
   }
 
   const handleDecline = (artist) => {
-    console.log(artist);
+    
+   // console.log("artust>>>>>>>>>>>>",artist,"evetn>>>>>>>>>>>>>>",eventId );
     axios
-    .delete(`${API_URL}/api/events/decide`, {
-      artistId: artist,
+    .post(`${API_URL}/api/events/decide`, {
+      artistId: artist._id,
       eventId: eventId,
     })
-    .then((__)=>{
-      navigate(`/events/${event._id}`)
+    .then((resp)=>{
+      //setEvent(resp.data)
+      getEvents();
+      navigate(`/events/${event?._id}`)
     }).catch((err)=>console.log(err))
       
   }
@@ -121,7 +125,40 @@ function EventDetailsPage(props) {
       <p style={{ maxWidth: "400px" }}>Description: {event?.description} </p>
       <p style={{ maxWidth: "400px" }}>Time Range: {event?.timeRange} </p>
       <p style={{ maxWidth: "400px" }}>Equipment: {event?.equiptment} </p>
-       <p style={{ maxWidth: "400px" }}>Artists: {event.artists.map((artist)=>(<p>{artist.name}</p>))} </p>  
+       <p style={{ maxWidth: "400px" }}>Artists: {event.artists.map((artist)=>(
+
+<Container>
+<div className="centerItemsContainer">
+
+  <div className="backgroundArtistCard text-white" style={{ width: "20rem" }}>
+  <div>
+    <img
+      className="profile-img"
+      style={{ maxWidth: "200px" }}
+      src={artist.profilePic} alt="pic" />
+      </div>
+    <div>
+    <Card.Body>
+      <Card.Title>{artist.name}</Card.Title>
+   
+      <Card.Text>Styles: {artist.musicStyle} </Card.Text>
+    <div>
+      <Link to={`/profileArtist/${artist._id}`}>
+      <button className="btn btn-outline-warning">
+        Go to Profile
+      </button>
+      </Link>
+  
+    </div>
+
+    </Card.Body>
+    </div>
+  </div>
+  <br/>
+</div>
+</Container>
+
+       ))} </p>  
 
       <hr />
 
@@ -140,7 +177,7 @@ function EventDetailsPage(props) {
              <h1>Applying Artists</h1>
              {event.pendingArtists && event.pendingArtists.map((artist) => (
                <div key={artist._id}>
-                 <Container>
+    <Container>
        <div className="centerItemsContainer">
       
          <div className="backgroundArtistCard text-white" style={{ width: "20rem" }}>
@@ -174,7 +211,7 @@ function EventDetailsPage(props) {
          </div>
          <br/>
        </div>
-     </Container>
+    </Container>
 
                 
                </div>

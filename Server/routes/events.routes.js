@@ -10,7 +10,7 @@ router.put("/decide", (req, res, next) => {
   console.log("//////////////////////// forrrrrrrrooooooooooo")
   
   const { artistId, eventId} = req.body;
-  console.log(artistId._id, eventId)
+ 
     Event.findByIdAndUpdate(eventId,  {$pull: {pendingArtists: artistId._id}}, {new: true})
     .then((newEvent)=>{
       console.log("after pull event >>>>>>>>>",newEvent);
@@ -34,11 +34,12 @@ router.put("/decide", (req, res, next) => {
   })      
   
 
-router.delete("/decide", (req, res, next) => {
+router.post("/decide", (req, res, next) => {
   
   const { artistId, eventId} = req.body;
-    Event.findByIdAndUpdate(eventId,  {$pull: {pendingArtists: artistId._id}}, {new: true})
-    .then((updatedEvent) => {Artist.findByIdAndUpdate(artistId._id, {$pull: {pendingEvents: eventId}}, {new: true})
+  console.log("back artist",artistId,"back event", eventId);
+    Event.findByIdAndUpdate(eventId,  {$pull: {pendingArtists: artistId}}, {new: true})
+    .then(() => {Artist.findByIdAndUpdate(artistId, {$pull: {pendingEvents: eventId}}, {new: true})
     .then((updatedArtist)=>{res.json(updatedArtist)}).catch((err) => res.json(err))})      
     .catch((err) => res.json(err))
   })
