@@ -43,6 +43,7 @@ export default function ArtistMessagesPage() {
         eventId: event._id,
       })
       .then((__) => {
+        getArtist();
         navigate(`/profileArtist/${user._id}/artistMessages`);
       })
       .catch((error) => console.log(error));
@@ -66,6 +67,9 @@ export default function ArtistMessagesPage() {
     getArtist();
   }, []);
 
+ 
+
+
   return (
     <div>
       <div>
@@ -73,6 +77,7 @@ export default function ArtistMessagesPage() {
         {artist.pendingEvents.length == 0 && (
           <p>Not pending events to confirm</p>
         )}
+        
 
         {artist.pendingEvents?.map((event) => (
           <div>
@@ -82,23 +87,29 @@ export default function ArtistMessagesPage() {
                   className="centerItemsContainer backgroundEventCard text-white"
                   style={{ width: "20rem" }}
                 >
-                  <Card.Title>{event.date}</Card.Title>
+  
+                  <Card.Title>{event.date?.slice(8,10)}/{event.date?.slice(5,7)}/{event.date?.slice(0,4)}</Card.Title>
                   {console.log("Pending events", event)}
                   <Card.Img variant="top" src={event.images[0]} style={{}} />
                   <Card.Body>
                     <Card.Title>{event.title}</Card.Title>
                     <Card.Text>Music Style: {event.musicStyle}</Card.Text>
                     <Card.Text>Address: {event.location}</Card.Text>
+
+                    <div className="btn-group gap-3" role="group" aria-label="Basic outlined example">
                     <Link to={`/events/${event._id}`}>
                       <button className="btn btn-outline-warning">
                         See Details
                       </button>
                     </Link>
+                    
                     <button
                       onClick={() => handleRejectPending(event)}
                       className="btn btn-outline-danger "
                       >
                       Withdraw </button>
+                      </div>
+                      
                   </Card.Body>
                 </div>
               </div>

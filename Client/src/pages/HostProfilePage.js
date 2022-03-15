@@ -4,8 +4,7 @@ import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "./../context/auth.context";
-import ImageProfile from "../components/HostProfile/ImageProfile.jsx"
-
+import ImageProfile from "../components/HostProfile/ImageProfile.jsx";
 
 const API_URL = "http://localhost:5005";
 
@@ -37,38 +36,38 @@ export default function HostProfilePage(props) {
 
   let isHostOwner = false;
   if (profileId === user._id) isHostOwner = true;
-  
+
   return (
     <div className="centerItemsContainer container">
-        <h1>{host.name}</h1>
-          <img
-            className="profile-img"
-            style={{ maxWidth: "200px" }}
-            src={host.profilePic}
-            alt="pic"
-          />
-          <h5>{host.location}</h5>
+      <h1>{host.name}</h1>
+      <img
+        className="profile-img"
+        style={{ maxWidth: "200px" }}
+        src={host.profilePic}
+        alt="pic"
+      />
+      <h5>{host.location}</h5>
 
-        <h5 className="text-decoration-underline">About Me:</h5>
-        <p className="text-center musicStyleColor fw-light ">{host.description}</p>
-        <div className="profileArtistButtons">
-          {isHostOwner && (
-            <>
-              <Link to={`/profileHost/${user._id}/edit`}>
-                <button className="btn btn-outline-warning btn-sm ">
-                  Edit profile
-                </button>
-              </Link>
-            </>
-          )}
-        </div>
+      <h5 className="text-decoration-underline">About Me:</h5>
+      <p className="text-center musicStyleColor fw-light ">
+        {host.description}
+      </p>
+      <div className="profileArtistButtons">
+        {isHostOwner && (
+          <>
+            <Link to={`/profileHost/${user._id}/edit`}>
+              <button className="btn btn-outline-warning btn-sm ">
+                Edit profile
+              </button>
+            </Link>
+            <Link to={`/myEvents`}>
+              <button className="btn btn-info"> My Events</button>
+            </Link>
+          </>
+        )}
+      </div>
 
-        <br/>
-
-       <Link to={`/myEvents`}>
-          <button className="btn btn-info"> {host.name} Events</button>
-        </Link>
-
+      <br />
     </div>
   );
 }
