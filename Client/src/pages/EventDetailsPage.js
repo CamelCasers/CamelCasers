@@ -75,20 +75,22 @@ function EventDetailsPage(props) {
       eventId: eventId,
     })
     .then((resp)=>{
-      setEvent(resp.data)
+      //setEvent(resp.data)
       navigate(`/events/${event._id}`)
     }).catch((err)=>console.log(err))
   }
 
   const handleDecline = (artist) => {
-    console.log(artist);
+    
+   // console.log("artust>>>>>>>>>>>>",artist,"evetn>>>>>>>>>>>>>>",eventId );
     axios
-    .delete(`${API_URL}/api/events/decide`, {
-      artistId: artist,
+    .post(`${API_URL}/api/events/decide`, {
+      artistId: artist._id,
       eventId: eventId,
     })
-    .then((__)=>{
-      navigate(`/events/${event._id}`)
+    .then((resp)=>{
+      //setEvent(resp.data)
+      navigate(`/events/${event?._id}`)
     }).catch((err)=>console.log(err))
       
   }
