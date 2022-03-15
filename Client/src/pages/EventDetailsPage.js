@@ -55,20 +55,23 @@ function EventDetailsPage(props) {
       .catch((error) => console.log(error));
   };
 
+
+  
+  
   const handleJoin = () => {
     axios
-      .put(`${API_URL}/api/events/join`, {
-        artistId: user._id,
-        eventId: eventId,
-      })
-      .then((__) => {
-        navigate(`/profileArtist/${user._id}/artistMessages`);
-      })
-      .catch((error) => console.log(error));
+    .put(`${API_URL}/api/events/join`, {
+      artistId: user._id,
+      eventId: eventId,
+    })
+    .then((__) => {
+      navigate(`/profileArtist/${user._id}/artistMessages`);
+    })
+    .catch((error) => console.log(error));
   };
 
   const handleAccept = (artist) => {
-   
+    
     axios
     .put(`${API_URL}/api/events/decide`, {
       artistId: artist,
@@ -80,11 +83,25 @@ function EventDetailsPage(props) {
       
     }).catch((err)=>console.log(err))
   }
-
-
+  
+  const handleRefuse = (artist) =>{
+    console.log("artust>>>>>>>>>>>>",artist._id,"evetn>>>>>>>>>>>>>>",event._id );
+    axios
+    .post(`${API_URL}/api/events/reject`, {
+      artistId: artist._id,
+      eventId: event._id,
+    })
+    .then((resp)=>{
+      //setEvent(resp.data)
+      getEvents();
+      
+    }).catch((err)=>console.log(err))
+  }
+  
   const handleDecline = (artist) => {
     
-    console.log("artust>>>>>>>>>>>>",artist._id,"evetn>>>>>>>>>>>>>>",event._id );
+    //console.log("artust>>>>>>>>>>>>",artist._id,"evetn>>>>>>>>>>>>>>",event._id );
+
     axios
     .put(`${API_URL}/api/events/reject`, {
       artistId: artist._id,
@@ -149,7 +166,7 @@ function EventDetailsPage(props) {
         Go to Profile
       </button>
       </Link>
-      <button onClick={()=>handleDecline(artist._id)}className="btn btn-outline-danger">
+      <button onClick={()=>handleRefuse(artist)}className="btn btn-outline-danger">
         Refuse
       </button>
 
