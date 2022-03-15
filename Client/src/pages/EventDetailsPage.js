@@ -33,9 +33,12 @@ function EventDetailsPage(props) {
     host: {},
     pendingArtists: [],
   });
+  
 
   //Get the URL paramenter `:eventId`
   const { eventId } = useParams();
+
+  console.log("kkkkkkkkkkkkkkkkkkkkkkkk", event.host)
 
   //helper function
   const storedToken = localStorage.getItem("authToken");
@@ -55,8 +58,6 @@ function EventDetailsPage(props) {
       .catch((error) => console.log(error));
   };
 
-
-  
   
   const handleJoin = () => {
     axios
@@ -120,32 +121,48 @@ function EventDetailsPage(props) {
   
   }, []);
 
+  let day = event.date?.slice(8,10)
+  let month = event.date?.slice(5,7)
+  let year = event.date?.slice(0,4)
+
   
   return (
-    <div className="EventDetails">
-       <Link to={`/events/${event._id}`} eventDetails={event.title}>
-        <h3>Event Name: {event.title}</h3>
-      </Link> 
+    <div className="centerItemsContainer  container">
+
+        <h1>{event.title}</h1>          
+        <h6 className="text-muted">Host of the event: </h6>
+        
 
       <Link to={`/profileHost/${event.host._id}`} eventDetails={event.title}>
-        <h4>Host: {event.host.name}</h4>
-      </Link> 
+      <button className="btn btn-success btn-sm">{event.host.name}</button>
+      </Link>
 
-      <p style={{ maxWidth: "400px" }}>Date: {event.date} </p>
-      <p style={{ maxWidth: "400px" }}>Location: {event.location} </p>
+      <div>
+      <img
+            className="profile-imgSmall"
+            src={event?.host.profilePic}
+            alt="pic"
+          />
+          </div>
+      
+
+      <p style={{ maxWidth: "400px" }}>Date: {day}/{month}/{year} </p>
+      <p style={{ maxWidth: "400px" }}>Address: {event.location} </p>
 
       {event.images.map((img) => (
         <img src={img} alt="pic" width={300} />
       ))} 
 
-      <p style={{ maxWidth: "400px" }}>Videos: {event?.videos} </p> 
-     <p style={{ maxWidth: "400px" }}>Music Style: {event?.musicStyle} </p> 
-      <p style={{ maxWidth: "400px" }}>Description: {event?.description} </p>
-      <p style={{ maxWidth: "400px" }}>Time Range: {event?.timeRange} </p>
-      <p style={{ maxWidth: "400px" }}>Equipment: {event?.equiptment} </p>
-       <p style={{ maxWidth: "400px" }}>Artists: {event.artists.map((artist)=>(
+      <br/>
+
+     <p >Music Style: {event?.musicStyle} </p> 
+      <p >Description: {event?.description} </p>
+      <p >Time Range: {event?.timeRange} </p>
+      <p >Equipment: {event?.equiptment} </p>
+       <p >Artists: {event.artists.map((artist)=>(
 
 <Container>
+
 <div className="centerItemsContainer">
 
   <div className="backgroundArtistCard text-white" style={{ width: "20rem" }}>

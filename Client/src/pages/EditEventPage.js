@@ -28,8 +28,9 @@ function EditEventPage(props) {
   // the event id coming from URL parameter `eventtId` changes
 
   useEffect(() => {
+    //console.log("eventId >>>>>>>>>>>>>",eventId)
     axios
-      .get(`${API_URL}/api/event/${eventId}`, {
+      .get(`${API_URL}/api/events/${eventId}`, {
         headers: { Authorization: `Bearer ${storedToken}` },
       })
       .then((response) => {
@@ -38,6 +39,7 @@ function EditEventPage(props) {
           This way we set inputs to show the actual title and description of the project
         */
         const oneEvent = response.data;
+        //console.log(oneEvent)
         setTitle(oneEvent.title);
         setDescription(oneEvent.description);
       })
@@ -210,14 +212,14 @@ function EditEventPage(props) {
           />
         </div>
 
-        <label>Videos:</label>
+        {/*<label>Videos:</label>
         <input
           type="file"
           name="videos"
           value={videos}
           onChange={(e) => setVideos(e.target.value)}
         />
-       <hr/>
+       <hr/>*/}
     
         <button  className="btn btn-secondary" type="submit">Update Event</button>
       </form>
