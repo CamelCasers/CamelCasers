@@ -28,10 +28,9 @@ function ArtistCard(props) {
           <div>
           <Card.Body>
             <Card.Title>{name}</Card.Title>
-            <Card.Text>{location} </Card.Text>
             <Card.Text>
             {musicStyle?.map((style) => (
-        <li>{style}</li>
+        <li className="musicStyleColor">{style}</li>
       ))} </Card.Text>
             <Link to={`/profileArtist/${_id}`}>
             <button className="btn btn-outline-warning">
