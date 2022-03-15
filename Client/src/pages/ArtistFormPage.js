@@ -91,7 +91,7 @@ export default function ArtistFormPage() {
   };
   function imgUpload(url) {
     if (url) {
-      setImages(images.concat(url));
+      //setImages(images.concat(url));
       setProfilePic(url);
     }
   }
@@ -230,8 +230,8 @@ export default function ArtistFormPage() {
           />
         </div>
 
-        <div className="mb-3">
-          <label for="formFile" className="form-label">
+       {/*  <div className="mb-3">
+         <label for="formFile" className="form-label">
             {" "}
             All your Images:{" "}
           </label>
@@ -244,7 +244,7 @@ export default function ArtistFormPage() {
               images={images}
             />
           </div>
-        </div>
+        </div>*/}
         <label>Youtube video links:</label>
         <br />
         <input

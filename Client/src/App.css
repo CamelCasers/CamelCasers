@@ -25,7 +25,7 @@
   justify-content: center;
 }
 
-body h1, h2, h3, h4, label, p, li{
+body h1, h2, h3, h4,h5, label, p, li{
   color:white
 }
 
@@ -37,20 +37,6 @@ background: linear-gradient(to right, #22223b, #22223b, #22223b); /* W3C, IE 10+
 
 }
 
-.backgroundPink{
-  background: #701c7f;  /* fallback for old browsers */
-  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to right, #701c7f, #701c7f); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
-}
-
-.backgroundMiki{
-  background: #4a4e69;  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to right, #4a4e69, #4a4e69, #4a4e69);  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to right, #4a4e69, #4a4e69, #4a4e69);
-  background-image:
-  linear-gradient(rgba(59, 59, 57, 0.4), rgba(31, 83, 131, 0.973)), 
-}
 
 .backgroundEventCard{
   background: linear-gradient(to right, #4a4e69, #4a4e69, #4a4e69);
@@ -63,32 +49,6 @@ background: linear-gradient(to right, #22223b, #22223b, #22223b); /* W3C, IE 10+
   border-radius: 10px;
 }
 
-.centerText{  
-  display: flex;
-  text-align: center;
-  align-items: center;
-  margin-top: 20px;
-}
-
-.placeText{
-  margin-top: 40px;
-  width: 300px;
-}
-
-.wordHomePage{
-  color: #42f4f7;
-  font-size: 15px;
-  display: flex;
-  align-items: center; 
-}
-
-.h2HomePage{
-  font-size: 24px
-}
-
-.pHomePage{
-  font-size: 15px;
-}
 
 .centerItemsContainer{
   display: flex;
@@ -131,10 +91,84 @@ background: linear-gradient(to right, #22223b, #22223b, #22223b); /* W3C, IE 10+
   color: rgb(216, 162, 13);
 }
 
+.profileArtistHeader{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.profileArtistButtons{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 100%;
+}
+
+.videos{
+  width: 100%;
+  margin: 20px
+}
 
 
 
+.artistMusicStyles{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
 
+.musicStyleColor{
+  color: rgb(204, 204, 29)
+}
+
+.profileArtistHeaderTitle{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.centerText{  
+  display: flex;
+  text-align: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.placeText{
+  margin-top: 40px;
+  width: 300px;
+}
+
+.wordHomePage{
+  color: #42f4f7;
+  font-size: 15px;
+  display: flex;
+  align-items: center; 
+}
+
+.h2HomePage{
+  font-size: 24px
+}
+
+.pHomePage{
+  font-size: 15px;
+}
+
+.backgroundPink{
+  background: #701c7f;  /* fallback for old browsers */
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #701c7f, #701c7f); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}
+
+.backgroundMiki{
+  background: #4a4e69;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #4a4e69, #4a4e69, #4a4e69);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #4a4e69, #4a4e69, #4a4e69);
+  background-image:
+  linear-gradient(rgba(59, 59, 57, 0.4), rgba(31, 83, 131, 0.973)), 
+}
 
 
 
