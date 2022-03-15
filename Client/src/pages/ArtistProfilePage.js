@@ -80,7 +80,7 @@ export default function ArtistProfilePage(props) {
           {isArtistOwner && (
             <>
               <Link to={`/profileArtist/${user._id}/edit`}>
-                <button className="btn btn-outline-warning">
+                <button className="btn btn-outline-warning btn-sm">
                   Edit profile
                 </button>
               </Link>
