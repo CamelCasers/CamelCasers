@@ -56,38 +56,47 @@ export default function ArtistProfilePage(props) {
   }, [artist.videos]);
 
   return (
-    <div>
-      <h1>Welcome, {artist.name}</h1>
+    <div className="centerItemsContainer container">
+      <div className="profileArtistHeader">
+      <h1>{artist.name}</h1>      
+        <div className="profileArtistHeaderTitle">
+          <img
+            className="profile-img"
+            style={{ maxWidth: "200px" }}
+            src={artist.profilePic}
+            alt="pic"
+          />
+                  <div className="artistMusicStyles">
+          <p>Music Styles:</p>
+          {artist.musicStyle?.map((styles) => (
+            <li className="musicStyleColor" >{styles}</li>
+          ))}
+        </div>
+        </div>
+        <h5>About Me</h5>
+        <p className="text-center ">{artist.description}</p>
+        <div className="profileArtistButtons">        
+        {isArtistOwner && (
+        <>
+          <Link to={`/profileArtist/${user._id}/edit`}>
+          <button className="btn btn-outline-warning">
+              Edit profile
+            </button>
+          </Link>
 
-      <p className="center">Artist Images</p>
+        </>
+      )}
+      </div>       
+      </div>
+     <div className="videos">
+      {/*<ImagesCarrousel artist={artist} />*/}
 
-      <Image artist={artist} />
-      <br />
-      <p>Description: {artist.description}</p>
-      <ImagesCarrousel artist={artist} />
-
-      <p>Youtube Embed</p>
       {videosFiltered.map((video) => (
         <YoutubeUpload embedId={video} />
       ))}
 
-      <p>Music Style:</p>
+      </div>
 
-      {artist.musicStyle?.map((styles) => (
-        <li>{styles}</li>
-      ))}
-      
-
-      {isArtistOwner && (
-        <>
-          <Link to={`/profileArtist/${user._id}/edit`}>
-            <Button>Edit Profile</Button>
-          </Link>
-          <Link to={`/profileArtist/${user._id}/messages`}>
-            <Button>Messages</Button>
-          </Link>
-        </>
-      )}
     </div>
   );
 }
