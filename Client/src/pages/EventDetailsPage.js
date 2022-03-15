@@ -77,7 +77,7 @@ function EventDetailsPage(props) {
     .then((resp)=>{
       //setEvent(resp.data)
       getEvents();
-      navigate(`/events/${event._id}`)
+      
     }).catch((err)=>console.log(err))
   }
 
@@ -93,7 +93,7 @@ function EventDetailsPage(props) {
     .then((resp)=>{
       //setEvent(resp.data)
       getEvents();
-      navigate(`/events/${event?._id}`)
+      
     }).catch((err)=>console.log(err))
       
   }
