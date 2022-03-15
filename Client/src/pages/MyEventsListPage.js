@@ -40,7 +40,7 @@ function MyEventsListPage() {
       <hr />
 
       <Link to={`/events/create`}>
-        <button>Create Event</button>
+      <button className="btn btn-outline-info">Create Event +</button>
       </Link>
       <hr />
 
