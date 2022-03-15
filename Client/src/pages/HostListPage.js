@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import HostCard from "../components/HostCard";
+import Search from "../components/Search";
 
 
 const API_URL = "http://localhost:5005";
@@ -9,7 +10,8 @@ export default function HoststListPage(){
 
 
     const storedToken = localStorage.getItem("authToken");
-    const [hosts, setHost] = useState([])
+    const [hosts, setHosts] = useState([])
+    const [hostsData, setHostData] = useState([])
 
     function getAllHost() {
         axios
@@ -17,12 +19,31 @@ export default function HoststListPage(){
             headers: { Authorization: `Bearer ${storedToken}` }
           })
           .then((response) => {
-            setHost(response.data)
+            setHosts(response.data)
+            setHostData(response.data)
             
           })
           .catch((error) => console.log(error));
       }
     
+      function filterEvents(eventSearch){  
+
+        setHosts(hostsData.slice().filter((elem)=>{return (elem?.name?.toLowerCase().includes(eventSearch?.toLowerCase()))}))
+       }
+       
+       function filterEventsLoc(locSearch){
+
+    
+      
+        let hostFiltered = hostsData.slice().filter((elem)=>{return (elem?.location?.toLowerCase().includes(locSearch?.toLowerCase()))})
+
+        setHosts(hostFiltered)
+        
+       }
+
+
+
+
       useEffect(() => {
         getAllHost();
       }, []);
@@ -31,7 +52,8 @@ export default function HoststListPage(){
     return(
 
         <div className="backgroundGrey centerItemsContainer">
-            {hosts.map((host)=>(
+        <Search filterEvents={filterEvents} filterEventsLoc={filterEventsLoc} noMusic={false}/>
+            {hosts?.map((host)=>(
                 <HostCard key={host._id} {...host} />
             ))}
 
