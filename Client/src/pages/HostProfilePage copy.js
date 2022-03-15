@@ -39,34 +39,27 @@ export default function HostProfilePage(props) {
   if (profileId === user._id) isHostOwner = true;
   
   return (
-    <div className="centerItemsContainer container">
-        <h1>{host.name}</h1>
-          <img
-            className="profile-img"
-            style={{ maxWidth: "200px" }}
-            src={host.profilePic}
-            alt="pic"
-          />
-          <h5>{host.location}</h5>
+    <div>
+      <h1>Welcome {host.name}</h1>
 
-        <h5 className="text-decoration-underline">About Me:</h5>
-        <p className="text-center musicStyleColor fw-light ">{host.description}</p>
-        <div className="profileArtistButtons">
-          {isHostOwner && (
-            <>
-              <Link to={`/profileHost/${user._id}/edit`}>
-                <button className="btn btn-outline-warning btn-sm ">
-                  Edit profile
-                </button>
-              </Link>
-            </>
-          )}
-        </div>
+      <ImageProfile host ={host}/>
+      
+ 
+      <p>Descripcion: {host.description}</p>
+      <span>Location: {host.location}</span>
 
-        <br/>
+      <hr/>
+
+      {isHostOwner && ( 
+        <Link to={`/profileHost/${user._id}/edit`}>
+          <button>Edit Profile</button>
+        </Link>
+      )}
+
+      <hr/>
 
        <Link to={`/myEvents`}>
-          <button className="btn btn-info"> {host.name} Events</button>
+          <button> {host.name} Events</button>
         </Link>
 
     </div>
