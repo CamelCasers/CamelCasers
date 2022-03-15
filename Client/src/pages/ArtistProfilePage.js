@@ -5,9 +5,9 @@ import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "./../context/auth.context";
 import YoutubeUpload from "../components/YoutubeUpload";
-import ImagesCarrousel from "../components/ArtistProfile/ImagesCarrousel"
-import  Image  from "../components/ArtistProfile/Image.jsx";
-import {Button} from "react-bootstrap"
+import ImagesCarrousel from "../components/ArtistProfile/ImagesCarrousel";
+import Image from "../components/ArtistProfile/Image.jsx";
+import { Button } from "react-bootstrap";
 
 const API_URL = "http://localhost:5005";
 
@@ -16,12 +16,12 @@ export default function ArtistProfilePage(props) {
   const [artist, setArtist] = useState({
     name: "",
     email: "",
-    profilePic:{},
+    profilePic: {},
     musicStyle: [],
     images: [],
-    videos: []
+    videos: [],
   });
-  const [videosFiltered , setVideosFiltered] = useState([])
+  const [videosFiltered, setVideosFiltered] = useState([]);
 
   const { profileId } = useParams();
 
@@ -43,55 +43,51 @@ export default function ArtistProfilePage(props) {
   }, []);
 
   let isArtistOwner = false;
-  if(user){
-
+  if (user) {
     if (profileId === user._id) isArtistOwner = true;
-
   }
 
-  
-  useEffect(()=>{
-    const videos = artist.videos.filter((video)=>{
-       return (video !== "")
-     })
- 
-     setVideosFiltered(videos)
-   },[artist.videos])
+  useEffect(() => {
+    const videos = artist.videos.filter((video) => {
+      return video !== "";
+    });
+
+    setVideosFiltered(videos);
+  }, [artist.videos]);
 
   return (
     <div>
-    <h1>Welcome, {artist.name}</h1>
+      <h1>Welcome, {artist.name}</h1>
 
-    <p className="center">Artist Images</p>
-   
-    <Image artist = {artist}/>
-    <br/>
-    <p>Description: {artist.description}</p>
-    <ImagesCarrousel artist={artist}/>
+      <p className="center">Artist Images</p>
 
-    <p>Youtube Embed</p>
-    {videosFiltered.map((video)=>(
-    <YoutubeUpload embedId={video} />
-    ))}
-  
+      <Image artist={artist} />
+      <br />
+      <p>Description: {artist.description}</p>
+      <ImagesCarrousel artist={artist} />
 
-    <p>Music Style: {artist.musicStyle}</p>
+      <p>Youtube Embed</p>
+      {videosFiltered.map((video) => (
+        <YoutubeUpload embedId={video} />
+      ))}
 
-    {artist.musicStyle.map((styles) => (
-      <li>{styles}</li>
-    ))}
+      <p>Music Style:</p>
 
-    {isArtistOwner && (
-      <>
-      <Link to={`/profileArtist/${user._id}/edit`}>
-        <Button>Edit Profile</Button>
-      </Link>
-      <Link to={`/profileArtist/${user._id}/messages`}>
-        <Button>Messages</Button>
-      </Link>
+      {artist.musicStyle?.map((styles) => (
+        <li>{styles}</li>
+      ))}
+      
 
-      </>
-    )}
-  </div>
+      {isArtistOwner && (
+        <>
+          <Link to={`/profileArtist/${user._id}/edit`}>
+            <Button>Edit Profile</Button>
+          </Link>
+          <Link to={`/profileArtist/${user._id}/messages`}>
+            <Button>Messages</Button>
+          </Link>
+        </>
+      )}
+    </div>
   );
 }
