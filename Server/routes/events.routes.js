@@ -5,26 +5,49 @@ const Event = require("../models/Event.model");
 const Artist = require("../models/Artist.model");
 const Host = require("../models/Host.model");
 
-router.put("/decide", (req, res, next) => {
 
-  console.log("//////////////////////// forrrrrrrrooooooooooo")
+router.post("/reject", (req, res, next) => {
   
   const { artistId, eventId} = req.body;
+  console.log("back artist",artistId,"back event", eventId);
+    Event.findByIdAndUpdate(eventId,  {$pull: {artists: artistId}}, {new: true})
+    .then(() => {Artist.findByIdAndUpdate(artistId, {$pull: {events: eventId}}, {new: true})
+    .then((updatedArtist)=>{res.json(updatedArtist)}).catch((err) => res.json(err))})      
+    .catch((err) => res.json(err))
+  })
+
+router.put("/reject", (req, res, next) => {
+  
+  const { artistId, eventId} = req.body;
+  console.log("back artist",artistId,"back event", eventId);
+    Event.findByIdAndUpdate(eventId,  {$pull: {pendingArtists: artistId}}, {new: true})
+    .then(() => {Artist.findByIdAndUpdate(artistId, {$pull: {pendingEvents: eventId}}, {new: true})
+    .then((updatedArtist)=>{res.json(updatedArtist)}).catch((err) => res.json(err))})      
+    .catch((err) => res.json(err))
+  })
+
+
+router.put("/decide", (req, res, next) => {
+
+ // console.log("//////////////////////// forrrrrrrrooooooooooo")
+  
+  const { artistId, eventId} = req.body;
+
  
     Event.findByIdAndUpdate(eventId,  {$pull: {pendingArtists: artistId._id}}, {new: true})
     .then((newEvent)=>{
-      console.log("after pull event >>>>>>>>>",newEvent);
+     // console.log("after pull event >>>>>>>>>",newEvent);
 
       Event.findByIdAndUpdate(eventId,  {$push: {artists: artistId._id}}, {new: true})
       .then((newEvent1)=>{
-        console.log("after push event >>>>>>>>>",newEvent1)
+      //  console.log("after push event >>>>>>>>>",newEvent1)
         Artist.findByIdAndUpdate(artistId._id,   {$pull: {pendingEvents: eventId}}, {new: true})
         .then((art)=>{
-          console.log("after pull artist  >>>>>>>>>",art)
+         // console.log("after pull artist  >>>>>>>>>",art)
 
           Artist.findByIdAndUpdate(artistId._id,  {$push: {events: eventId}}, {new: true})
           .then((updatedArtist)=>{
-            console.log("after push artist  >>>>>>>>>",updatedArtist)
+           // console.log("after push artist  >>>>>>>>>",updatedArtist)
             res.json(newEvent1)})
             .catch((err) => res.json(err))
         })
@@ -37,7 +60,7 @@ router.put("/decide", (req, res, next) => {
 router.post("/decide", (req, res, next) => {
   
   const { artistId, eventId} = req.body;
-  console.log("back artist",artistId,"back event", eventId);
+  //console.log("back artist",artistId,"back event", eventId);
     Event.findByIdAndUpdate(eventId,  {$pull: {pendingArtists: artistId}}, {new: true})
     .then(() => {Artist.findByIdAndUpdate(artistId, {$pull: {pendingEvents: eventId}}, {new: true})
     .then((updatedArtist)=>{res.json(updatedArtist)}).catch((err) => res.json(err))})      
@@ -49,7 +72,7 @@ router.post("/decide", (req, res, next) => {
 router.put("/join", (req, res, next) => {
   // console.log("dani come mierda")
   const { artistId, eventId} = req.body;
-  console.log("->>>>>",artistId, eventId );
+  //console.log("->>>>>",artistId, eventId );
         Event.findByIdAndUpdate(eventId,  {$push: {pendingArtists: artistId}}, {new: true})
     .then((updatedEvent) => {Artist.findByIdAndUpdate(artistId,  {$push: {pendingEvents: eventId}}, {new: true})
     .then((updatedArtist)=>{res.json(updatedArtist)}).catch((err) => res.json(err))})      
