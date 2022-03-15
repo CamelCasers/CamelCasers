@@ -34,12 +34,15 @@ function EventListPage() {
 
 function filterEvents(eventSearch){  
 
- setEvents(eventsData.slice().filter((elem)=>{return (elem.title.toLowerCase().includes(eventSearch.toLowerCase()))}))
+ setEvents(eventsData.slice().filter((elem)=>{return (elem?.title?.toLowerCase().includes(eventSearch?.toLowerCase()))}))
 }
 
 function filterEventsLoc(eventSearch){
- setEvents(eventsData.slice().filter((elem)=>{return (elem.location.toLowerCase().includes(eventSearch.toLowerCase()))}))
+ setEvents(eventsData.slice().filter((elem)=>{return (elem?.location?.toLowerCase().includes(eventSearch?.toLowerCase()))}))
 }
+
+
+
 function filterEventsMusic(eventSearch){
   // console.log("<<<<<<<<<<<<<<<<< DATA>>>>>>>>>>>>>>>>",eventSearch)
   // console.log("<<<<<<<<<<<<<<<<< DATA event>>>>>>>>>>>>>>>>",event)
@@ -59,7 +62,7 @@ if(eventSearch.length === 0)setEvents(eventsData)
   
   return (
     <div>
-      <Search filterEvents={filterEvents} filterEventsLoc={filterEventsLoc} filterEventsMusic={filterEventsMusic} />
+      <Search filterEvents={filterEvents} filterEventsLoc={filterEventsLoc} filterEventsMusic={filterEventsMusic} noMusic={true}/>
       <hr/>
 
     {user?.isHost && <Link to={`/events/create`}>

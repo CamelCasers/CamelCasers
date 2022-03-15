@@ -43,6 +43,7 @@ function Search(props) {
       <input name="searchName" type="text" value={search} onChange={handleSelect}/>
       <label>Sort by location: </label>
       <input name="searchName" type="text" value={searchLoc} onChange={handleSelect1}/>
+      {props.noMusic && <>
       <label>Sort by Music style: </label>
       <select
               className="form-select"
@@ -64,6 +65,7 @@ function Search(props) {
               <option value="jazz">Jazz</option>
               <option value="others">Others</option>
             </select>
+      </>}
     </div>
   );
 }
