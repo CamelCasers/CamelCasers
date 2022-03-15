@@ -37,8 +37,8 @@ router.put("/decide", (req, res, next) => {
 router.delete("/decide", (req, res, next) => {
   
   const { artistId, eventId} = req.body;
-    Event.findByIdAndUpdate(eventId,  {$pull: {pendingArtists: artistId}}, {new: true})
-    .then((updatedEvent) => {Artist.findByIdAndUpdate(artistId, {$pull: {pendingEvents: eventId}}, {new: true})
+    Event.findByIdAndUpdate(eventId,  {$pull: {pendingArtists: artistId._id}}, {new: true})
+    .then((updatedEvent) => {Artist.findByIdAndUpdate(artistId._id, {$pull: {pendingEvents: eventId}}, {new: true})
     .then((updatedArtist)=>{res.json(updatedArtist)}).catch((err) => res.json(err))})      
     .catch((err) => res.json(err))
   })
