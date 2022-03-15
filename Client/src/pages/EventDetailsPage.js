@@ -55,20 +55,23 @@ function EventDetailsPage(props) {
       .catch((error) => console.log(error));
   };
 
+
+  
+  
   const handleJoin = () => {
     axios
-      .put(`${API_URL}/api/events/join`, {
-        artistId: user._id,
-        eventId: eventId,
-      })
-      .then((__) => {
-        navigate(`/profileArtist/${user._id}/artistMessages`);
-      })
-      .catch((error) => console.log(error));
+    .put(`${API_URL}/api/events/join`, {
+      artistId: user._id,
+      eventId: eventId,
+    })
+    .then((__) => {
+      navigate(`/profileArtist/${user._id}/artistMessages`);
+    })
+    .catch((error) => console.log(error));
   };
 
   const handleAccept = (artist) => {
-   
+    
     axios
     .put(`${API_URL}/api/events/decide`, {
       artistId: artist,
@@ -77,22 +80,37 @@ function EventDetailsPage(props) {
     .then((resp)=>{
       //setEvent(resp.data)
       getEvents();
-      navigate(`/events/${event._id}`)
+      
     }).catch((err)=>console.log(err))
   }
-
-  const handleDecline = (artist) => {
-    
-   // console.log("artust>>>>>>>>>>>>",artist,"evetn>>>>>>>>>>>>>>",eventId );
+  
+  const handleRefuse = (artist) =>{
+    console.log("artust>>>>>>>>>>>>",artist._id,"evetn>>>>>>>>>>>>>>",event._id );
     axios
-    .post(`${API_URL}/api/events/decide`, {
+    .post(`${API_URL}/api/events/reject`, {
       artistId: artist._id,
-      eventId: eventId,
+      eventId: event._id,
     })
     .then((resp)=>{
       //setEvent(resp.data)
       getEvents();
-      navigate(`/events/${event?._id}`)
+      
+    }).catch((err)=>console.log(err))
+  }
+  
+  const handleDecline = (artist) => {
+    
+    //console.log("artust>>>>>>>>>>>>",artist._id,"evetn>>>>>>>>>>>>>>",event._id );
+
+    axios
+    .put(`${API_URL}/api/events/reject`, {
+      artistId: artist._id,
+      eventId: event._id,
+    })
+    .then((resp)=>{
+      //setEvent(resp.data)
+      getEvents();
+      
     }).catch((err)=>console.log(err))
       
   }
@@ -148,6 +166,10 @@ function EventDetailsPage(props) {
         Go to Profile
       </button>
       </Link>
+      <button onClick={()=>handleRefuse(artist)}className="btn btn-outline-danger">
+        Refuse
+      </button>
+
   
     </div>
 

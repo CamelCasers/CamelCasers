@@ -21,8 +21,8 @@ router.put("/reject", (req, res, next) => {
   const { artistId, eventId} = req.body;
   console.log("back artist",artistId,"back event", eventId);
     Event.findByIdAndUpdate(eventId,  {$pull: {pendingArtists: artistId}}, {new: true})
-    .then(() => {Artist.findByIdAndUpdate(artistId, {$pull: {pendingEvents: eventId}}, {new: true})
-    .then((updatedArtist)=>{res.json(updatedArtist)}).catch((err) => res.json(err))})      
+    .then(() => Artist.findByIdAndUpdate(artistId, {$pull: {pendingEvents: eventId}}, {new: true})
+    .then((updatedArtist)=>{res.json(updatedArtist)}).catch((err) => res.json(err)))      
     .catch((err) => res.json(err))
   })
 
@@ -70,9 +70,9 @@ router.post("/decide", (req, res, next) => {
 
 
 router.put("/join", (req, res, next) => {
-  // console.log("dani come mierda")
+  
   const { artistId, eventId} = req.body;
-  //console.log("->>>>>",artistId, eventId );
+  
         Event.findByIdAndUpdate(eventId,  {$push: {pendingArtists: artistId}}, {new: true})
     .then((updatedEvent) => {Artist.findByIdAndUpdate(artistId,  {$push: {pendingEvents: eventId}}, {new: true})
     .then((updatedArtist)=>{res.json(updatedArtist)}).catch((err) => res.json(err))})      
