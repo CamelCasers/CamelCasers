@@ -259,7 +259,7 @@ function EventDetailsPage(props) {
            </>
         )}
 
-       {artist && <Button onClick={handleJoin}>Apply to Event</Button>} 
+        {artist && <Button onClick={handleJoin}>Apply to Event</Button>} 
       </div> 
     </div>
   );
