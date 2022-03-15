@@ -4,8 +4,7 @@ import { Card, Button, Container } from "react-bootstrap";
 function HostCard(props) {
   const { name, profilePic, description, location, events, _id, email } = props;
 
-  let eventsHosted = events.lenght
-  console.log(events.lenght)
+  let eventsHosted = events.length
 
   return (
     <Container>
@@ -22,6 +21,7 @@ function HostCard(props) {
           <Card.Body>
             <Card.Title>{name}</Card.Title>
             <Card.Text>{location} </Card.Text>
+            <Card.Text>hosted events: {eventsHosted} </Card.Text>
             <Link to={`/profileHost/${_id}`}>
             <button className="btn btn-outline-warning">
               Go to Profile

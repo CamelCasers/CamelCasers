@@ -11,6 +11,7 @@ export default function ArtistFormPage() {
   const [description, setDescription] = useState("");
 
   const [profilePic, setProfilePic] = useState("");
+  const [location, setLocation] = useState("");
   const [videos, setVideos] = useState("");
   const [musicStyle, setMusicStyle] = useState("");
   const [images, setImages] = useState([]);
@@ -40,6 +41,7 @@ export default function ArtistFormPage() {
         */
         const artist = response.data;
         setName(artist.name);
+        setLocation(artist.location)
         setDescription(artist.description);
         setImages(artist.images);
         setProfilePic(artist.profilePic);
@@ -64,11 +66,11 @@ export default function ArtistFormPage() {
 
 
   const handleFormSubmit = (e) => {
-    // <== ADD
     e.preventDefault();
     // Create an object representing the body of the PUT request
     const requestBody = {
       name,
+      location,
       description,
       videos,
       musicStyle,
@@ -151,7 +153,7 @@ export default function ArtistFormPage() {
     <div>
       <form onSubmit={handleFormSubmit}>
         <div className="row mb-3">
-          <label className="col-sm-2 col-form-label">Artist name:</label>
+          <label className="col-sm-2 col-form-label">Name:</label>
           <div className="col-sm-10">
             <input
               className="form-control"
@@ -159,6 +161,19 @@ export default function ArtistFormPage() {
               name="name"
               value={name}
               onChange={(e) => setName(e.target.value)}
+            />
+          </div>
+        </div>
+
+        <div className="row mb-3">
+          <label className="col-sm-2 col-form-label">Location:</label>
+          <div className="col-sm-10">
+            <input
+              className="form-control"
+              type="text"
+              name="location"
+              value={location}
+              onChange={(e) => setLocation(e.target.value)}
             />
           </div>
         </div>
@@ -186,19 +201,16 @@ export default function ArtistFormPage() {
               value={musicStyle}
               onChange={handleMultiple}
             >
-              <option selected="selected" value="rock">
-                Rock
-              </option>
-              <option selected="selected" value="reggae">
-                Reggae
-              </option>
+              <option value="rock">Rock</option>
+              <option value="reggae">Reggae</option>
               <option value="Pop">Pop</option>
               <option value="romantic">Romantic</option>
               <option value="party">Party</option>
               <option value="swing">Swing</option>
               <option value="heavy">Heavy</option>
-              <option value="heavy">Jazz</option>
-              <option value="heavy">Blues</option>
+              <option value="chill">Chill</option>
+              <option value="classic">Classic</option>
+              <option value="jazz">Jazz</option>
               <option value="others">Others</option>
             </select>
           </div>

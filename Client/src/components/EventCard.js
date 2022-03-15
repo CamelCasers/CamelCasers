@@ -12,13 +12,11 @@ function EventCard(props) {
 
     return (
       <Container>
-  
       <div className="centerItemsContainer">
-        <Card style={{ width: "20rem" }}  className="backgroundEventCard text-white centerItemsContainer">
+        <div className="centerItemsContainer backgroundEventCard text-white" style={{ width: "20rem" }}  >
           <Card.Title>{day}/{month}/{year}</Card.Title>
           <Card.Img variant="top" src={images[0]} style={{}}/>
-          <Card.Body>
-          
+          <Card.Body>         
             <Card.Title>{title}</Card.Title>
             <Card.Text>Music Style: {musicStyle}</Card.Text>
             <Card.Text>Address: {location}</Card.Text>
@@ -31,9 +29,7 @@ function EventCard(props) {
             
           </Card.Body>
           
-        </Card>
-        <br/>
-        
+        </div>       
       </div>
     </Container>
       );
