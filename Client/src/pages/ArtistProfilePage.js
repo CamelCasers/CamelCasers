@@ -48,17 +48,18 @@ export default function ArtistProfilePage(props) {
   }
 
   useEffect(() => {
-    const videos = artist.videos.filter((video) => {
-      return video !== "";
+    const videosfilt = artist.videos.filter((video) => {
+      return video !== null;
     });
-
-    setVideosFiltered(videos);
+    setVideosFiltered(videosfilt);
   }, [artist.videos]);
+
+  console.log(videosFiltered);
 
   return (
     <div className="centerItemsContainer container">
       <div className="profileArtistHeader">
-      <h1>{artist.name}</h1>      
+        <h1>{artist.name}</h1>
         <div className="profileArtistHeaderTitle">
           <img
             className="profile-img"
@@ -66,37 +67,34 @@ export default function ArtistProfilePage(props) {
             src={artist.profilePic}
             alt="pic"
           />
-                  <div className="artistMusicStyles">
-          <p>Music Styles:</p>
-          {artist.musicStyle?.map((styles) => (
-            <li className="musicStyleColor" >{styles}</li>
-          ))}
-        </div>
+          <div className="artistMusicStyles">
+            <p>Music Styles:</p>
+            {artist.musicStyle?.map((styles) => (
+              <li className="musicStyleColor">{styles}</li>
+            ))}
+          </div>
         </div>
         <h5>About Me</h5>
         <p className="text-center ">{artist.description}</p>
-        <div className="profileArtistButtons">        
-        {isArtistOwner && (
-        <>
-          <Link to={`/profileArtist/${user._id}/edit`}>
-          <button className="btn btn-outline-warning">
-              Edit profile
-            </button>
-          </Link>
-
-        </>
-      )}
-      </div>       
+        <div className="profileArtistButtons">
+          {isArtistOwner && (
+            <>
+              <Link to={`/profileArtist/${user._id}/edit`}>
+                <button className="btn btn-outline-warning">
+                  Edit profile
+                </button>
+              </Link>
+            </>
+          )}
+        </div>
       </div>
-     <div className="videos">
-      {/*<ImagesCarrousel artist={artist} />*/}
+      <div className="videos">
+        {/*<ImagesCarrousel artist={artist} />*/}
 
-      {videosFiltered.map((video) => (
-        <YoutubeUpload embedId={video} />
-      ))}
-
+        {videosFiltered.map((video) => (
+          <YoutubeUpload embedId={video} />
+        ))}
       </div>
-
     </div>
   );
 }
