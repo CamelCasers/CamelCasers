@@ -4,12 +4,14 @@ import axios from "axios";
 import { useContext } from "react";
 import { AuthContext } from "../context/auth.context";
 import { Card, Container } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const API_URL = "http://localhost:5005";
+
 export default function ArtistMessagesPage() {
   const { user } = useContext(AuthContext);
   const { profileId } = useParams();
+  const navigate = useNavigate();
   const [artist, setArtist] = useState({
     name: "",
     email: "",
@@ -34,6 +36,32 @@ export default function ArtistMessagesPage() {
       .catch((error) => console.log(error));
   }
 
+  const handleRejectPending = (event) => {
+    axios
+      .put(`${API_URL}/api/events/reject`, {
+        artistId: artist._id,
+        eventId: event._id,
+      })
+      .then((__) => {
+        navigate(`/profileArtist/${user._id}/artistMessages`);
+      })
+      .catch((error) => console.log(error));
+  };
+
+  const handleRejectConfirmed = (event) => {
+   
+    axios
+      .post(`${API_URL}/api/events/reject`, {
+        artistId: artist._id,
+        eventId: event._id
+      })
+     
+      .then((__) => {
+        navigate(`/profileArtist/${user._id}/artistMessages`);
+      })
+      .catch((error) => console.log(error));
+  };
+
   useEffect(() => {
     getArtist();
   }, []);
@@ -42,8 +70,9 @@ export default function ArtistMessagesPage() {
     <div>
       <div>
         {artist.pendingEvents && <h1>Pending Events</h1>}
-        {artist.pendingEvents.length == 0 && <p>Not pending events to confirm</p>}
-
+        {artist.pendingEvents.length == 0 && (
+          <p>Not pending events to confirm</p>
+        )}
 
         {artist.pendingEvents?.map((event) => (
           <div>
@@ -60,12 +89,16 @@ export default function ArtistMessagesPage() {
                     <Card.Title>{event.title}</Card.Title>
                     <Card.Text>Music Style: {event.musicStyle}</Card.Text>
                     <Card.Text>Address: {event.location}</Card.Text>
-
                     <Link to={`/events/${event._id}`}>
-                      <button className="btn btn-outline-warning ">
-                        Pedro Cagon
+                      <button className="btn btn-outline-warning">
+                        See Details
                       </button>
                     </Link>
+                    <button
+                      onClick={() => handleRejectPending(event)}
+                      className="btn btn-outline-danger "
+                      >
+                      Withdraw </button>
                   </Card.Body>
                 </div>
               </div>
@@ -85,7 +118,7 @@ export default function ArtistMessagesPage() {
                   style={{ width: "20rem" }}
                 >
                   <Card.Title>{event.date}</Card.Title>
-                  {console.log("confirmed Eents", artist.events)}
+                  
                   <Card.Img variant="top" src={event.images[0]} style={{}} />
                   <Card.Body>
                     <Card.Title>{event.title}</Card.Title>
@@ -97,6 +130,14 @@ export default function ArtistMessagesPage() {
                         See Details
                       </button>
                     </Link>
+                  
+                      <button
+                        onClick={() => handleRejectConfirmed(event)}
+                        className="btn btn-outline-danger "
+                      >
+                         Withdraw
+                      </button>
+                    
                   </Card.Body>
                 </div>
               </div>

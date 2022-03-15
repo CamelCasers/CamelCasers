@@ -81,13 +81,14 @@ function EventDetailsPage(props) {
     }).catch((err)=>console.log(err))
   }
 
+
   const handleDecline = (artist) => {
     
-   // console.log("artust>>>>>>>>>>>>",artist,"evetn>>>>>>>>>>>>>>",eventId );
+    console.log("artust>>>>>>>>>>>>",artist._id,"evetn>>>>>>>>>>>>>>",event._id );
     axios
-    .post(`${API_URL}/api/events/decide`, {
+    .put(`${API_URL}/api/events/reject`, {
       artistId: artist._id,
-      eventId: eventId,
+      eventId: event._id,
     })
     .then((resp)=>{
       //setEvent(resp.data)
@@ -148,6 +149,10 @@ function EventDetailsPage(props) {
         Go to Profile
       </button>
       </Link>
+      <button onClick={()=>handleDecline(artist._id)}className="btn btn-outline-danger">
+        Refuse
+      </button>
+
   
     </div>
 
