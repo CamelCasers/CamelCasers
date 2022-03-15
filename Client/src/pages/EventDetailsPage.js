@@ -21,16 +21,16 @@ function EventDetailsPage(props) {
 
   const [event, setEvent] = useState({
     title: "",
-    date: "",
+    date: null,
     location: "",
     images: [],
-    videos: "",
-    musicStyle: "",
+    videos: [],
+    musicStyle: [],
     description: "",
     timeRange: "",
-    equiptment: "",
-    artists: "",
-    host: "",
+    equiptment: [],
+    artists: [],
+    host: {},
     pendingArtists: [],
   });
 
@@ -49,6 +49,7 @@ function EventDetailsPage(props) {
       })
       .then((response) => {
         const oneEvent = response.data;
+        console.log(oneEvent);
         setEvent(oneEvent);
       })
       .catch((error) => console.log(error));
@@ -73,7 +74,8 @@ function EventDetailsPage(props) {
       artistId: artist,
       eventId: eventId,
     })
-    .then((__)=>{
+    .then((resp)=>{
+      setEvent(resp.data)
       navigate(`/events/${event._id}`)
     }).catch((err)=>console.log(err))
   }
@@ -96,29 +98,30 @@ function EventDetailsPage(props) {
   
   }, []);
 
+  
   return (
     <div className="EventDetails">
-      <Link to={`/events/${event._id}`} eventDetails={event.title}>
+       <Link to={`/events/${event._id}`} eventDetails={event.title}>
         <h3>Event Name: {event.title}</h3>
-      </Link>
+      </Link> 
 
       <Link to={`/profileHost/${event.host._id}`} eventDetails={event.title}>
         <h4>Host: {event.host.name}</h4>
-      </Link>
+      </Link> 
 
       <p style={{ maxWidth: "400px" }}>Date: {event.date} </p>
       <p style={{ maxWidth: "400px" }}>Location: {event.location} </p>
 
       {event.images.map((img) => (
         <img src={img} alt="pic" width={300} />
-      ))}
+      ))} 
 
-      <p style={{ maxWidth: "400px" }}>Videos: {event.videos} </p>
-      <p style={{ maxWidth: "400px" }}>Music Style: {event.musicStyle} </p>
-      <p style={{ maxWidth: "400px" }}>Description: {event.description} </p>
-      <p style={{ maxWidth: "400px" }}>Time Range: {event.timeRange} </p>
-      <p style={{ maxWidth: "400px" }}>Equipment: {event.equiptment} </p>
-      <p style={{ maxWidth: "400px" }}>Artists: {event.artists} </p>
+      <p style={{ maxWidth: "400px" }}>Videos: {event?.videos} </p> 
+     <p style={{ maxWidth: "400px" }}>Music Style: {event?.musicStyle} </p> 
+      <p style={{ maxWidth: "400px" }}>Description: {event?.description} </p>
+      <p style={{ maxWidth: "400px" }}>Time Range: {event?.timeRange} </p>
+      <p style={{ maxWidth: "400px" }}>Equipment: {event?.equiptment} </p>
+       <p style={{ maxWidth: "400px" }}>Artists: {event.artists.map((artist)=>(<p>{artist.name}</p>))} </p>  
 
       <hr />
 
@@ -127,62 +130,63 @@ function EventDetailsPage(props) {
       </Link>
 
       <div>
-        {user._id === event.host._id && (
-          <>
-            <Link to={`/events/edit/${eventId}`}>
+        {user?._id === event?.host._id && (
+         
+        <>
+          <Link to={`/events/edit/${eventId}`}>
               <Button>Edit Event</Button>
-            </Link>
-          <div>
-            <h1>Applying Artists</h1>
-            {event.pendingArtists?.map((artist) => (
-              <div key={artist._id}>
-                <Container>
-      <div className="centerItemsContainer">
-        
-        <div className="backgroundArtistCard text-white" style={{ width: "20rem" }}>
-        <div>
-          <img
-            className="profile-img"
-            style={{ maxWidth: "200px" }}
-            src={artist.profilePic} alt="pic" />
-            </div>
-          <div>
-          <Card.Body>
-            <Card.Title>{artist.name}</Card.Title>
-            
-            <Card.Text>Styles: {artist.musicStyle} </Card.Text>
-          <div>
-            <Link to={`/profileArtist/${artist._id}`}>
-            <button className="btn btn-outline-warning">
-              Go to Profile
-            </button>
-            </Link>
-            <button onClick ={()=>handleAccept(artist)}className="btn btn-outline-success">
+            </Link> 
+           <div>
+             <h1>Applying Artists</h1>
+             {event.pendingArtists && event.pendingArtists.map((artist) => (
+               <div key={artist._id}>
+                 <Container>
+       <div className="centerItemsContainer">
+      
+         <div className="backgroundArtistCard text-white" style={{ width: "20rem" }}>
+         <div>
+           <img
+             className="profile-img"
+             style={{ maxWidth: "200px" }}
+             src={artist.profilePic} alt="pic" />
+             </div>
+           <div>
+           <Card.Body>
+             <Card.Title>{artist.name}</Card.Title>
+          
+             <Card.Text>Styles: {artist.musicStyle} </Card.Text>
+           <div>
+             <Link to={`/profileArtist/${artist._id}`}>
+             <button className="btn btn-outline-warning">
+               Go to Profile
+             </button>
+             </Link>
+             <button onClick ={()=>handleAccept(artist)}className="btn btn-outline-success">
               Accept
-            </button>
-            <button onClick ={()=>handleDecline(artist)}className="btn btn-outline-danger">
-              Decline
-            </button>
-          </div>
+             </button>
+             <button onClick ={()=>handleDecline(artist)}className="btn btn-outline-danger">
+               Decline
+             </button>
+           </div>
 
-          </Card.Body>
-          </div>
-        </div>
-        <br/>
-      </div>
-    </Container>
+           </Card.Body>
+           </div>
+         </div>
+         <br/>
+       </div>
+     </Container>
 
                 
-              </div>
-            ))}
-          </div>
-          </>
+               </div>
+             ))}
+           </div>
+           </>
         )}
 
-        {artist && <Button onClick={handleJoin}>Apply to Event</Button>}
-      </div>
+       {artist && <Button onClick={handleJoin}>Apply to Event</Button>} 
+      </div> 
     </div>
   );
-}
+             }
 
 export default EventDetailsPage;
