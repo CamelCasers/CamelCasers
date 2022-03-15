@@ -63,7 +63,7 @@ export default function ArtistMessagesPage() {
 
                     <Link to={`/events/${event._id}`}>
                       <button className="btn btn-outline-warning ">
-                        See Details
+                        Pedro Cagon
                       </button>
                     </Link>
                   </Card.Body>
