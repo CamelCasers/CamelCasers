@@ -47,6 +47,7 @@ export default function HostProfilePage(props) {
         alt="pic"
       />
       <h5>{host.location}</h5>
+      <p className="text-center ">Contact: <span className="musicStyleColor">{host.email}</span></p>
 
       <h5 className="text-decoration-underline">About Me:</h5>
       <p className="text-center musicStyleColor fw-light ">
