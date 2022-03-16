@@ -16,9 +16,9 @@
 }
 
 .event-img{
-  width: 150px;
+  width: 600px;
   object-fit: cover;
-  height:150px;
+  height:300px;
   border: 2px solid rgb(47, 49, 47);
   display: flex;
   justify-content: center;
