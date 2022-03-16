@@ -1,112 +1,39 @@
 # CamelCasers
 
-# CamelCasers
-
-| Route            |    Views       |          Description                |
+| Route    hi        |    Views       |          Description                |
 | -----------------| ---------------|-------------------------------------|
-|GET "/"	   |       | renders the homepage/login          |
+|GET "/"	   | index.hbs      | renders the homepage/login          |
 | -----------------| ---------------|-------------------------------------|
-| /api/auth	           |                |                                     |
+| /auth	           |                |                                     |
 | -----------------| ---------------|-------------------------------------|
-|GET/POST "/signup"|      | Creates user in the DB    |
+|GET/POST "/signup"| signup.hbs     | renders the signup form for users   |
 | -----------------| ---------------|-------------------------------------|
-| GET/POST "/login"|       | Acces to user login     |
+| GET/POST "/login"|   login.hbs    | renders the login form for users    |
 | -----------------| ---------------|-------------------------------------|
-|GET "/verify"    |       | Autenthificarion middleware  |
+|POST "/logout"    | index.hbs      | Logouts users and renders homepage  |
 | -----------------| ---------------|-------------------------------------|
-| /api/artist	           |                |                                     |
+| /user            |                |                                     |	
 | -----------------| ---------------|-------------------------------------|
-|GET "/artist"|      | Artist.find()    |
+|GET"/feed"        | feed.hbs       | renders the main private feed       |
 | -----------------| ---------------|-------------------------------------|
-| POST "/artist"|       | Artist.create()    |
+| GET "/profile"   |profile-user.hbs| renders your profile page           |
 | -----------------| ---------------|-------------------------------------|
-|GET "/artist/:artistId"    |       | Artist.findById()  |
+|GET/POST "/edit"  |profile-edit.hbs| shows form to edit your profile     |
 | -----------------| ---------------|-------------------------------------|
-|PUT "/artist/:artistId"    |       | Artist.findByIdandUpdate()  |
+| GET "/results"   |profile-results.hbs|    shows a list of profiles      |			
 | -----------------| ---------------|-------------------------------------|
-|DELETE "/artist/:artistId"    |       | Artist.findByIdandDelete()  |
+| GET /":id"       |profile-public.hbs|   shows other users’ profile      |	
 | -----------------| ---------------|-------------------------------------|
-
-| /api/host	           |                |                                     |
+|GET "/mymeetings" |mymeetings.hbs  | shows list of all your events       |
 | -----------------| ---------------|-------------------------------------|
-|GET "/host"|      | Host.find()    |
+| /meetings        |                |                                     |
 | -----------------| ---------------|-------------------------------------|
-| POST "/host"|       | Host.create()    |
+|GET "/"           |meeting-list.hbs| shows a list of all the events      |
 | -----------------| ---------------|-------------------------------------|
-|GET "/host/:hostId"    |       | Host.findById()  |
+| GET /":id"       |meeting-details.hbs|   shows an event's details       |	
 | -----------------| ---------------|-------------------------------------|
-|PUT "/host/:artistId"    |       | Host.findByIdandUpdate()  |
+|GET/POST "/create"|meeting-create.hbs| shows form to create a new event  |
 | -----------------| ---------------|-------------------------------------|
-|DELETE "/host/:hostId"    |       | Host.findByIdandDelete()  |
+| GET/POST "/
+/mymeetings/edit   |meeting-edit.hbs|   shows a form to edit your events  |
 | -----------------| ---------------|-------------------------------------|
-
-| /api/event	           |                |                                     |
-| -----------------| ---------------|-------------------------------------|
-|GET "/event"|      | Event.find()    |
-| -----------------| ---------------|-------------------------------------|
-| POST "/event"|       | Event.create()    |
-| -----------------| ---------------|-------------------------------------|
-|GET "/event/:eventId"    |       | Event.findById()  |
-| -----------------| ---------------|-------------------------------------|
-|PUT "/event/:eventId"    |       | Event.findByIdandUpdate()  |
-| -----------------| ---------------|-------------------------------------|
-|DELETE "/event/:eventId"    |       | Event.findByIdandDelete()  |
-| -----------------| ---------------|-------------------------------------|
-
-
-Host model
-``` 
-
-name: String
-email: String
-password: String
-image: String
-location: ?
-events: [{type objectid model Event}]
-
-```
-
-Artist model
-``` 
-
-name: String
-email: String
-password: String
-image: String
-location: ?
-musicEstiles: []
-events: [{type objectid model Event}]
-
-```
-
-
-Event model
-``` 
-
-musicStyle: []
-date: Date
-image: String
-timeRange: String
-equiptment: []
-artists: [{type objectid model Artist}]
-hosts: [{type objectid model Host}]
-
-
-```
-
-Chat model
-``` 
-
-?
-
-
-```
-
-
-
-
-
-
-
-
-

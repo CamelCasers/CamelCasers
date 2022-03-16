@@ -43,6 +43,14 @@ function EditEventPage(props) {
         //console.log(oneEvent)
         setTitle(oneEvent.title);
         setDescription(oneEvent.description);
+        setDate(oneEvent.date);
+        setLocation(oneEvent.location)
+        setImages(oneEvent.images)
+        setVideos(oneEvent.videos)
+        setMusicStyle(oneEvent.musicStyle)
+        setTimeRange(oneEvent.timeRange)
+        setEquipment(oneEvent.equipment)
+        
       })
       .catch((error) => console.log(error));
   }, [eventId, storedToken]);
@@ -93,6 +101,12 @@ function EditEventPage(props) {
     if (url) {
       setImages(images.concat(url));
     }
+  }
+
+  function deletePic(e,img){
+    e.preventDefault()
+    let newImages = images.filter((elem)=>{return !elem.includes(img)})
+    setImages(newImages)
   }
 
   return (
@@ -210,6 +224,7 @@ function EditEventPage(props) {
             id="formFile"
             imgUpload={imgUpload}
             images={images}
+            deletePic={deletePic}
           />
         </div>
 

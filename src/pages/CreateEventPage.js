@@ -3,17 +3,18 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "./../context/auth.context";
+import CloudinaryUpload from "../components/CloudinaryUpload";
 
 
 
 function CreateEventPage(props) {
   const { user } = useContext(AuthContext);
-  console.log("user 0=>", user);
+  //console.log("user 0=>", user);
 
   const [title, setTitle] = useState("");
   const [date, setDate] = useState("");
   const [location, setLocation] = useState("");
-  const [images, setImages] = useState("");
+  const [images, setImages] = useState([]);
   const [videos, setVideos] = useState("");
   const [musicStyle, setMusicStyle] = useState("");
   const [description, setDescription] = useState("");
@@ -62,7 +63,13 @@ function CreateEventPage(props) {
       })
       .catch((error) => console.log(error));
   };
-
+  function imgUpload(url) {
+    if (url) {
+      setImages(images.concat(url));
+    }
+  }
+  
+console.log({images})
   return (
     <div>
       <form onSubmit={handleSubmit}>
@@ -163,32 +170,24 @@ function CreateEventPage(props) {
           />
           </div>
         </div>
+        <div className="mb-3">
+          <label for="formFile" className="form-label">
+            {" "}
+            Event Images:{" "}
+          </label>
 
-
-        <div className="row mb-3">
-          <label>Event Images: </label>
-          <div className="col-sm-10">
-          <input
+          <CloudinaryUpload
+            className="form-control form-control-sm"
             type="file"
-            name="images"
-            value={images}
-            onChange={(e) => setImages(e.target.value)}
+            id="formFile"
+            imgUpload={imgUpload}
+            images={images}
           />
-          </div>
         </div>
 
-        <div className="row mb-3">
-          <label>Upload Event Videos: </label>
-          <div className="col-sm-10">
-          <input
-            className="form-control"
-            type="file"
-            name="videos"
-            value={videos}
-            onChange={(e) => setVideos(e.target.value)}
-          />
-          </div>
-        </div>
+       
+
+        
 
 
 

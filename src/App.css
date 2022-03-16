@@ -3,6 +3,14 @@
   background-color: #505757;
 }
 
+.map-container {
+  height: 250px;
+  width: 90vw;
+  border-radius: 8px;
+  border: 1px solid rgb(216, 162, 13);
+  
+}
+
 
 .profile-img{
   width: 150px;
@@ -14,6 +22,17 @@
   justify-content: center;
   margin:10px
 }
+
+.event-img{
+  width: 600px;
+  object-fit: cover;
+  height:300px;
+  border: 2px solid rgb(47, 49, 47);
+  display: flex;
+  justify-content: center;
+  margin:10px
+}
+
 
 .profile-imgSmall{
   width: 75px;
@@ -40,14 +59,16 @@ body h1, h2, h3, h4, h5, h6, label, p, li{
   color:white
 }
 
+option{
+  font-size: 10px;
+}
+
 
 .backgroundGrey{
 background: #22223b;  /* fallback for old browsers */
 background: -webkit-linear-gradient(to right, #22223b, #22223b, #22223b);  /* Chrome 10-25, Safari 5.1-6 */
 background: linear-gradient(to right, #22223b, #22223b, #22223b); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
-
-
 
 
 .backgroundEventCard{
@@ -115,8 +136,9 @@ background: linear-gradient(to right, #22223b, #22223b, #22223b); /* W3C, IE 10+
 
 .profileArtistButtons{
   display: flex;
-  flex-direction: row;
-  justify-content: space-around;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
   width: 100%;
 }
 

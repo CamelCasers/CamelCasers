@@ -74,8 +74,9 @@ export default function ArtistProfilePage(props) {
             ))}
           </div>
         </div>
+        
         <h5>About Me</h5>
-        <p className="text-center ">{artist.description}</p>
+        <p className="text-center">{artist.description}</p>
         <div className="profileArtistButtons">
           {isArtistOwner && (
             <>
@@ -87,6 +88,7 @@ export default function ArtistProfilePage(props) {
             </>
           )}
         </div>
+        <p className="text-center ">Contact: <span className="musicStyleColor">{artist.email}</span></p>
       </div>
       <div className="videos">
         {/*<ImagesCarrousel artist={artist} />*/}
