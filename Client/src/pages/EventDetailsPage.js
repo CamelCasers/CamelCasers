@@ -198,30 +198,31 @@ function EventDetailsPage(props) {
                     src={artist.profilePic}
                     alt="pic"
                   />
+                  {user?._id === event.host._id && (
+                        <button
+                          onClick={() => handleRefuse(artist)}
+                          className="btn btn-danger btn-sm mb-2"
+                        >
+                          Cancel
+                        </button>
+                      )}
                 </div>
                 <div>
                   <Card.Body>
                     <Card.Title>{artist.name}</Card.Title>
 
-                    <Card.Text>
+                    <ul>
                       {artist.musicStyle?.map((style) => (
                         <li className="musicStyleColor">{style}</li>
                       ))}{" "}
-                    </Card.Text>
+                    </ul>
                     <div>
                       <Link to={`/profileArtist/${artist._id}`}>
                         <button className="btn btn-outline-warning">
                           Go to Profile
                         </button>
                       </Link>
-                      {user?._id === event.host._id && (
-                        <button
-                          onClick={() => handleRefuse(artist)}
-                          className="btn btn-outline-danger"
-                        >
-                          Refuse
-                        </button>
-                      )}
+                      
                     </div>
                   </Card.Body>
                 </div>
@@ -253,40 +254,48 @@ function EventDetailsPage(props) {
                               src={artist.profilePic}
                               alt="pic"
                             />
-                          </div>
-                          <div>
-                            <Card.Body>
-                              <Card.Title>{artist.name}</Card.Title>
-
-                              <Card.Text>
-                                {artist.musicStyle?.map((style) => (
-                                  <li className="musicStyleColor">{style}</li>
-                                ))}{" "}
-                              </Card.Text>
-
-                              <div>
-                                <Link to={`/profileArtist/${artist._id}`}>
-                                  <button className="btn btn-outline-warning">
-                                    Go to Profile
-                                  </button>
-                                </Link>
-                                <button
+                            <div>
+                              <div
+                                className="btn-group gap-1 mb-2"
+                                role="group"
+                                aria-label="Basic mixed styles example"
+                              >
+                                <button 
                                   onClick={() => handleAccept(artist)}
-                                  className="btn btn-outline-success"
+                                  className="btn btn-success btn-sm"
                                 >
                                   Accept
                                 </button>
                                 <button
                                   onClick={() => handleDecline(artist)}
-                                  className="btn btn-outline-danger"
+                                  className="btn btn-danger btn-sm"
                                 >
                                   Decline
                                 </button>
                               </div>
+                            </div>
+                          </div>
+                          <div>
+                            <Card.Body>
+                              <Card.Title>{artist.name}</Card.Title>
+
+                              <ul>
+
+                                {artist.musicStyle?.map((style) => (
+                                  <li className="musicStyleColor start">
+                                    {style}
+                                  </li>
+                                ))}{" "}
+                              </ul>
+
+                              <Link to={`/profileArtist/${artist._id}`}>
+                                <button className="btn btn-outline-warning">
+                                  Go to Profile
+                                </button>
+                              </Link>
                             </Card.Body>
                           </div>
                         </div>
-                        <br />
                       </div>
                     </Container>
                   </div>
