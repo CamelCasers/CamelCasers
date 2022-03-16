@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import CloudinaryUpload from "../components/CloudinaryUpload";
 
-const API_URL = "http://localhost:5005";
+
 
 export default function HostFormPage() {
   const [name, setName] = useState("");
@@ -22,7 +22,7 @@ export default function HostFormPage() {
 
   useEffect(() => {
     axios
-      .get(`${API_URL}/api/hosts/${profileId}`, {
+      .get(`${process.env.REACT_APP_API_URL}/api/hosts/${profileId}`, {
         headers: { Authorization: `Bearer ${storedToken}` },
       })
       .then((response) => {
@@ -47,7 +47,7 @@ export default function HostFormPage() {
 
     // Make a PUT request to update the project
     axios
-      .put(`${API_URL}/api/hosts/${profileId}`, requestBody)
+      .put(`${process.env.REACT_APP_API_URL}/api/hosts/${profileId}`, requestBody)
       .then((response) => {
         // Once the request is resolved successfully and the project
         // is updated we navigate back to the details page

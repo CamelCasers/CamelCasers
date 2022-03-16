@@ -6,7 +6,7 @@ import { AuthContext } from "../context/auth.context";
 import { Card, Container } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 
-const API_URL = "http://localhost:5005";
+
 
 export default function ArtistMessagesPage() {
   const { user } = useContext(AuthContext);
@@ -26,7 +26,7 @@ export default function ArtistMessagesPage() {
   const storedToken = localStorage.getItem("authToken");
   function getArtist() {
     axios
-      .get(`${API_URL}/api/artists/${profileId}`, {
+      .get(`${process.env.REACT_APP_API_URL}/api/artists/${profileId}`, {
         headers: { Authorization: `Bearer ${storedToken}` },
       })
       .then((response) => {
@@ -38,7 +38,7 @@ export default function ArtistMessagesPage() {
 
   const handleRejectPending = (event) => {
     axios
-      .put(`${API_URL}/api/events/reject`, {
+      .put(`${process.env.REACT_APP_API_URL}/api/events/reject`, {
         artistId: artist._id,
         eventId: event._id,
       })
@@ -52,7 +52,7 @@ export default function ArtistMessagesPage() {
   const handleRejectConfirmed = (event) => {
    
     axios
-      .post(`${API_URL}/api/events/reject`, {
+      .post(`${process.env.REACT_APP_API_URL}/api/events/reject`, {
         artistId: artist._id,
         eventId: event._id
       })

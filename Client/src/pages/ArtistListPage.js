@@ -3,7 +3,7 @@ import axios from "axios";
 import ArtistCard from "../components/ArtistCard";
 import Search from "../components/Search";
 
-const API_URL = "http://localhost:5005";
+
 
 export default function ArtistListPage() {
   const [artists, setArtist] = useState([]);
@@ -11,7 +11,7 @@ export default function ArtistListPage() {
 
   function getAllArtists() {
     axios
-      .get(`${API_URL}/api/artists/`)
+      .get(`${process.env.REACT_APP_API_URL}/api/artists/`)
       .then((response) => {
         setArtist(response.data);
         setArtistData(response.data);

@@ -9,7 +9,7 @@ import ImagesCarrousel from "../components/ArtistProfile/ImagesCarrousel";
 import Image from "../components/ArtistProfile/Image.jsx";
 import { Button } from "react-bootstrap";
 
-const API_URL = "http://localhost:5005";
+
 
 export default function ArtistProfilePage(props) {
   const { user } = useContext(AuthContext);
@@ -28,7 +28,7 @@ export default function ArtistProfilePage(props) {
   function getArtist() {
     const storedToken = localStorage.getItem("authToken");
     axios
-      .get(`${API_URL}/api/artists/${profileId}`, {
+      .get(`${process.env.REACT_APP_API_URL}/api/artists/${profileId}`, {
         headers: { Authorization: `Bearer ${storedToken}` },
       })
       .then((response) => {
