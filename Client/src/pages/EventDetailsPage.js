@@ -186,12 +186,15 @@ function EventDetailsPage(props) {
                           Go to Profile
                         </button>
                       </Link>
-                      <button
+                      {user?._id === event.host._id && (
+                        <button
                         onClick={() => handleRefuse(artist)}
                         className="btn btn-outline-danger"
                       >
                         Refuse
                       </button>
+                      )}
+                      
                     </div>
                   </Card.Body>
                 </div>
