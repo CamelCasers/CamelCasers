@@ -4,7 +4,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import CloudinaryUpload from "../components/CloudinaryUpload";
 import YoutubeUpload from "../components/YoutubeUpload";
 
-const API_URL = "http://localhost:5005";
+
 
 export default function ArtistFormPage() {
   const [name, setName] = useState("");
@@ -31,7 +31,7 @@ export default function ArtistFormPage() {
 
   useEffect(() => {
     axios
-      .get(`${API_URL}/api/artists/${profileId}`, {
+      .get(`${process.env.REACT_APP_API_URL}/api/artists/${profileId}`, {
         headers: { Authorization: `Bearer ${storedToken}` },
       })
       .then((response) => {
@@ -80,7 +80,7 @@ export default function ArtistFormPage() {
 
     // Make a PUT request to update the project
     axios
-      .put(`${API_URL}/api/artists/${profileId}`, requestBody, {
+      .put(`${process.env.REACT_APP_API_URL}/api/artists/${profileId}`, requestBody, {
         headers: { Authorization: `Bearer ${storedToken}` },
       })
       .then((response) => {

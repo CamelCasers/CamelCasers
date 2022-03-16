@@ -6,7 +6,7 @@ import { useContext } from "react";
 import { AuthContext } from "./../context/auth.context";
 import ImageProfile from "../components/HostProfile/ImageProfile.jsx";
 
-const API_URL = "http://localhost:5005";
+
 
 export default function HostProfilePage(props) {
   const { user } = useContext(AuthContext);
@@ -20,7 +20,7 @@ export default function HostProfilePage(props) {
   function getHost() {
     const storedToken = localStorage.getItem("authToken");
     axios
-      .get(`${API_URL}/api/hosts/${profileId}`, {
+      .get(`${process.env.REACT_APP_API_URL}/api/hosts/${profileId}`, {
         headers: { Authorization: `Bearer ${storedToken}` },
       })
       .then((response) => {

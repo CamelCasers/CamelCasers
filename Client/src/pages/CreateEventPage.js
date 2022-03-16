@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "./../context/auth.context";
 
-const API_URL = "http://localhost:5005";
+
 
 function CreateEventPage(props) {
   const { user } = useContext(AuthContext);
@@ -42,7 +42,7 @@ function CreateEventPage(props) {
 
     // Send the token through the request "Authorization" Headers
     axios
-      .post(`${API_URL}/api/events`, requestBody, {
+      .post(`${process.env.REACT_APP_API_URL}/api/events`, requestBody, {
         headers: { Authorization: `Bearer ${storedToken}` },
       })
       .then((response) => {

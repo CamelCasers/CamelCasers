@@ -4,7 +4,7 @@ import HostCard from "../components/HostCard";
 import Search from "../components/Search";
 
 
-const API_URL = "http://localhost:5005";
+
 
 export default function HoststListPage(){
 
@@ -15,7 +15,7 @@ export default function HoststListPage(){
 
     function getAllHost() {
         axios
-          .get(`${API_URL}/api/hosts/`, {
+          .get(`${process.env.REACT_APP_API_URL}/api/hosts/`, {
             headers: { Authorization: `Bearer ${storedToken}` }
           })
           .then((response) => {

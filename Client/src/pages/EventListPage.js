@@ -8,7 +8,7 @@ import { AuthContext } from "../context/auth.context";
 
 
  
-const API_URL = "http://localhost:5005";
+
  
  
 function EventListPage() {
@@ -23,7 +23,7 @@ function EventListPage() {
 
     axios
     .get(
-    `${API_URL}/api/events`,
+    `${process.env.REACT_APP_API_URL}/api/events`,
     { headers: { Authorization: `Bearer ${storedToken}` } }
   )
     .then((response) => {setEvents(response.data)

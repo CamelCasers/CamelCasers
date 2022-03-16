@@ -7,7 +7,7 @@ import { useContext } from "react";
 import { AuthContext } from "../context/auth.context";
 import { Button, Card, Container } from "react-bootstrap";
 
-const API_URL = "http://localhost:5005";
+
 
 function EventDetailsPage(props) {
   const navigate = useNavigate();
@@ -47,7 +47,7 @@ function EventDetailsPage(props) {
 
     // Send the token through the request "Authorization" Headers
     axios
-      .get(`${API_URL}/api/events/${eventId}`, {
+      .get(`${process.env.REACT_APP_API_URL}/api/events/${eventId}`, {
         headers: { Authorization: `Bearer ${storedToken}` },
       })
       .then((response) => {
@@ -61,7 +61,7 @@ function EventDetailsPage(props) {
   
   const handleJoin = () => {
     axios
-    .put(`${API_URL}/api/events/join`, {
+    .put(`${process.env.REACT_APP_API_URL}/api/events/join`, {
       artistId: user._id,
       eventId: eventId,
     })
@@ -74,7 +74,7 @@ function EventDetailsPage(props) {
   const handleAccept = (artist) => {
     
     axios
-    .put(`${API_URL}/api/events/decide`, {
+    .put(`${process.env.REACT_APP_API_URL}/api/events/decide`, {
       artistId: artist,
       eventId: eventId,
     })
@@ -88,7 +88,7 @@ function EventDetailsPage(props) {
   const handleRefuse = (artist) =>{
     console.log("artust>>>>>>>>>>>>",artist._id,"evetn>>>>>>>>>>>>>>",event._id );
     axios
-    .post(`${API_URL}/api/events/reject`, {
+    .post(`${process.env.REACT_APP_API_URL}/api/events/reject`, {
       artistId: artist._id,
       eventId: event._id,
     })
@@ -104,7 +104,7 @@ function EventDetailsPage(props) {
     //console.log("artust>>>>>>>>>>>>",artist._id,"evetn>>>>>>>>>>>>>>",event._id );
 
     axios
-    .put(`${API_URL}/api/events/reject`, {
+    .put(`${process.env.REACT_APP_API_URL}/api/events/reject`, {
       artistId: artist._id,
       eventId: event._id,
     })

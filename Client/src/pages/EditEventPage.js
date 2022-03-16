@@ -5,7 +5,8 @@ import { useParams, useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import CloudinaryUpload from "../components/CloudinaryUpload";
 
-const API_URL = "http://localhost:5005";
+
+
 
 function EditEventPage(props) {
   const [title, setTitle] = useState("");
@@ -30,7 +31,7 @@ function EditEventPage(props) {
   useEffect(() => {
     //console.log("eventId >>>>>>>>>>>>>",eventId)
     axios
-      .get(`${API_URL}/api/events/${eventId}`, {
+      .get(`${process.env.REACT_APP_API_URL}/api/events/${eventId}`, {
         headers: { Authorization: `Bearer ${storedToken}` },
       })
       .then((response) => {
@@ -64,7 +65,7 @@ function EditEventPage(props) {
 
     // Make a PUT request to update the project
     axios
-      .put(`${API_URL}/api/events/${eventId}`, requestBody, {
+      .put(`${process.env.REACT_APP_API_URL}/api/events/${eventId}`, requestBody, {
         headers: { Authorization: `Bearer ${storedToken}` },
       })
       .then((response) => {
@@ -77,7 +78,7 @@ function EditEventPage(props) {
 
   const deleteEvent = () => {
     axios
-      .delete(`${API_URL}/api/events/${eventId}`, {
+      .delete(`${process.env.REACT_APP_API_URL}/api/events/${eventId}`, {
         headers: { Authorization: `Bearer ${storedToken}` },
       })
       .then(() => {

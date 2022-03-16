@@ -6,7 +6,7 @@ import { AuthContext } from "../context/auth.context";
 import { useContext } from "react";
 import { Button } from "react-bootstrap";
 
-const API_URL = "http://localhost:5005";
+
 
 function MyEventsListPage() {
   const [events, setEvents] = useState([]);
@@ -21,7 +21,7 @@ function MyEventsListPage() {
   const getAllEvents = () => {
     const storedToken = localStorage.getItem("authToken");
     axios
-      .get(`${API_URL}/api/hosts/${user._id}`, {
+      .get(`${process.env.REACT_APP_API_URL}/api/hosts/${user._id}`, {
         headers: { Authorization: `Bearer ${storedToken}` },
       })
       .then((response) => setEvents(response.data.events))
