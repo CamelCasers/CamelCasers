@@ -128,10 +128,10 @@ export default function ArtistMessagesPage() {
                   className="centerItemsContainer backgroundEventCard text-white"
                   style={{ width: "20rem" }}
                 >
-                  <Card.Title>{event.date}</Card.Title>
+                  <Card.Title>{event.date?.slice(8,10)}/{event.date?.slice(5,7)}/{event.date?.slice(0,4)}</Card.Title>
                   
                   <Card.Img variant="top" src={event.images[0]} style={{}} />
-                  <Card.Body>
+                  <Card.Body>xº
                     <Card.Title>{event.title}</Card.Title>
                     <Card.Text>Music Style: {event.musicStyle}</Card.Text>
                     <Card.Text>Address: {event.location}</Card.Text>
