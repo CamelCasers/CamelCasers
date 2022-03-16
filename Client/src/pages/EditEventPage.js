@@ -43,6 +43,14 @@ function EditEventPage(props) {
         //console.log(oneEvent)
         setTitle(oneEvent.title);
         setDescription(oneEvent.description);
+        setDate(oneEvent.date);
+        setLocation(oneEvent.location)
+        setImages(oneEvent.images)
+        setVideos(oneEvent.videos)
+        setMusicStyle(oneEvent.musicStyle)
+        setTimeRange(oneEvent.timeRange)
+        setEquipment(oneEvent.equipment)
+        
       })
       .catch((error) => console.log(error));
   }, [eventId, storedToken]);
