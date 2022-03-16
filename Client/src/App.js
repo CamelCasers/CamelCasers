@@ -41,7 +41,7 @@ function App() {
         <Route path="/events/:eventId" element={<IsPrivate>
               {" "}
               <EventDetailsPage />{" "}
-            </IsPrivate>} />} />
+            </IsPrivate>} />
         <Route path="/events/edit/:eventId" element={<EditEventPage />} />
 
         <Route path="/hostList" element={<HostListPage />} />

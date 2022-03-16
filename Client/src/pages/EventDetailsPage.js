@@ -146,8 +146,6 @@ function EventDetailsPage(props) {
       <p style={{ maxWidth: "400px" }}>
         Date: {day}/{month}/{year}{" "}
       </p>
-      <p style={{ maxWidth: "400px" }}>Address: {event.location} </p>
-      <MapPage location={event.location}/>
 
       <p>
         Time: <span className="musicStyleColor">{event?.timeRange}</span>{" "}
@@ -176,11 +174,32 @@ function EventDetailsPage(props) {
       <h5>Description: </h5>
       <p className="musicStyleColor">{event?.description}</p>
 
+      <h5>Event location</h5>
+
+      <p style={{ maxWidth: "400px" }}><span>{event.location}</span>  </p>
+      {/* //////////////////////////////////////////////////////////////// */}
+      {/* //////////////////////////////////////////////////////////////// */}
+      {/* //////////////////////////////////////////////////////////////// */}
+
+{/* //////////////////////////////////////////////////////////////// */}
+
+      <MapPage location={event.location}/>
+
+
+      {/* //////////////////////////////////////////////////////////////// */}
+
+      {/* //////////////////////////////////////////////////////////////// */}
+      {/* //////////////////////////////////////////////////////////////// */}
+
+      <hr />
+
+
       {user?._id === event?.host._id && (
         <Link to={`/events/edit/${eventId}`}>
           <button className="btn btn-outline-warning">Edit Event</button>
         </Link>
       )}
+
 
       <hr />
 
