@@ -118,7 +118,7 @@ export default function ArtistMessagesPage() {
         ))}
       </div>
       <div>
-        {artist.events && <h1>Confirmed Events</h1>}
+        {artist.events &&  <h1>Confirmed Events</h1>}
 
         {artist.events?.map((event) => (
           <div>

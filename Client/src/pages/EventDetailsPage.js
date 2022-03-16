@@ -6,6 +6,7 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../context/auth.context";
 import { Button, Card, Container } from "react-bootstrap";
+import { Carousel } from "react-bootstrap";
 
 function EventDetailsPage(props) {
   const navigate = useNavigate();
@@ -149,9 +150,13 @@ function EventDetailsPage(props) {
         Equipment: <span className="musicStyleColor">{event?.equipment}</span>{" "}
       </p>
 
-      {event.images.map((img) => (
-        <img src={img} alt="pic" width={300} />
-      ))}
+      <Carousel  >
+        {event.images.map((item) => (
+          <Carousel.Item >
+            <img className="d-block w-100 event-img" src={item} alt={item} />
+          </Carousel.Item>
+        ))}
+      </Carousel>
 
       <br />
 
@@ -164,22 +169,19 @@ function EventDetailsPage(props) {
 
       <h5>Description: </h5>
       <p className="musicStyleColor">{event?.description}</p>
-       
-      {user?._id === event?.host._id && (
-      <Link to={`/events/edit/${eventId}`}>
-      <button className="btn btn-outline-warning">Edit Event</button>
-      </Link>
 
+      {user?._id === event?.host._id && (
+        <Link to={`/events/edit/${eventId}`}>
+          <button className="btn btn-outline-warning">Edit Event</button>
+        </Link>
       )}
 
-      <hr/>
+      <hr />
 
       <Link to="/events">
         <button className="btn btn-secondary">Back to events</button>
       </Link>
 
-     
-       
       <div className="centerItemsContainer">
         <h3>Artists Attending: </h3>
         {event.artists.map((artist) => (
