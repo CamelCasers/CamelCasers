@@ -60,6 +60,7 @@ export default function HostProfilePage(props) {
                 Edit profile
               </button>
             </Link>
+            <hr/>
             <Link to={`/myEvents`}>
               <button className="btn btn-info"> My Events</button>
             </Link>
