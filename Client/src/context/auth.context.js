@@ -9,6 +9,7 @@ function AuthProviderWrapper(props) {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [user, setUser] = useState(null);
+  const [userDB, setUserDB] = useState(null);
   const [loggedHost, setLoggedHost] = useState(false)
   const [loggedArtist, setLoggedArtist] = useState(false)
   const navigate = useNavigate();
@@ -41,12 +42,25 @@ function AuthProviderWrapper(props) {
 
         if(user.isHost){
           setLoggedHost(true)    
-          setLoggedArtist(false)     
+          setLoggedArtist(false)    
+          axios.get(
+            `${process.env.REACT_APP_API_URL}/api/hosts/${user._id}`, 
+            { headers: { Authorization: `Bearer ${storedToken}`} }
+          ).then((host)=>{setUserDB(host.data)}) 
         }
          else{
           setLoggedArtist(true)
           setLoggedHost(false) 
+          axios.get(
+            `${process.env.REACT_APP_API_URL}/api/artists/${user._id}`, 
+            { headers: { Authorization: `Bearer ${storedToken}`} }
+          ).then((artist)=>{setUserDB(artist.data)}) 
         }
+
+        axios.get(
+          `${process.env.REACT_APP_API_URL}/api/users/${user._id}`, 
+          { headers: { Authorization: `Bearer ${storedToken}`} }
+        )
         
         
         // console.log(loggedHost, "<====== loggedHost")
@@ -102,7 +116,7 @@ function AuthProviderWrapper(props) {
  
   return (
     <AuthContext.Provider 
-    value={{ isLoggedIn, isLoading, user, loggedHost, loggedArtist,storeToken, authenticateUser, logOutUser}}> {props.children}  </AuthContext.Provider>
+    value={{ isLoggedIn, isLoading, user,userDB, loggedHost, loggedArtist,storeToken, authenticateUser, logOutUser}}> {props.children}  </AuthContext.Provider>
   )
 }
  
