@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
  
 const AuthContext = React.createContext();
@@ -10,6 +11,7 @@ function AuthProviderWrapper(props) {
   const [user, setUser] = useState(null);
   const [loggedHost, setLoggedHost] = useState(false)
   const [loggedArtist, setLoggedArtist] = useState(false)
+  const navigate = useNavigate();
 
 
   //console.log("user from token ==============>" , user )
@@ -78,6 +80,7 @@ function AuthProviderWrapper(props) {
     setLoggedArtist(false)
     setLoggedHost(false)
     setIsLoggedIn(false)  
+    navigate("/")
     // and update the state variables    
     authenticateUser();
   }

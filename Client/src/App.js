@@ -38,20 +38,26 @@ function App() {
         <Route path="/events" element={<EventListPage />} />
         <Route path="/myEvents" element={<MyEventsListPage />} />
         <Route path="/events/create" element={<CreateEventPage />} />
-        <Route path="/events/:eventId" element={<EventDetailsPage />} />
+        <Route path="/events/:eventId" element={<IsPrivate>
+              {" "}
+              <EventDetailsPage />{" "}
+            </IsPrivate>} />} />
         <Route path="/events/edit/:eventId" element={<EditEventPage />} />
 
         <Route path="/hostList" element={<HostListPage />} />
         <Route path="/artistList" element={<ArtistListPage />} />
 
-        <Route path="/profileHost/:profileId" element={<HostProfilePage />} />
-
+        <Route path="/profileHost/:profileId" element={<IsPrivate>
+              {" "}
+              <HostProfilePage />{" "}
+            </IsPrivate>} />
+            
         <Route path="/profileHost/:profileId/edit" element={<HostFormPage />} />
 
         <Route path="/profileArtist/:profileId/artistMessages" element={<ArtistMessagesPage />} />
 
         <Route path="/profileArtist/:profileId/edit" element={<ArtistFormPage />} />
-
+        
         <Route
           path="/profileArtist/:profileId"
           element={
