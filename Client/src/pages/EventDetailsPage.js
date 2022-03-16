@@ -150,12 +150,14 @@ function EventDetailsPage(props) {
 
       <br />
 
-      <p>Music Style: {event?.musicStyle} </p>
+      <p>Music Style: {event?.musicStyle.map((style) => (
+                        <li className="musicStyleColor">{style}</li>
+                      ))} </p>
       <p>Description: {event?.description} </p>
       <p>Time Range: {event?.timeRange} </p>
       <p>Equipment: {event?.equiptment} </p>
       <p>
-        Artists:{" "}
+        Artists Attending:{" "}
         {event.artists.map((artist) => (
           <Container>
             <div className="centerItemsContainer">

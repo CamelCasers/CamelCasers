@@ -136,6 +136,7 @@ export default function ArtistMessagesPage() {
                     <Card.Text>Music Style: {event.musicStyle}</Card.Text>
                     <Card.Text>Address: {event.location}</Card.Text>
 
+                  <div className="btn-group gap-3" role="group" aria-label="Basic outlined example">
                     <Link to={`/events/${event._id}`}>
                       <button className="btn btn-outline-warning ">
                         See Details
@@ -148,6 +149,7 @@ export default function ArtistMessagesPage() {
                       >
                          Withdraw
                       </button>
+                    </div>
                     
                   </Card.Body>
                 </div>
