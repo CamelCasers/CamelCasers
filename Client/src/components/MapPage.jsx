@@ -17,8 +17,7 @@ export default function MapPage(props){
     const [zoom, setZoom] = useState(12);
     const navigate = useNavigate();
     
-    // import MapPage from "../components/MapPage";
-    // <MapPage location={event.location}/>
+   
 
     axios
     .get(

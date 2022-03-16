@@ -7,6 +7,11 @@ import { useContext } from "react";
 import { AuthContext } from "../context/auth.context";
 import { Button, Card, Container } from "react-bootstrap";
 import { Carousel } from "react-bootstrap";
+import MapPage from "../components/MapPage";
+
+
+    // 
+    // 
 
 function EventDetailsPage(props) {
   const navigate = useNavigate();
@@ -142,6 +147,7 @@ function EventDetailsPage(props) {
         Date: {day}/{month}/{year}{" "}
       </p>
       <p style={{ maxWidth: "400px" }}>Address: {event.location} </p>
+      <MapPage location={event.location}/>
 
       <p>
         Time: <span className="musicStyleColor">{event?.timeRange}</span>{" "}
@@ -149,7 +155,7 @@ function EventDetailsPage(props) {
       <p>
         Equipment: <span className="musicStyleColor">{event?.equipment}</span>{" "}
       </p>
-
+  
       <Carousel  >
         {event.images.map((item) => (
           <Carousel.Item >
