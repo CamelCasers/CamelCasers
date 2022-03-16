@@ -35,8 +35,6 @@ function EventDetailsPage(props) {
   //Get the URL paramenter `:eventId`
   const { eventId } = useParams();
 
-  console.log("kkkkkkkkkkkkkkkkkkkkkkkk", event.host);
-
   //helper function
   const storedToken = localStorage.getItem("authToken");
   const getEvents = () => {
@@ -123,7 +121,7 @@ function EventDetailsPage(props) {
   let year = event.date?.slice(0, 4);
 
   return (
-    <div className="centerItemsContainer  container">
+    <div className="centerItemsContainer centerText container">
       <h1>{event.title}</h1>
       <h6 className="text-muted">Host of the event: </h6>
 
@@ -144,18 +142,46 @@ function EventDetailsPage(props) {
       </p>
       <p style={{ maxWidth: "400px" }}>Address: {event.location} </p>
 
+      <p>
+        Time: <span className="musicStyleColor">{event?.timeRange}</span>{" "}
+      </p>
+      <p>
+        Equipment: <span className="musicStyleColor">{event?.equipment}</span>{" "}
+      </p>
+
       {event.images.map((img) => (
         <img src={img} alt="pic" width={300} />
       ))}
 
       <br />
 
-      <p>Music Style: {event?.musicStyle} </p>
-      <p>Description: {event?.description} </p>
-      <p>Time Range: {event?.timeRange} </p>
-      <p>Equipment: {event?.equiptment} </p>
       <p>
-        Artists:{" "}
+        Music Style :{" "}
+        {event?.musicStyle.map((style) => (
+          <span className="musicStyleColor">{style}</span>
+        ))}{" "}
+      </p>
+
+      <h5>Description: </h5>
+      <p className="musicStyleColor">{event?.description}</p>
+       
+      {user?._id === event?.host._id && (
+      <Link to={`/events/edit/${eventId}`}>
+      <button className="btn btn-outline-warning">Edit Event</button>
+      </Link>
+
+      )}
+
+      <hr/>
+
+      <Link to="/events">
+        <button className="btn btn-secondary">Back to events</button>
+      </Link>
+
+     
+       
+      <div className="centerItemsContainer">
+        <h3>Artists Attending: </h3>
         {event.artists.map((artist) => (
           <Container>
             <div className="centerItemsContainer">
@@ -188,13 +214,12 @@ function EventDetailsPage(props) {
                       </Link>
                       {user?._id === event.host._id && (
                         <button
-                        onClick={() => handleRefuse(artist)}
-                        className="btn btn-outline-danger"
-                      >
-                        Refuse
-                      </button>
+                          onClick={() => handleRefuse(artist)}
+                          className="btn btn-outline-danger"
+                        >
+                          Refuse
+                        </button>
                       )}
-                      
                     </div>
                   </Card.Body>
                 </div>
@@ -203,22 +228,13 @@ function EventDetailsPage(props) {
             </div>
           </Container>
         ))}{" "}
-      </p>
-
-      <hr />
-
-      <Link to="/events">
-        <Button>Back to events</Button>
-      </Link>
+      </div>
 
       <div className="centerItemsContainer">
         {user?._id === event?.host._id && (
           <>
-            <Link to={`/events/edit/${eventId}`}>
-              <Button>Edit Event</Button>
-            </Link>
             <div className="centerItemsContainer">
-              <h1>Applying Artists</h1>
+              <h2>Applying Artists</h2>
               {event.pendingArtists &&
                 event.pendingArtists.map((artist) => (
                   <div key={artist._id}>
