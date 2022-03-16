@@ -117,8 +117,9 @@ background: linear-gradient(to right, #22223b, #22223b, #22223b); /* W3C, IE 10+
 
 .profileArtistButtons{
   display: flex;
-  flex-direction: row;
-  justify-content: space-around;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
   width: 100%;
 }
 
