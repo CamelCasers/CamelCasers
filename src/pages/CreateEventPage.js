@@ -145,14 +145,14 @@ console.log({images})
           >
             <option value="rock">Rock</option>
             <option value="reggae">Reggae</option>
-            <option value="Pop">Pop</option>
+            <option value="pop">Pop</option>
             <option value="romantic">Romantic</option>
             <option value="party">Party</option>
             <option value="swing">Swing</option>
             <option value="heavy">Heavy</option>
-            <option value="swing">Chill</option>
-            <option value="heavy">Jazz</option>
-            <option value="heavy">Blues</option>
+            <option value="chill">Chill</option>
+            <option value="jazz">Jazz</option>
+            <option value="blues">Blues</option>
             <option value="others">Others</option>
           </select>
           </div>

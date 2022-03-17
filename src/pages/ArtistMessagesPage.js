@@ -58,7 +58,7 @@ export default function ArtistMessagesPage() {
       })
      
       .then((__) => {
-        navigate(`/profileArtist/${user._id}/artistMessages`);
+        getArtist();
       })
       .catch((error) => console.log(error));
   };
@@ -73,7 +73,7 @@ export default function ArtistMessagesPage() {
   return (
     <div>
       <div>
-        {artist.pendingEvents && <h1>Pending Events</h1>}
+        {artist.pendingEvents && <h3>Pending Events</h3>}
         {artist.pendingEvents.length == 0 && (
           <p>Not pending events to confirm</p>
         )}
@@ -86,8 +86,7 @@ export default function ArtistMessagesPage() {
                 <div
                   className="centerItemsContainer backgroundEventCard text-white"
                   style={{ width: "20rem" }}
-                >
-  
+                >  
                   <Card.Title>{event.date?.slice(8,10)}/{event.date?.slice(5,7)}/{event.date?.slice(0,4)}</Card.Title>
                   {console.log("Pending events", event)}
                   <Card.Img variant="top" src={event.images[0]} style={{}} />
@@ -101,8 +100,7 @@ export default function ArtistMessagesPage() {
                       <button className="btn btn-outline-warning">
                         See Details
                       </button>
-                    </Link>
-                    
+                    </Link>                    
                     <button
                       onClick={() => handleRejectPending(event)}
                       className="btn btn-outline-danger "
@@ -118,7 +116,7 @@ export default function ArtistMessagesPage() {
         ))}
       </div>
       <div>
-        {artist.events &&  <h1>Confirmed Events</h1>}
+        {artist.events &&  <h3>Confirmed Events</h3>}
 
         {artist.events?.map((event) => (
           <div>
@@ -128,10 +126,10 @@ export default function ArtistMessagesPage() {
                   className="centerItemsContainer backgroundEventCard text-white"
                   style={{ width: "20rem" }}
                 >
-                  <Card.Title>{event.date}</Card.Title>
+                  <Card.Title>{event.date?.slice(8,10)}/{event.date?.slice(5,7)}/{event.date?.slice(0,4)}</Card.Title>
                   
                   <Card.Img variant="top" src={event.images[0]} style={{}} />
-                  <Card.Body>
+                  <Card.Body>xº
                     <Card.Title>{event.title}</Card.Title>
                     <Card.Text>Music Style: {event.musicStyle}</Card.Text>
                     <Card.Text>Address: {event.location}</Card.Text>

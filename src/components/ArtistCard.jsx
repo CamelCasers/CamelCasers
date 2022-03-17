@@ -17,6 +17,7 @@ function ArtistCard(props) {
 
   return (
     <Container>
+    
       <div className="centerItemsContainer">        
         <div className="backgroundArtistCard text-white" style={{ width: "20rem" }}>
         <div>
@@ -44,18 +45,6 @@ function ArtistCard(props) {
         <br/>
       </div>
     </Container>
-
-    /*  <div className="card">                 
-     
-         <img src={profilePic} className="profile-img" alt="Pic"/>
-          <div class="card-body">
-          <Link to={`/profileArtist/${_id}`} artistDetails = {name}>
-          <h3>{name}</h3>
-          </Link>  
-          <p style={{ maxWidth: "400px" }}>Description: {description} </p>
-          <p style={{ maxWidth: "400px" }}>Music Style: {musicStyle} </p>
-          </div>
-        </div>*/
   );
 }
 

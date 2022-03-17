@@ -187,7 +187,7 @@ function EditEventPage(props) {
             >
               <option value="rock">Rock</option>
               <option value="reggae">Reggae</option>
-              <option value="Pop">Pop</option>
+              <option value="pop">Pop</option>
               <option value="romantic">Romantic</option>
               <option value="party">Party</option>
               <option value="swing">Swing</option>

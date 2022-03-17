@@ -183,6 +183,7 @@ function EventDetailsPage(props) {
 
 {/* //////////////////////////////////////////////////////////////// */}
 
+
       <MapPage location={event.location}/>
 
 

@@ -12,7 +12,7 @@ function EventCard(props) {
 
     return (
       <Container>
-      <div className="centerItemsContainer">
+      <div className="centerItemsContainer lessMargin">
         <div className="centerItemsContainer backgroundEventCard text-white" style={{ width: "20rem" }}  >
           <Card.Title>{day}/{month}/{year}</Card.Title>
           <Card.Img variant="top" src={images[0]} style={{}}/>
