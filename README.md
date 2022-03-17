@@ -1,5 +1,51 @@
 # CamelCasers
 
+User Stories:
+
+
+
+Components:
+ - ArtistCard
+ - EventCard
+ - HostCard
+ - IsAnon
+ - IsPrivate
+ - MapPage
+ - Navbar
+ - YoutTubeUpload
+ 
+Pages:
+- Loginpage
+- SignUpPage
+- HomePage
+- ArtistFormPage
+- ArtistListPage
+- ArtistMessagePage
+- HostFormPage
+- HostListPage
+- HostProfilePage
+- CreateEventPage
+- EditEventPage
+- EventDetailsPage
+- EventListPage
+- MyEventsListPage
+
+FrontEnd Routes:
+- /home
+- /signUp
+- /login
+- /myEvents
+- /events/create
+- /events/:eventId
+- /events/edit/:eventId
+- /hostList
+- /artistList
+- /profileHost/:profileId
+- /profileHost/:profileId/edit
+- /profileArtist/:profileId/artistMessages
+- /profileArtist/:profileId/edit
+- /profileArtist/:profileId
+
 # CamelCasers
 
 | Route            |    Views       |          Description                |
@@ -92,15 +138,7 @@ artists: [{type objectid model Artist}]
 hosts: [{type objectid model Host}]
 
 
-```
 
-Chat model
-``` 
-
-?
-
-
-```
 
 
 
