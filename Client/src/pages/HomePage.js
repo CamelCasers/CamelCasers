@@ -18,9 +18,9 @@ function HomePage() {
       <hr/>
       <Container className="centerItemsContainer eventContainer">
        {/* <h1 className="centerText wordHomePage">Events</h1> */}
-        <h1 className="centerText text-white">
-          Explore the events created by Hosts:
-        </h1>
+        <h2 className="centerText text-white">
+          Find Events and join them:
+        </h2>
         {/*<p className="centerText text-white">
           Make donations to your favorite artists campaigns in the app. See when
           they re playing shows.
@@ -34,7 +34,7 @@ function HomePage() {
       <Container className="centerItemsContainer artistContainer">
         {/*<h1 className="wordHomePage ">Artists</h1>*/}
         <h2 className="centerText text-white">
-          Find Artists that better fit your needs!.
+          Find your Artist
         </h2>
         {/*<p className="centerText pHomePage text-white">
           Scroll through our AI-generated recommendations for venues and events.
@@ -47,9 +47,9 @@ function HomePage() {
       </Container>
 
       <Container className="centerItemsContainer hostContainer">
-        <h1 className="centerText text-white">
-          Find the Best Host Profiles:
-        </h1>
+        <h2 className="centerText text-white">
+          Find your Host
+        </h2>
         {/*<p className=" centerText pHomePage text-white">
           Book artists or post events with help from our AI-generated
           recommendations.
