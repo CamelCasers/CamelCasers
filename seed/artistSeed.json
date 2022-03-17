@@ -1,0 +1,172 @@
+[
+    {
+        "name": "Tash Sultana",
+        "email": "tashsultanagood1@test.com",
+        "password": "123",
+        "profilePic": "https://res.cloudinary.com/dafjdxuov/image/upload/v1647425412/wdpongokgkd92doiqhxp.jpg",
+        "location": "Germany",
+        "images": [],
+        "videos": [
+            "C9HmQ3SO6y4"
+        ],
+        "musicStyle": [
+            "rock",
+            "reggae"
+        ],
+        "isHost": false,
+        "events": [],
+        "pendingEvents": [],
+        "description": "I started plating the guitar at the age of three. I've been playing around the world with my sampler."
+    },
+    {
+        "name": "Lemmy Kilmister",
+        "email": "lemmykilmister1@test.com",
+        "password": "123",
+        "profilePic": "https://res.cloudinary.com/dafjdxuov/image/upload/v1647426945/twqfol7qrf8iak8zztcd.jpg",
+        "images": [],
+        "videos": [
+            "J06yQb4lbPk"
+        ],
+        "musicStyle": [
+            "rock"
+        ],
+        "isHost": false,
+        "events": [],
+        "pendingEvents": [],
+        "description": "A foundational force in the genre following the advent of the new wave of British heavy metal, the people knowns me for my appearance, which included his signature friendly mutton chops, my military-influenced fashion sense and his gravelly rasp of a voice. It was once declared one of the most recognisable voices in rock",
+        "location": "Barcelona"
+    },
+    {
+        "name": "Mr O'malley",
+        "email": "omailley1@test.com",
+        "password": "123",
+        "profilePic": "https://res.cloudinary.com/dafjdxuov/image/upload/v1647429977/g4coih5a2eirjblxntos.webp",
+        "images": [],
+        "videos": [
+            "-o-H_TnCTts"
+        ],
+        "musicStyle": [
+            "jazz",
+            "others"
+        ],
+        "isHost": false,
+        "events": [],
+        "pendingEvents": [],
+        "description": "I am a Jazz Cat looking for some Jams in the city. I am interested in jazz jam sessions. I just need to be paid with free food and drinks.",
+        "location": "Berlin"
+    },
+    {
+        "name": "Baco Band",
+        "email": "baco@test.com",
+        "password": "123",
+        "profilePic": "https://res.cloudinary.com/dafjdxuov/image/upload/v1647522628/IMG_8079_rigqpv.jpg",
+        "images": [],
+        "videos": [
+            "RcbefpUPuLA"
+        ],
+        "musicStyle": [
+            "rock",
+            "pop"
+        ],
+        "isHost": false,
+        "events": [],
+        "pendingEvents": [],
+        "description": "Sincerely we are a group that is in the music because it is not frowned upon to drink in this sector. We are professionals, we play everything you ask us, especially Rock and Pop. We are looking for quick money and leave a nice corpse.",
+        "location": "Madrid"
+    },
+    {
+        "name": "Merci",
+        "email": "merci@test.com",
+        "password": "123",
+        "profilePic": "https://res.cloudinary.com/dafjdxuov/image/upload/v1647522937/IMG_8111_fvpwej.jpg",
+        "images": [],
+        "videos": [
+            "sF-9ItYRq4U"
+        ],
+        "musicStyle": [
+            "rock",
+            "pop"
+        ],
+        "isHost": false,
+        "events": [],
+        "pendingEvents": [],
+        "description": "We are a group where everyone brings their own musical style. When we put it together it doesn't sound too good, but we mix the music with a super innovative stage performance. Thank god we have Diego, our singer, who honestly does it all.",
+        "location": "World"
+    },
+    {
+        "name": "Robe Iniesta",
+        "email": "robeiniesta@test.com",
+        "password": "123",
+        "profilePic": "https://res.cloudinary.com/dafjdxuov/image/upload/v1647523126/robe_ncyagx.jpg",
+        "images": [],
+        "videos": [
+            "iCvtgyLL98g"
+        ],
+        "musicStyle": [
+            "rock"
+            
+        ],
+        "isHost": false,
+        "events": [],
+        "pendingEvents": [],
+        "description": "As you already know, this year we are going to continue with the second part of the tour we started last year. Our intention is to do about forty concerts, but for the moment, we inform you about the ones we have for sure.",
+        "location": "Paris"
+    },
+    {
+        "name": "Ptazeta",
+        "email": "ptazeta@test.com",
+        "password": "123",
+        "profilePic": "https://res.cloudinary.com/dafjdxuov/image/upload/v1647523280/ptzeta_ozczng.jpg",
+        "images": [],
+        "videos": [
+            "HMF2DPqWN5M"
+        ],
+        "musicStyle": [
+            "chill"
+            
+        ],
+        "isHost": false,
+        "events": [],
+        "pendingEvents": [],
+        "description": "Ptazeta is a trap singer from the Canary Islands whose fame has grown like crazy in just a few months. She started uploading her own songs to Instagram to soon become one of the sensations of the urban scene. With little more than twenty years old, she accumulates millions of reproductions on YouTube and other digital platforms of her songs and video clips.",
+        "location": "Canarias"
+    },
+    {
+        "name": "Bad Gyal",
+        "email": "badgyal@test.com",
+        "password": "123",
+        "profilePic": "https://res.cloudinary.com/dafjdxuov/image/upload/v1647523442/badgyal_mvkwkw.jpg",
+        "images": [],
+        "videos": [
+            "Y3XacUKTdHc"
+        ],
+        "musicStyle": [
+            "party"
+            
+        ],
+        "isHost": false,
+        "events": [],
+        "pendingEvents": [],
+        "description": "arelo was born in Vilassar de Mar, Spain, the eldest of five children,[8] daughter of the actor and dubbing actor Eduard Farelo.[9][10] He worked for international productions such as The Lord of the Rings and Star Wars. After taking selectividad, Farelo studied a degree in fashion design at the University of Barcelona. While attending university and working at a call centre, she released Pai in April 2016, an adaptation of work by Rihanna, adapting the lyrics to a mixture of Spanish, Catalan and English.",
+        "location": "Barcelona"
+    },
+    {
+        "name": "Plan-C",
+        "email": "planc@test.com",
+        "password": "123",
+        "profilePic": "https://res.cloudinary.com/dafjdxuov/image/upload/v1647523651/IMG_8093_u4opim.jpg",
+        "images": [],
+        "videos": [
+            "lxinzpI8F3A"
+        ],
+        "musicStyle": [
+            "others"
+            
+        ],
+        "isHost": false,
+        "events": [],
+        "pendingEvents": [],
+        "description": "We playback the songs chosen by the client and combine it with different types of dance such as Bachata sensual and kunfu. We are three friends who after a failed final project decided to dedicate ourselves to the show.",
+        "location": "Madrid"
+    }
+]   

@@ -1,0 +1,105 @@
+[
+    {
+        "name": "Juan José",
+        "email": "juanjose@gmail.com",
+        "password": "123",
+        "isHost": true,
+        "events": [],
+        "description": "I have a Bar and I look for artists that play rock acoustic for  playing on Saturdays at 19:00 for 2 hours.",
+        "location": "Barcelona",
+        "profilePic": "https://res.cloudinary.com/dafjdxuov/image/upload/v1647100889/bf9wnauchpoyswn9ec0g.jpg"
+    },
+    {
+        "name": "Diego Armando Maradona",
+        "email": "diegoarmandomaradona@gmail.com",
+        "password": "123",
+        "isHost": true,
+        "events": [],
+        "description": "After 20 years being the best football player in the world I decided to invest my money in different bars and night clubs, here in Argentina. I am looking for good artist to perform in my business",
+        "location": "Argentina",
+        "profilePic": "https://res.cloudinary.com/dafjdxuov/image/upload/v1647110029/vnpvxwzkr6gouuiktntg.jpg"
+    },
+    {
+        "name": "Leo Harlem",
+        "email": "leoharlem@gmail.com",
+        "password": "123",
+        "isHost": true,
+        "events": [],
+        "description": "Actually I'm living outside Madrid in a super big house with a huge garden, where regulary I organize Chill partys for my friends, that's why I am looking for artists",
+        "location": "Madrid",
+        "profilePic": "https://res.cloudinary.com/dafjdxuov/image/upload/v1647440084/lkesqx2vwcbanffrylyx.jpg"
+    },
+    {
+        "name": "Jonh Matazz",
+        "email": "jonhmatazz@gmail.com",
+        "password": "123",
+        "isHost": true,
+        "events": [],
+        "description": "aised in the Pinner area of Greater London, John learned to play piano at an early age, and by 1962 had formed Bluesology, a blues band with whom he played until 1967. He met his longtime musical partner Taupin in 1967, after they both answered an advert for songwriters.",
+        "location": "Barcelona",
+        "profilePic": "https://res.cloudinary.com/dafjdxuov/image/upload/v1647346691/gmskgvsuzgrtciworurc.jpg"
+    },
+    {
+        "name": "Aleix Abulí",
+        "email": "aleixabuli@gmail.com",
+        "password": "123",
+        "isHost": true,
+        "events": [],
+        "description": "I am a film and art enthusiast. I acquired from an inheritance a house with a huge plot of land on the outskirts of Girona, where I intend to organize concerts and performances without profit, so I'm looking for artists of all kinds, I pay 100 euros per hour.",
+        "location": "Girona",
+        "profilePic": "https://res.cloudinary.com/dafjdxuov/image/upload/v1647521052/aleix_tfalcq.jpg"
+    },
+    {
+        "name": "Antonio Manchado",
+        "email": "antoniomanchado@gmail.com",
+        "password": "123",
+        "isHost": true,
+        "events": [],
+        "description": "Machado was born in Seville, Spain, one year after his brother Manuel. The family moved to Madrid in 1883 and both brothers enrolled in the Institución Libre de Enseñanza. During these years—with the encouragement of his teachers—Antonio discovered his passion for literature. While completing his Bachillerato in Madrid, economic difficulties forced him to take several jobs including working as an actor. In 1899, he and his brother traveled to Paris to work as translators for a French publisher.",
+        "location": "Berlin",
+        "profilePic": "https://res.cloudinary.com/dafjdxuov/image/upload/v1647425761/qv7trmmapv9jzzgmjioz.jpg"
+    },
+    {
+        "name": "David Broncano",
+        "email": "davidbroncano@gmail.com",
+        "password": "123",
+        "isHost": true,
+        "events": [],
+        "description": "I have made so much money in television that I need a way to spend it. Now I'm in the business of buying bars and nightclubs to throw big parties for the French elite.",
+        "location": "Madrid",
+        "profilePic": "https://res.cloudinary.com/dafjdxuov/image/upload/v1647521393/david-broncano-655x368_qvkjhb.jpg"
+    },
+    {
+        "name": "Marco Santonastasi",
+        "email": "marcosantonastasi@gmail.com",
+        "password": "123",
+        "isHost": true,
+        "events": [],
+        "description": "Two months in Barcelona are enough to miss Italy. For this reason I organize evenings with traditional Italian food and live music, to take me back to my childhood in Naples. I am looking for artists who play italian stuff.",
+        "location": "Italy",
+        "profilePic": "https://res.cloudinary.com/dafjdxuov/image/upload/v1647521528/marco_zjqc7u.jpg"
+    },
+    
+    {
+        "name": "Helena de Troya",
+        "email": "helenadetroya@gmail.com",
+        "password": "123",
+        "isHost": true,
+        "events": [],
+        "description": "Another tradition said that Helen was born from the union of Nemesis and Zeus, transformed respectively into a goose and a swan. The egg laid by Nemesis was found by a shepherd who gave it to Leda. From the egg Helen was born and Leda took care of her as if she were her real mother.2 Hesiod, on the other hand, alleges that Helen is the daughter of Zeus and an unnamed Oceanid.",
+        "location": "France",
+        "profilePic": "https://res.cloudinary.com/dafjdxuov/image/upload/v1647521731/chica_jfsfcj.jpg"
+    },
+    {
+        "name": "Roberto Apolo",
+        "email": "robertoapolo@gmail.com",
+        "password": "123",
+        "isHost": true,
+        "events": [],
+        "description": "Since I was a child I have been involved in the hotel and catering business, as my parents had several bars in Barcelona. At the moment I am thinking of moving the mythical Sala Apolo to Germany. I need artists who want to come on this adventure with me. All travel and accommodation expenses paid.",
+        "location": "Germany",
+        "profilePic": "https://res.cloudinary.com/dafjdxuov/image/upload/v1647522411/roberto_knn3gk.jpg"
+    }
+    
+    
+]

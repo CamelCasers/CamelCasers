@@ -16,7 +16,8 @@ const artistSchema = new Schema({
   playlist: String,
   isHost: Boolean,
   events: [{ type: Schema.Types.ObjectId, ref: 'Event', default: []}],
-  pendingEvents:[{ type: Schema.Types.ObjectId, ref: 'Event', default: []}] 
+  pendingEvents:[{ type: Schema.Types.ObjectId, ref: 'Event', default: []}]
+  
 });
 
 module.exports = model('Artist', artistSchema);
