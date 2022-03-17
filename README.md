@@ -1,10 +1,15 @@
 # CamelCasers
 
-User Stories:
+DESCRIPTION & USER STORIES:
 
 
+- This app aims to conect artists and hosts troughtout events created by the hosts. It has two different user profiles, artists and hosts. A host can be any person that wants to have some live music during a certain event. Friends gatherings, weddings, birthdays or any situation where a musician can be required. It also can be an owner of a bar or a place that wants to find musicians for music events or random gigs. On the other hand, the artists profiles can look for events created by the hosts that can fit with their music style or general features. The artist can apply to the event and the host will receive the notification. Then, the host of the event can accept or reject the request of the musician. Once the artist has applied to the event and the host has accepted it, now they are contected and can start talking about the conditions.
+
+
+FRONTEND:
 
 Components:
+
  - ArtistCard
  - EventCard
  - HostCard
@@ -15,6 +20,7 @@ Components:
  - YoutTubeUpload
  
 Pages:
+
 - Loginpage
 - SignUpPage
 - HomePage
@@ -31,6 +37,7 @@ Pages:
 - MyEventsListPage
 
 FrontEnd Routes:
+
 - /home
 - /signUp
 - /login
@@ -45,6 +52,9 @@ FrontEnd Routes:
 - /profileArtist/:profileId/artistMessages
 - /profileArtist/:profileId/edit
 - /profileArtist/:profileId
+
+
+BACKEND:
 
 # CamelCasers
 
