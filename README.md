@@ -13,6 +13,7 @@ Components:
  - ArtistCard
  - EventCard
  - HostCard
+ 
  - IsAnon
  - IsPrivate
  - MapPage
