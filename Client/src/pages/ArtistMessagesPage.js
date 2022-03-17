@@ -58,7 +58,7 @@ export default function ArtistMessagesPage() {
       })
      
       .then((__) => {
-        navigate(`/profileArtist/${user._id}/artistMessages`);
+        getArtist();
       })
       .catch((error) => console.log(error));
   };
