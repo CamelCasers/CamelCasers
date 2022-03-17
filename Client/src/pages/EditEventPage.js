@@ -103,6 +103,12 @@ function EditEventPage(props) {
     }
   }
 
+  function deletePic(e,img){
+    e.preventDefault()
+    let newImages = images.filter((elem)=>{return !elem.includes(img)})
+    setImages(newImages)
+  }
+
   return (
     <div>
       <form onSubmit={handleFormSubmit}>
@@ -218,6 +224,7 @@ function EditEventPage(props) {
             id="formFile"
             imgUpload={imgUpload}
             images={images}
+            deletePic={deletePic}
           />
         </div>
 
