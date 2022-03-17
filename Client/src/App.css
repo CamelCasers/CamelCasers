@@ -7,8 +7,7 @@
   height: 250px;
   width: 90vw;
   border-radius: 8px;
-  border: 1px solid rgb(216, 162, 13);
-  
+  border: 1px solid rgb(216, 162, 13);  
 }
 
 
@@ -72,7 +71,7 @@ background: linear-gradient(to right, #22223b, #22223b, #22223b); /* W3C, IE 10+
 
 
 .backgroundEventCard{
-  background: linear-gradient(to right, #4a4e69, #4a4e69, #4a4e69);
+  background: linear-gradient(to right, #4a4e69, #373a4d, #353952);
 }
 
 .backgroundArtistCard{
@@ -90,9 +89,10 @@ background: linear-gradient(to right, #22223b, #22223b, #22223b); /* W3C, IE 10+
 	justify-content: space-between;
 	align-items: center;
 	align-content: space-between;
-  margin: 20px;
+  margin: 35px;
   border-radius: 10px;
 }
+
 
 .artistContainer{
   background-image:
@@ -101,6 +101,8 @@ background: linear-gradient(to right, #22223b, #22223b, #22223b); /* W3C, IE 10+
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  padding-bottom: 40px;
+
 }
 
 .hostContainer{
@@ -109,7 +111,10 @@ background: linear-gradient(to right, #22223b, #22223b, #22223b); /* W3C, IE 10+
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  padding-bottom: 40px;
+
 }
+
 
 .eventContainer{
   background-image:
@@ -118,6 +123,8 @@ background: linear-gradient(to right, #22223b, #22223b, #22223b); /* W3C, IE 10+
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  padding-bottom: 40px;
+
 }
 
 .findaGig{
@@ -130,9 +137,6 @@ background: linear-gradient(to right, #22223b, #22223b, #22223b); /* W3C, IE 10+
   align-items: center;
 }
 
-.profileHostHeader{
-  
-}
 
 .profileArtistButtons{
   display: flex;
@@ -209,7 +213,16 @@ background: linear-gradient(to right, #22223b, #22223b, #22223b); /* W3C, IE 10+
   linear-gradient(rgba(59, 59, 57, 0.4), rgba(31, 83, 131, 0.973)), 
 }
 
+.lessMargin{
+  margin: -20px
+}
 
+.margenesHomePage{
+  margin-top: 30px;
+  margin-bottom: 40px;
+  margin-left: 0px;
+  margin-right: 0px;
+}
 
 
 
