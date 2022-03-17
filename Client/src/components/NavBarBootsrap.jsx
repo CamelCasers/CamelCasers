@@ -40,7 +40,7 @@ export default function NavBarBootrstrap() {
                   Profile
                 </Nav.Link>
                 <Nav.Link as={Link} to={`/profileArtist/${user._id}/artistMessages`}>
-                  Messages
+                  My Events
                 </Nav.Link>
                 <Nav.Link onClick={logOutUser}>Logout</Nav.Link>
               </>
