@@ -4,6 +4,8 @@
   "private": true,
   "scripts": {
     "start-server": "node server.js",
+    "seed-artists": "node ./seed/seedArtists.js",
+    "seed-hosts": "node ./seed/seedHosts",
     "dev": "nodemon server.js"
   },
   "dependencies": {

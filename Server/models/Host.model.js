@@ -12,8 +12,8 @@ const hostSchema = new Schema({
   description: String,
   location: String, 
   isHost: Boolean,
-  events: [{ type: Schema.Types.ObjectId, ref: 'Event', default: []}],  
-  chats: [{ type: Schema.Types.ObjectId, ref: 'Chat', default: []}] 
+  events: [{ type: Schema.Types.ObjectId, ref: 'Event', default: []}]
+  
 });
 
 module.exports = model('Host', hostSchema);
