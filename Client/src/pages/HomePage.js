@@ -13,7 +13,7 @@ function HomePage() {
       <div className=" margenesHomePage eventContainer centerItemsContainer">
        {/* <h1 className="centerText wordHomePage">Events</h1> */}
         <h2 className="centerText text-white">
-          Find Events and join them
+          Find your Gig
         </h2>
         <Link to={`/events/`}>
           <button className="btn btn-outline-warning mt-2">Events</button>
@@ -25,7 +25,7 @@ function HomePage() {
       <div className="margenesHomePage centerItemsContainer artistContainer">
         {/*<h1 className="wordHomePage ">Artists</h1>*/}
         <h2 className="centerText text-white">
-          Find your Artist
+          Find the Artist
         </h2>
         <Link exact to={"/artistList"} className="center">
           <button className="btn btn-outline-warning  mt-2">Artists</button>
@@ -36,7 +36,7 @@ function HomePage() {
 
       <div className="margenesHomePage centerItemsContainer hostContainer">
         <h2 className="centerText text-white">
-          Find your Host
+          Find the Host
         </h2>
 
         <Link exact to={"/hostList"}>
