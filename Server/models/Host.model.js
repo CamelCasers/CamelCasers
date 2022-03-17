@@ -13,6 +13,7 @@ const hostSchema = new Schema({
   location: String, 
   isHost: Boolean,
   events: [{ type: Schema.Types.ObjectId, ref: 'Event', default: []}],  
+  chats: [{ type: Schema.Types.ObjectId, ref: 'Chat', default: []}] 
 });
 
 module.exports = model('Host', hostSchema);
